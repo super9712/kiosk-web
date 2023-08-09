@@ -3,12 +3,24 @@
     min-height: 470px;
     padding: 15px;
     display: flex;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     margin: 0 auto;
     background: #eee;
     position: relative;
 }
+
+.menu-list .menu {
+    margin: auto 30px;
+    cursor: pointer;
+}
+
+.menu-list .menu .modal-img {
+    width: 150px;
+    height: 180px;
+}
+
 .menu-list .menu-item {
     width: 220px;
     margin: 10px;
