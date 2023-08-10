@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class = "center">
+        <div class = "flex justify-center align-center items-center my-5">
+            <a href="{% url 'megacoffeeapp:start_2' %}" class="margin-right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024"><path fill="currentColor" d="M685.248 104.704a64 64 0 0 1 0 90.496L368.448 512l316.8 316.8a64 64 0 0 1-90.496 90.496L232.704 557.248a64 64 0 0 1 0-90.496l362.048-362.048a64 64 0 0 1 90.496 0z"/></svg>
+            </a>
+            <span class = "font-bold fs-1 main_text">
+                주문 목록이 맞다면 오른쪽의 결제 방식을 선택해주세요.
+            </span>
+        </div>
+        <div class="receipt_list">
+            <div class="receipt flex align-center my-5 column">
+                <div class="list">
+                    - 리스트 목록
+                    <br>
+                    - 리스트 목록
+                </div>
+                <div class="total">
+                    총 결제 금액 : *, ***원
+                </div>
+            </div>
+            <div class="flex column">
+                <div class = "flex my-5">
+                    <a class = "btn btn-pay btn-square-small no-margin-right" href="{% url 'megacoffeeapp:pay_card' %}">카드</a>
+                    <a class = "btn btn-pay btn-square-small" href="{% url 'megacoffeeapp:pay_coupon' %}">모바일<br>쿠폰</a>
+                </div>
+                <div class = "flex my-5">
+                    <a class = "btn btn-pay btn-square-small no-margin-right" href="{% url 'megacoffeeapp:pay_phone' %}">삼성페이 <br>/<br> 애플페이</a>
+                    <a class = "btn btn-pay btn-square-small" href="{% url 'megacoffeeapp:pay_barcode' %}">카카오페이 <br>/<br> 네이버페이</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock%}

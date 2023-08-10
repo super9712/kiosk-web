@@ -23,8 +23,31 @@ html {
     background-color: var(--primary);
 }
 
-.fs-1 {
-    font-size: 2.5rem;
+.background span {
+    margin: 1.5rem;
+}
+
+.background img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 10rem;
+}
+
+.center, .wrapper {
+    text-align : center;
+    font-size : 1.9rem;
+}
+
+.center {
+    height : 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    padding : 2rem 0;
 }
 
 /*
@@ -41,6 +64,11 @@ layout
 }
 
 /* .video {
+    padding : 1rem 2rem;
+    margin : auto;
+} */
+
+/* .video_img {
     padding : 1rem 2rem;
     margin : auto;
 } */
@@ -69,24 +97,6 @@ layout
     font-weight: 700;
 }
 
-.center {
-    text-align : center;
-    padding : 40vh 0;
-    font-size : 1.9rem;
-}
-
-.wrapper {
-    text-align : center;
-    padding : 2rem 0;
-    font-size : 1.9rem;
-}
-
-
-/* .video_img {
-    padding : 1rem 2rem;
-    margin : auto;
-} */
-
 
 /*
 
@@ -94,42 +104,65 @@ components
 
 */
 
-
-.btn-big {
-    display: inline-flex;
+.btn-big, .btn {
     border-radius: 0.5rem;
-    padding: 1.5rem 3rem;
     background-color: var(--secondary);
-    width : 30rem;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+.btn-big:hover, .btn:hover {
+    background-color: #fdfdfd;
+    color: var(--secondary);
+    transition: 1s;
+}
+
+.btn-big {
+    display: inline-flex;
+    padding: 1.5rem 3rem;
+    width : 30rem;
     font-weight: bold;
     font-size: 1.8rem;
     box-shadow: 1px 1px 5px #cccccc;
 }
 
-.btn-big:hover {
-    background-color: #fdfdfd;
-    color: var(--secondary);
-    transition: 1s;
-}
-
 .btn {
     display: flex;
-    border-radius: 0.5rem;
     padding: 1rem 2rem;
-    background-color: var(--secondary);
-    align-items: center;
-    justify-content: center;
-    color: white;
     font-weight: 700;
 }
 
-.btn:hover {
-    background-color: #fdfdfd;
-    color: var(--secondary);
-    transition: 1s;
+/* question.html */
+
+.btn-square {
+    width: 13rem;
+    height: 20rem;
+    box-shadow: 1px 1px 5px #cccccc;
+}
+
+.btn-yellow {
+    background-color: var(--primary);
+}
+
+.btn-yellow:hover {
+    color: var(--primary);
+}
+
+.btn-square, .btn-pay {
+    margin: 1rem;
+}
+
+/* receipt.html */
+
+.btn-square-small {
+    width: 13rem;
+    height: 13rem;
+    font-size: 1.8rem;
+}
+
+.no-margin-right {
+    margin-right: 0;
 }
 
 /*
@@ -142,50 +175,79 @@ nav {
     padding: 1rem;
 }
 
+
 /* 
 
 mission page
 
 */
 
-.mega {
+.wrap, .select, .receipt_list {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 2.5rem;
 }
 
-.mega_select {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 726px;
+.select, .mission {
+    width: 45rem;
 }
 
-.mega_img {
+.wrap img {
     width: 200px;
     height: 200px;
     margin: 0 2rem;
 }
 
-.text {
+.wrap p {
     font-size: 2rem;
     font-weight: 900;
-    margin: auto 1rem;
 }
 
-.mission {
-    width: 45rem;
+.mission, .mission_text {
     height: 20rem;
-    background-color: var(--primary);
+}
+
+.mission, .receipt {
+    border: 0.5rem solid var(--primary);
     border-radius: 1rem;
+    text-align: center;
 }
 
 .mission_text {
-    height: 20rem;
     display: flex;
     align-items: center;
     padding: 1rem;
-    font-size: 1.8rem;
-    font-weight: 700;
+}
+
+/* 
+
+receipt.html
+
+*/
+
+.margin-right {
+    margin-right: 5rem;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.list {
+    flex: 1;
+}
+
+.receipt {
+    width: 30rem;
+    height: 34rem;
+}
+
+.total {
+    width: 100%;
+    background-color: var(--primary);
 }
