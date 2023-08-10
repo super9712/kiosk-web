@@ -9,7 +9,7 @@
     --light: #fdfdfd;
     --medium: #aaaaaa;
     --primary: #FADF70;
-    --secondary: #CBD47A;
+    --secondary: #b1d463;
     --warning: #edc447;
     --danger: #ed5d47;
     --border: #cccccc;
@@ -17,6 +17,14 @@
 
 html {
     color: var(--dark);
+}
+
+.background {
+    background-color: var(--primary);
+}
+
+.fs-1 {
+    font-size: 2.5rem;
 }
 
 /*
@@ -32,10 +40,10 @@ layout
     justify-content : center;
 }
 
-.video {
+/* .video {
     padding : 1rem 2rem;
     margin : auto;
-}
+} */
 
 .brand_list ul{
     display:flex;
@@ -46,37 +54,38 @@ layout
 .brand_list ul li{
     margin: auto;
     background : var(--primary);
+    border-radius: 1rem;
 }
 
 .brand_list a img {
-    padding : 2rem 2rem;
-    margin : auto
-    width : 300px;
-    height : 300px;
+    margin : 1rem;
+    width : 19rem;
+    height : 19rem;
 }
 
 .brand_list a div{
-    padding : 0.5rem 2rem;
-
+    padding : 0 1rem 1rem 1rem ;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .center {
     text-align : center;
     padding : 40vh 0;
-    font-size : 30px;
+    font-size : 1.9rem;
 }
 
 .wrapper {
     text-align : center;
     padding : 2rem 0;
-    font=size : 30px;
+    font-size : 1.9rem;
 }
 
 
-.video_img {
+/* .video_img {
     padding : 1rem 2rem;
     margin : auto;
-}
+} */
 
 
 /*
@@ -90,31 +99,31 @@ components
     display: inline-flex;
     border-radius: 0.5rem;
     padding: 1.5rem 3rem;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     width : 30rem;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: bold;
-    font-size: larger;
+    font-size: 1.8rem;
     box-shadow: 1px 1px 5px #cccccc;
 }
 
 .btn-big:hover {
     background-color: #fdfdfd;
-    color: var(--primary);
+    color: var(--secondary);
     transition: 1s;
 }
 
 .btn {
     display: flex;
-    border-radius: 0.2rem;
+    border-radius: 0.5rem;
     padding: 1rem 2rem;
     background-color: var(--secondary);
     align-items: center;
     justify-content: center;
     color: white;
-    box-shadow: 1px 1px 5px #cccccc;
+    font-weight: 700;
 }
 
 .btn:hover {
@@ -131,4 +140,52 @@ components
 nav {
     box-shadow: 1px 1px 5px #cccccc;
     padding: 1rem;
+}
+
+/* 
+
+mission page
+
+*/
+
+.mega {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mega_select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 726px;
+}
+
+.mega_img {
+    width: 200px;
+    height: 200px;
+    margin: 0 2rem;
+}
+
+.text {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: auto 1rem;
+}
+
+.mission {
+    width: 45rem;
+    height: 20rem;
+    background-color: var(--primary);
+    border-radius: 1rem;
+}
+
+.mission_text {
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
