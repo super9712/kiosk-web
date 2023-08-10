@@ -1,6 +1,6 @@
-import model from '../model/model';
-import menuRender from '../views/menu-render';
-import menuModalRender from '../views/modal-render';
+import model from './model/model.js';
+import menuRender from './views/menu-render.js';
+import menuModalRender from './views/modal-render.js';
 
 // DOM
 const $menuList = document.querySelector('.menu-list');
