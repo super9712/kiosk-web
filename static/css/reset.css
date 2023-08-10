@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 /* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
 License: none (public domain)
@@ -54,10 +51,8 @@ button {
     cursor: pointer;
     border-radius: 5px;
     outline: none;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
-=======
->>>>>>> upstream/main
+
 /*
 *  html5resetcss
 */
@@ -74,9 +69,5 @@ del{text-decoration:line-through}
 abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
 table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
-<<<<<<< HEAD
 input,select{vertical-align:middle}
-=======
-input,select{vertical-align:middle}
->>>>>>> upstream/main
->>>>>>> upstream/main
+
