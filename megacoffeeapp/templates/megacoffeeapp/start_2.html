@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header_2.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer-section.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
+
+</head>
+<body>
+    <header class="header">
+    <div class="header-container">
+        <button class="btn-home trans">
+            <i class="fas fa-home"></i>
+        </button>
+        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
+    </div>
+    </header>
+
+    <main>
+    <div class="main__container">
+        <ul class="menu-list">
+        </ul>
+    </div>
+    </main>
+    <!-- footer 주문 내역 영역 -->
+    <footer class="footer">
+    <div class="remaining-time-container">
+        남은시간 <span class="remaining-time"></span>초
+    </div>
+    <ul class="order-list">
+
+    </ul>
+    <div class="selected-item-container">
+        선택한 상품 <span class="selected-item-num"></span>
+    </div>
+    <button class="order-btn order-btn-invalid">
+        <span class="total-price"></span> 결제하기
+    </button>
+    <button class="delete-all-items">전체삭제</button>
+
+    <!-- 결제 내역 모달 영역 -->
+    <div class="pay-modal-container modal-invisible">
+        <div class="pay-modal">
+        <h3 class="pay-modal-heading">주문리스트</h3>
+        <p class="pay-modal-text"><span>주문리스트</span>를 확인해 주세요.</p>
+        <div class="pay-list-container">
+            <div class="pay-list-head">
+            <span>메뉴</span>
+            <span>가격</span>
+            </div>
+            <ul class="pay-list">
+            `<li id="${id}" class="pay-item">
+            <span class="item-name">${item}</span>
+            <span><span class="item-price">${price}</span>원</span>
+        </li>` 
+            </ul>
+        </div>
+        <div class="pay-result">
+            <span>총 수량 <span class="total-item-num"></span></span>
+            <span>총 결제금액 <span class="total-item-price"></span></span>
+        </div>
+        <div>
+            <button class="pay-result-check">확 인</button>
+            <button class="pay-result-cancel">취 소</button>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'js/footerController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuModalController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuSetController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/navController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/refreshPage.js' %}"></script>
+
+</body>
+</html>
