@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class = "center">
+        <div class = "flex justify-center align-center items-center my-5">
+            <span class = "font-bold fs-1 main_text">
+                어플의 바코드를 아래의
+                <br>
+                바코드 리더기 근처에 대주세요.
+            </span>
+        </div>
+        <div class = "flex justify-center align-center items-center my-5">
+            <a class = "btn" href="{% url 'megacoffeeapp:receipt' %}">이전으로 돌아가기</a>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock%}

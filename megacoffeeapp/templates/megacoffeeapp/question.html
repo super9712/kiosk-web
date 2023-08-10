@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class = "center">
+        <div class = "flex justify-center align-center items-center my-5 column">
+            <span class = "font-bold fs-1 main_text">
+                식사하실 장소를 선택해주세요.
+            </span>
+        </div>
+        <div class = "flex justify-center align-center items-center my-5">
+            <a class = "btn btn-square btn-yellow" href="{% url 'megacoffeeapp:receipt' %}">포장하기</a>
+            <a class = "btn btn-square" href="{% url 'megacoffeeapp:start_2' %}">
+                매장에서
+                <br>
+                식사
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
