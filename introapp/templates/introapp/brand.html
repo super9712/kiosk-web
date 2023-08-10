@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div>
-        <a href="{% url 'megacoffeeapp:start' %}">MEGACOFFEE</a>
-    </div>
-</body>
-</html>
+ㅈ{% extends "base.html" %}
+{% block content %}
+
+{% load static %}
+        <div class = "wrapper">
+                <div>
+                        <span class ="font-bold">원하시는 브랜드의 키오스크를 선택해주세요</span>
+                </div>
+        </div>
+        <div class = "brand_list">
+                <ul>
+                        <li>
+                                <a href="{% url 'introapp:mission' %}">
+                                        <img src = "{% static 'img/메가커피.png' %}">
+                                        <div class = "flex justify-center">메가커피</div>
+                                </a>
+                        </li>
+                        <li>
+                                <a href = "#">
+                                        <img src = "{% static 'img/mcdonalds.png' %}">
+                                        <div class = "flex justify-center">맥도날드</div>
+                                </a>
+                        </li>
+                </ul>
+        </div>
+
+{% endblock %}
+
