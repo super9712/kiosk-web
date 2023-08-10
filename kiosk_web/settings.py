@@ -65,10 +65,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kiosk_web.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [os.path.join(BASE_DIR, 'tempaltes')],
+=======
+        'DIRS': [TEMPLATE_DIR],
+>>>>>>> upstream/main
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

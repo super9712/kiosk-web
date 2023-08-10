@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-     <div>
+{% extends 'base.html' %}
+
+{% block content %}
+
+     <main class='container'>
         <a href="{% url 'introapp:brand' %}">시작하기</a>
-    </div>
-</body>
-</html>
+    </main>
+
+{% endblock %}
