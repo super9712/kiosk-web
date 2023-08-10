@@ -16,7 +16,6 @@
 .header {
     position: relative;
     width: 960px;
-    height: 140px;
     margin: 0 auto;
     padding: 0 15px;
     background-color: #FFB800;
@@ -213,3 +212,5 @@
 .dev-modal-container .dev-modal-btn button:disabled {
     background: #eee;
 }
+
+

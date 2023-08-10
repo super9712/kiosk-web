@@ -13,17 +13,10 @@
     crossorigin="anonymous"
     />
     
-    <link rel="stylesheet" href="../../../static/css/reset.css?after">
-    <link rel="stylesheet" href="../../../static/css/header.css?after">
-    <link rel="stylesheet" href="../../../static/css/footer-section.css?after">
-    <link rel="stylesheet" href="../../../static/css/menu-section.css?after">
-
-    <link rel="stylesheet" href="../../../static/js/footerController.js?after">
-    <link rel="stylesheet" href="../../../static/js/menuController.js?after">
-    <link rel="stylesheet" href="../../../static/js/menuModalController.js?after">
-    <link rel="stylesheet" href="../../../static/js/menuSetController.js?after">
-    <link rel="stylesheet" href="../../../static/js/navController.js?after">
-    <link rel="stylesheet" href="../../../static/js/refreshPage.js?after">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer-section.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
 
 </head>
 <body>
@@ -32,15 +25,15 @@
         <button class="btn-home trans">
         <i class="fas fa-home"></i>
         </button>
-        <h1 class="home"><span>Senisk</span> <span>KIOSK</span></h1>
+        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
         <button class="btn-dev trans">
         <i class="fas fa-plus-square"></i>
         </button>
     </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
-        <li id="seasonmenu" class="tab-list trans btn-active">시즌 메뉴</li>
-        <li id="hotmenu" class="tab-list trans">커피(HOT)</li>
+        <li id="seasonmenu" class="tab-list trans">시즌 메뉴</li>
+        <li id="hotmenu" class="tab-list trans btn-active">커피(HOT)</li>
         <li id="icemenu" class="tab-list trans">커피(ICE)</li>
         </ul>
     </nav>
@@ -127,83 +120,83 @@
     <main>
     <div class="main__container">
         <ul class="menu-list">
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630171805_1656577085458_7skvYFEJwH.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630153107_1656570667406_prmnWqNIw2.jpg">
                     <div>
-                        <figcaption class="modal-title">아메리카노</figcaption>
-                        <span class="modal-price">2,000원</span>
+                        <figcaption class="menu-title">아메리카노</figcaption>
+                        <span class="menu-price">1,500원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165440_1656575680273_1mqBtip7qh.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630163827_1656574707981_wvnN5idvmp.jpg">
                     <div>
-                        <figcaption class="modal-title">카페라떼</figcaption>
-                        <span class="modal-price">2,900원</span>
+                        <figcaption class="menu-title">카페라떼</figcaption>
+                        <span class="menu-price">2,900원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165339_1656575619040_5XSmRW4GJT.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630163626_1656574586502_Hh19hMijc6.jpg">
                     <div>
-                        <figcaption class="modal-title">카라멜마끼아또</figcaption>
-                        <span class="modal-price">3,700원</span>
+                        <figcaption class="menu-title">카라멜마끼아또</figcaption>
+                        <span class="menu-price">3,700원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165146_1656575506210_0DJPVTvDIa.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630163106_1656574266929_v3PaYBqN99.jpg">
                     <div>
-                        <figcaption class="modal-title">바닐라라떼</figcaption>
-                        <span class="modal-price">3,400원</span>
+                        <figcaption class="menu-title">바닐라라떼</figcaption>
+                        <span class="menu-price">3,400원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165537_1656575737487_Bxg3VBe7i4.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164022_1656574822815_vF353Tg7hS.jpg">
                     <div>
-                        <figcaption class="modal-title">카페모카</figcaption>
-                        <span class="modal-price">3,900원</span>
+                        <figcaption class="menu-title">카페모카</figcaption>
+                        <span class="menu-price">3,900원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165819_1656575899792_ItfqiNDhPh.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164717_1656575237515_oZTJ4tIb1r.jpg">
                     <div>
-                        <figcaption class="modal-title">콜드브루오리지널</figcaption>
-                        <span class="modal-price">3,500원</span>
+                        <figcaption class="menu-title">콜드브루오리지널</figcaption>
+                        <span class="menu-price">3,500원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165911_1656575951121_0YxlHWvpqC.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164821_1656575301351_3tALCi6kNg.jpg">
                     <div>
-                        <figcaption class="modal-title">헤이즐넛라떼</figcaption>
-                        <span class="modal-price">3,400원</span>
+                        <figcaption class="menu-title">헤이즐넛라떼</figcaption>
+                        <span class="menu-price">3,400원</span>
                     </div>
                 </figure>
             </li>
-            <li class="menu">
+            <li class="menu-item">
                 <figure>
-                    <img class="modal-img"
-                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630170029_1656576029152_FYWEDbVbFT.jpg">
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164924_1656575364475_feNS9vEV6A.jpg">
                     <div>
-                        <figcaption class="modal-title">헤이즐넛아메리카노</figcaption>
-                        <span class="modal-price">2,700원</span>
+                        <figcaption class="menu-title">헤이즐넛아메리카노</figcaption>
+                        <span class="menu-price">2,700원</span>
                     </div>
                 </figure>
             </li>
@@ -216,16 +209,16 @@
                     <img class="modal-img"
                         src="https://cdn.shopify.com/s/files/1/0273/4535/4826/products/coldbrew_69e25680-9a16-41ed-ad47-e42d7b201b6a.jpg?v=1587042356">
                     <div>
-                        <figcaption class="modal-title">아이스 아메리카노</figcaption>
-                        <span class="modal-price">2000원</span>
+                        <figcaption class="modal-title">아메리카노</figcaption>
+                        <span class="modal-price">1,500원</span>
                     </div>
                 </figure>
             </li>
             <li class="modal-item">
                 <button class="btn btn-size-up"><i class="fa fa-coffee" aria-hidden="true"></i> 사이즈 업</button>
-                <span class="size-up-price">1000원</span>
+                <span class="size-up-price">1.000원</span>
                 <button class="btn btn-addshot"><i class="fa fa-coffee" aria-hidden="true"></i> 샷 추가</button>
-                <span class="size-up-price">1000원</span>
+                <span class="size-up-price">1,000원</span>
             </li>
             <li class="modal-item">
                 <button class="btn-order">주문 담기</button>
@@ -282,5 +275,13 @@
         </div>
     </div>
     </footer>
+
+    <script type="text/javascript" src="{% static 'js/footerController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuModalController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/menuSetController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/navController.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/refreshPage.js' %}"></script>
+
 </body>
 </html>

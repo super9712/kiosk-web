@@ -79,7 +79,7 @@
     grid-column: 6/7;
     grid-row: 1/2;
     margin: 5px;
-    background: #645c5c;
+    background: #FFB800;
     border: 0;
     border-radius: 10px;
     font-size: 1.6rem;
@@ -119,8 +119,8 @@
 }
 
 .order-btn-invalid {
-    border: 1px solid #333;
-    background: gray;
+    border: 1px solid #FFB800;
+    background: #FFB800;
 }
 
 .total-price {
@@ -129,15 +129,15 @@
 
 .pay-modal-container {
     position: fixed;
-    justify-content: center;
-    align-items: center;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vw;
     background: rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
     display: flex;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-visible {
@@ -151,7 +151,7 @@
 }
 
 .pay-modal {
-    transform: translate(0, -100%);
+    transform: translate(0, -50%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -165,7 +165,7 @@
 .pay-modal-heading {
     font-size: 2rem;
     font-weight: bold;
-    color: tomato;
+    color: #FFB800;
     margin: 15px;
 }
 
@@ -244,7 +244,7 @@
 }
 
 .pay-result-check {
-    background: tomato;
+    background: #FFB800;
     margin: 10px;
     padding-left: 5%;
     width: 40%;
@@ -258,7 +258,7 @@
 }
 
 .pay-result-cancel {
-    background: #645c5c;
+    background: #d9d9d9;
     margin: 10px;
     padding-left: 5%;
     width: 40%;
