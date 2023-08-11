@@ -1,12 +1,15 @@
 from django.urls import path
 
-from introapp.views import IntroTemplateView, BrandTemplateView, MissionTemplateView, CompleteTemplateView
+from introapp.views import IntroTemplateView, BrandTemplateView, Mission_MegaTemplateView, CompleteTemplateView, \
+    Mission_McTemplateView
 
 app_name = "introapp"
 
 urlpatterns = [
     path('', IntroTemplateView.as_view(), name='main'),
     path('brand/', BrandTemplateView.as_view(), name='brand'),
-    path('mission/', MissionTemplateView.as_view(), name='mission'),
-    path('complete/', CompleteTemplateView.as_view(), name='complete')
+    path('mission_mega/', Mission_MegaTemplateView.as_view(), name='mission_mega'),
+    path('complete/', CompleteTemplateView.as_view(), name='complete'),
+
+    path('mission_mc', Mission_McTemplateView.as_view(), name='mission_mc')
 ]
