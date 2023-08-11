@@ -12,3 +12,6 @@ class BrandTemplateView(TemplateView):
 
 class MissionTemplateView(TemplateView):
     template_name = 'introapp/mission.html'
+
+class CompleteTemplateView(TemplateView):
+    template_name = 'introapp/complete.html'
