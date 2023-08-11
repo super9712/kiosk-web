@@ -27,6 +27,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    margin-left: 0;
 }
 
 .menu-list .menu-item figure .menu-img {
