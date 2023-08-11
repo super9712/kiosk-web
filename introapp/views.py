@@ -10,8 +10,11 @@ class IntroTemplateView(TemplateView):
 class BrandTemplateView(TemplateView):
     template_name = 'introapp/brand.html'
 
-class MissionTemplateView(TemplateView):
-    template_name = 'introapp/mission.html'
+class Mission_MegaTemplateView(TemplateView):
+    template_name = 'introapp/mission_mega.html'
 
 class CompleteTemplateView(TemplateView):
     template_name = 'introapp/complete.html'
+
+class Mission_McTemplateView(TemplateView):
+    template_name = 'introapp/mission_mc.html'

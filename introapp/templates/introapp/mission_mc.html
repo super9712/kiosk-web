@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+    <div class="wrap">
+        <div class="select">
+            <img src="#" alt="맥도날드 이미지">
+            <p>
+                맥도날드를 선택하셨습니다!
+            </p>
+        </div>
+
+        <div class="mission">
+            <p class="mission_text">
+                맥도날드 미션
+            </p>
+
+        </div>
+        <div class = "flex justify-center align-center items-center my-5">
+            <a class = "btn-big" href="{% url 'mcdonaldapp:start' %}">주문하러 가기</a>
+        </div>
+    </div>
+
+{% endblock content %}

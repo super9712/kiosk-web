@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -14,14 +15,14 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-<style>
-body {
-  overflow-x:hidden;
-}
+    <style>
+        body {
+          overflow-x:hidden;
+        }
 
     </style>
 
-{% block extra-style %}{% endblock %}
+    {% block extra-style %}{% endblock %}
 
 </head>
 
@@ -29,7 +30,9 @@ body {
 
 {% include 'header.html' %}
 
-{% block content %}{% endblock %}
+{% block content %}
+
+{% endblock %}
 
 
 </body>
