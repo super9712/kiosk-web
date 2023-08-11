@@ -84,6 +84,38 @@ layout
     font-weight: 700;
 }
 
+.ordered {
+    background : var(--light);
+    margin : auto;
+    mrgin-bottom : 100px;
+    width : 80vh;
+    height : content;
+    border-radius : 0.5rem;
+}
+
+.highlight {
+    background : var(--light);
+    margin : auto;
+    border-radius : 0.5rem;
+}
+
+.title {
+    background : var(--secondary);
+    margin: auto;
+    padding : 1rem 2rem;
+    border : var(--dark);
+    border-radius : 0.5rem;
+}
+
+.answer {
+    background : var(--light);
+    margin : auto;
+    width : 80vh;
+    height : content;
+    border-radius : 0.5rem;
+
+}
+
 
 /*
 
