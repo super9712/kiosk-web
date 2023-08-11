@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra-style %}
-    <link rel="stylesheet" href="{% static 'css/style3.css' %}?ver=1" />
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}" />
 
     <script type="text/javascript"></script>
 {% endblock %}
@@ -15,7 +15,7 @@
       <ul class="menu_list" id="menuList">
         <li>
           <div class="photo">
-            <img class="payment" src="{% static 'images/debit-card.png' %}" />
+            <img class="payment" src="{% static 'img/debit-card.png' %}" />
           </div>
           <div class="menu_name">
             <a href="inputcard" class="menu_name">카드 결제</a>
@@ -23,7 +23,7 @@
         </li>
         <li>
           <div class="photo">
-            <img class="payment" src="{% static 'images/cash-payment.png' %}" />
+            <img class="payment" src="{% static 'img/cash-payment.png' %}" />
           </div>
           <div class="menu_name">
             <a href="inputcash" class="menu_name">현금 결제</a>

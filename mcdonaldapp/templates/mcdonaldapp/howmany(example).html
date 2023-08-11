@@ -3,7 +3,7 @@
 
 {% block extra-style %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style4.css' %}?ver=" />
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}" />
 
     <script>
     $(function(){
@@ -60,11 +60,11 @@
             </div>
         </li>
         <li class="arrows">
-            <img class="triangle" src="{% static 'images/triangle-up.png' %}" id="increaseQuantity">
+            <img class="triangle" src="{% static 'img/triangle-up.png' %}" id="increaseQuantity">
             <input class="count" id="numberUpDown" name="MenuQty" value="0">
 
 
-            <img class="triangle" src="{% static 'images/triangle-down.png' %}" id="decreaseQuantity">
+            <img class="triangle" src="{% static 'img/triangle-down.png' %}" id="decreaseQuantity">
         </li>
         <li class="button_1">
             <button type="submit" >장바구니 추가</button>
