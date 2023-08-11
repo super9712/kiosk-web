@@ -1,0 +1,149 @@
+{% extends 'seller_base.html' %}
+{% load static %}
+
+{% block title %}Seller Order{% endblock %}
+
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/seller_order.css' %}" />
+    <style>
+        revenue {
+        padding: 30px;
+        margin: auto;
+        width:100%;
+        height: 300px;
+        }
+
+        table {
+        border-color:white;
+        border-width: 5px;
+        }
+        table thead{
+        float:left;
+        width:100%;
+        padding-right: 16.5px;
+        }
+        table thead tr{
+        display:table;
+        vertical-align: middle;
+        border-top:hidden;
+        border-left:hidden;
+        border-right:hidden;
+        width:100%;
+        }
+        table thead tr th{
+        border-color:#4C4B4B;
+        width:20%;
+        text-align: center;
+        }
+        table tbody{
+        overflow-y:scroll;
+        overflow-x:hidden;
+        float:left;
+        width:100%;
+        height:300px
+        }
+        table tbody tr{
+        display:table;
+        border-top:hidden;
+        border-left:hidden;
+        border-right:hidden;
+        width:100%;
+        }
+        table tbody tr td{
+        vertical-align: middle;
+        border-color:#4C4B4B;
+        border-bottom-color:#9B9B9B;
+        width:20%;
+        }
+        .btn {
+        background-color: #DEDEDE;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;}
+        </style>
+{% endblock %}
+
+
+{% block revenue %}
+<h3 class="text-warning font-weight-bold">매출관리</h3>
+{% endblock %}
+
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>맥도날드 키오스크</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?ver=3" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+
+  </head>
+  <body>
+    <div class="revenue">
+        <div class="revenue_table" id="tab-3" align="center">
+            <div class="top" style=" overflow: hidden; margin-top: 30px">
+                <div style="float: left">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div align="left">
+                            <h4>조회기간 선택</h4>  <!--h1을 사용해도 되고 h2를 사용해도 된다. 본인 마음-->
+
+                            <label><input type="date" name="start"></label> ~   <!--시작 년,도,월,일 선택-->
+
+                            <label><input type="date" name="end"></label>  <!--끝 년,도,월,일 선택-->
+
+                            <input type="submit" value="조회" > <!--버튼 생성-->
+                        </div>
+                    </form>
+                </div>
+                <div style="float: right">
+                    <li style="list-style: none; text-align: right;">
+                        총매출: {{ sales }}
+                    </li>
+                    <li style="list-style: none; text-align: right">
+                        총지출: {{ spend }}
+                    </li>
+                    <li style="list-style: none; text-align: right">
+                        순이익: {{ profit }}
+                    </li>
+                </div>
+            </div>
+
+        <br>
+            <table class="table" align="center" text-align="center" border="1" cellpadding="10" cellspacing="5" width="70%">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>주문번호</th>
+                        <th>내용</th>
+                        <th>매출</th>
+                        <th>지출</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for revenue in revenues %}
+                        <tr align="center">
+                            <td>{{ revenue.salesdate|date:"o년 m월 j일" }}</td>
+                            <td>{{ revenue.order_num }}</td>
+                            <td>{{ revenue.content }}</td>
+                            <td>{{ revenue.sales }}</td>
+                            <td>{{ revenue.spend }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </body>
+
+</html>
+{% endblock %}

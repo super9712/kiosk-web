@@ -1,0 +1,82 @@
+{% extends 'kiosk_base.html' %}
+{% load static %}
+
+{% block extra-style %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}?ver=" />
+
+    <script>
+    $(function(){
+        var numnum = 0;
+        var stat3 = $('#increasePrice').text();
+        var ProductPrice = parseInt(stat3,10);
+      $('#decreaseQuantity').click(function(e){
+        e.preventDefault();
+          var stat = $('#numberUpDown').val();
+          var stat2 = $('#total_price').text();
+
+          var num = parseInt(stat,10);
+          var price = parseInt(stat2,10);
+
+          num--;
+          price = price - ProductPrice
+          $('#numberUpDown').val(num);
+          $('#total_price').text(price);
+          });
+      $('#increaseQuantity').click(function(e){
+            e.preventDefault();
+            var stat = $('#numberUpDown').val();
+            var stat2 = $('#total_price').text();
+
+            var num = parseInt(stat,10);
+
+            var price = parseInt(stat2,10);
+
+            num++;
+            price = price + ProductPrice
+            $('#numberUpDown').val(num);
+            $('#total_price').text(price);
+            });
+
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <style>
+    #logo{
+  width: 170px;
+}
+    </style>
+    <form method="post" action="/kiosk/addCart">{% csrf_token %}
+        <input type="hidden" name="MenuID" value="{{ menu.id }}">
+        <li class="menu">
+            <div class="photo">
+                <img src="{{ menu.image.url }}" />
+            </div>
+            <div class="menu_list">
+                <a class="menu_name" name="MenuName">{{ menu.MenuName}}</a>
+                <div class="price" id="increasePrice" name="MenuPrice">{{ menu.MenuPrice }}원</div>
+            </div>
+        </li>
+        <li class="arrows">
+            <img class="triangle" src="{% static 'images/triangle-up.png' %}" id="increaseQuantity">
+            <input class="count" id="numberUpDown" name="MenuQty" value="0">
+
+
+            <img class="triangle" src="{% static 'images/triangle-down.png' %}" id="decreaseQuantity">
+        </li>
+        <li class="button_1">
+            <button type="submit" >장바구니 추가</button>
+            <button type="button" onclick="location.href='/kiosk/menus'">취소</button>
+        </li>
+</form>
+    <div class="select">
+    <div class="basket">
+      <div class="total">Total:  </div>
+      <p id="total_price">0</p>
+      <div class="won"> 원</div>
+
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'kiosk_base.html' %}
+{% load static %}
+
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+
+    <script type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- <div class="btn"><button onClick="history.go(-1)">◀</button></div> -->
+    <nav>
+    <div id=div_01>
+    <div class="menu">
+      <ul class="menu_list" id="menuList">
+        <li>
+          <div class="photo here">
+            <img src="{% static 'images/heremac.png' %}" />
+          </div>
+          <div class="menu_name">
+            <a href="kiosk/menus" class="menu_name">매장에서 식사</a>
+          </div>
+        </li>
+        <li>
+          <div class="photo togo">
+            <img src="{% static 'images/togo.png' %}" />
+          </div>
+          <div class="menu_name">
+            <a href="kiosk/menus" class="menu_name">테이크 아웃</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+{% endblock %}

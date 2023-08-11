@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+banner.p {
+  font-size: 50px;
+}
+
+p {
+  font-size: 50px;
+}
+ul,
+li {
+  list-style: none;
+}
+.banner {
+  background-color: red
+}
+nav {
+  text-align: center;
+}
+ul.category {
+  margin-left: 500px;
+  margin-right: 500px;
+}
+ul.category > li {
+  font-size: 30px;
+  float: left;
+  padding: 0 30px 0 30px;
+  line-height: 70px;
+  background-color: #ffbc0d;
+  border-style: solid;
+  border-color: orange;
+}
+
+ul.category > li > a {
+  text-decoration: none;
+}
+
+a{
+  display: inline-block;
+  text-decoration: none;
+  font-size: 30px; 
+  align-items: center;
+  margin-top: 13px;
+}
+
+.here>img{
+  height: 400px;
+  width: 500px;
+}
+
+.togo>img{
+  height: 400px;
+  width: 500px;
+}
+
+.btn {
+  margin-left: 3%;
+  margin-top: 2%;
+  width: 200px;
+  height: 50px;
+}
+
+button {
+  background-color: red;
+  border: 0;
+  width: 90px;
+  height: 90px;
+  font-size: 60px;
+  padding-bottom: 35px;
+}
+
+ul.menu_list {
+  font-size: 20px;
+  display: block;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  padding-right: 1%;
+  padding-left: 1%;
+  text-align: center;
+}
+ul.menu_list > li {
+  display: inline-block;
+  margin: 3% 3% 3% 3%;
+  padding: 2% 2% 2% 2%;
+  /* border-width: 3px;
+  border-style: solid;
+  border-color: orange;*/
+  border-radius: 10%; 
+  /* background-color: white; */
+}
+ul.menu_list > li > .menu_name {
+  display: block;
+  /* background-color: white; */
+  height: 70px;
+  font-size: 30px;
+}
+.basket {
+  background-color: #e8641e;
+  height: 130px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+a {
+  /* 폰트바꾸기 */
+  color: red;
+  text-align: center;
+}
