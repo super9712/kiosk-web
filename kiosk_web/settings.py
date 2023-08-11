@@ -71,8 +71,12 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'DIRS': [os.path.join(BASE_DIR, 'tempaltes')],
-        'DIRS': [TEMPLATE_DIR],
+
+        # 'DIRS': [os.path.join(BASE_DIR, 'tempaltes')],
+        # 없어도 문제 없음
+        # 'DIRS': [TEMPLATE_DIR],
+        # 얘도 없어도 문제 없는데?
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
