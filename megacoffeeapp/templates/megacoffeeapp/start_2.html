@@ -14,12 +14,17 @@
     crossorigin="anonymous"
     />
 
+    <script type="module">
+        import axios from 'https://cdn.jsdelivr.net/npm/axios@1.4.0/+esm'
+    </script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}?after" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}?after" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer-section.css' %}?after" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
 
 </head>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
     <header class="header">
     <div class="header-container">
@@ -196,6 +201,7 @@
         </div>
     </div>
     </footer>
+
 
     <script type="module" src="{% static 'js/footerController.js' %}"></script>
     <script type="module" src="{% static 'js/menuController.js' %}"></script>

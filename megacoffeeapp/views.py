@@ -28,3 +28,10 @@ class PhoneTemplateView(TemplateView):
 class BarcodeTemplateView(TemplateView):
      template_name = 'megacoffeeapp/pay_barcode.html'
 
+class PayingTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/paying.html'
+     
+class PayCompleteTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/pay_complete.html'
+
+

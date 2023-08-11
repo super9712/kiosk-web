@@ -1,4 +1,4 @@
-import changeButtonColor from '../footerController';
+import changeButtonColor from 'footerController';
 
 // order list
 // 주문내역 랜더 식별자

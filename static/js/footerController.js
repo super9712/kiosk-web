@@ -1,3 +1,4 @@
+
 import model from './model/model.js';
 import footerRender from './views/footer-render.js';
 

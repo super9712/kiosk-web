@@ -1,7 +1,7 @@
+
 import model from './model/model.js';
 import menuRender from './views/menu-render.js';
 import initialize from './menuModalController.js';
-import img from '../img/img.jpg';
 
 // DOM
 const $nav = document.querySelector('.menu-tab');
