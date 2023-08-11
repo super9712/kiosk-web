@@ -6,4 +6,7 @@ from django.views.generic import TemplateView
 class StartTemplateView(TemplateView):
     template_name = 'mcdonaldapp/index2.html'
 
+class MenuTemplateView(TemplateView):
+    template_name = 'mcdonaldapp/index.html'
+
 
