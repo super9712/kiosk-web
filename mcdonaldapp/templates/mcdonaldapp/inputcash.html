@@ -1,0 +1,14 @@
+{% extends 'kiosk_base.html' %}
+{% load static %}
+
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/style6.css' %}" />
+    <script type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="btn"><button onClick="history.go(-1)">◀</button></div>
+
+    <div class="title">현금을 투입해 주십시오</div>
+    <img src="{% static 'images/inputcash.png' %}" , onclick="location.href='complete'"/>
+{% endblock %}

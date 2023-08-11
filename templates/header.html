@@ -1,0 +1,61 @@
+{% load static %}
+
+<header>
+  <nav
+    class="-translate-x-60 "
+    style="
+      height: 100vh;
+      z-index: 1;
+      background-color: #f0f2f3;
+      width: 10rem;
+      position: absolute;
+      float: left;
+      transition: 1s;
+    "
+  >
+    <div class="flex justify-end">
+      <button class="mb-10" onclick="onClickClose()">
+        <span class="material-symbols-outlined" style="font-size: 2rem">
+          chevron_left
+        </span>
+      </button>
+    </div>
+    <div>
+      <a>LOGO<img src="" alt="senisk-logo" /></a>
+    </div>
+    <div></div>
+  </nav>
+
+  <div
+    id="open-nav"
+    class="p-5 rounded-r-md"
+    style="
+      z-index: 1;
+      background-color: #f0f2f3;
+      position: absolute;
+      margin-top: 1rem;
+      transition: 1s;
+      box-shadow: #333 5px; 
+    "
+  >
+    <button class="flex flex-col content-center items-center" onclick="onClickOpen()">
+      <span class="material-symbols-outlined" style="font-size: 2rem">
+        menu
+      </span>
+      <span>
+        메뉴 열기
+      </span>
+    </button>
+  </div>
+
+  <script>
+    function onClickClose() {
+      document.querySelector("nav").classList.add("-translate-x-60");
+      document.querySelector("#open-nav").classList.remove("-translate-x-60");
+    }
+    function onClickOpen() {
+      document.querySelector("#open-nav").classList.add("-translate-x-60");
+      document.querySelector("nav").classList.remove("-translate-x-60");
+    }
+  </script>
+</header>

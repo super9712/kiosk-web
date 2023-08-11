@@ -1,0 +1,240 @@
+/*
+
+공통 테마
+
+*/
+
+.background {
+    background-color: var(--primary);
+}
+
+.background span {
+    margin: 1.5rem;
+}
+
+.background img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 10rem;
+}
+
+.center, .wrapper {
+    text-align : center;
+    font-size : 1.9rem;
+}
+
+.center {
+    height : 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    padding : 2rem 0;
+}
+
+/*
+
+layout
+
+*/
+
+.container {
+    padding: 1rem 2rem;
+    margin: auto;
+    display : flex;
+    justify-content : center;
+}
+
+/* .video {
+    padding : 1rem 2rem;
+    margin : auto;
+} */
+
+/* .video_img {
+    padding : 1rem 2rem;
+    margin : auto;
+} */
+
+.brand_list ul{
+    display:flex;
+    justify-content : center;
+    margin : auto;
+}
+
+.brand_list ul li{
+    margin: 1rem;
+    max-width: 30vw;
+    min-width: 100px;
+    background : var(--primary);
+    border-radius: 1rem;
+}
+
+.brand_list a img {
+    width: 85%;
+    object-fit: cover;
+    margin : 1rem auto;
+}
+
+.brand_list a div{
+    padding : 0 1rem 1rem 1rem ;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/*
+
+components
+
+*/
+
+.btn-big, .btn {
+    border-radius: 0.5rem;
+    background-color: var(--secondary);
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.btn-big:hover, .btn:hover {
+    background-color: #fdfdfd;
+    color: var(--secondary);
+    transition: 1s;
+}
+
+.btn-big {
+    display: inline-flex;
+    padding: 1.5rem 3rem;
+    width : 30rem;
+    font-weight: bold;
+    font-size: 1.8rem;
+    box-shadow: 1px 1px 5px #cccccc;
+}
+
+.btn {
+    display: flex;
+    padding: 1rem 2rem;
+    font-weight: 700;
+}
+
+/* question.html */
+
+.btn-square {
+    width: 13rem;
+    height: 20rem;
+    box-shadow: 1px 1px 5px #cccccc;
+}
+
+.btn-yellow {
+    background-color: var(--primary);
+}
+
+.btn-yellow:hover {
+    color: var(--primary);
+}
+
+.btn-square, .btn-pay {
+    margin: 1rem;
+}
+
+/* receipt.html */
+
+.btn-square-small {
+    width: 13rem;
+    height: 13rem;
+    font-size: 1.8rem;
+}
+
+.no-margin-right {
+    margin-right: 0;
+}
+
+/*
+
+헤더 header
+
+*/
+nav {
+    box-shadow: 1px 1px 5px #cccccc;
+    padding: 1rem;
+}
+
+
+/* 
+
+mission page
+
+*/
+
+.wrap, .select, .receipt_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap {
+    flex-direction: column;
+    margin: 2.5rem;
+}
+
+.select, .mission {
+    width: 45rem;
+}
+
+.wrap img {
+    width: 200px;
+    height: 200px;
+    margin: 0 2rem;
+}
+
+.wrap p {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.mission, .mission_text {
+    height: 20rem;
+}
+
+.mission, .receipt {
+    border: 0.5rem solid var(--primary);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.mission_text {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* 
+
+receipt.html
+
+*/
+
+.margin-right {
+    margin-right: 5rem;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.list {
+    flex: 1;
+}
+
+.receipt {
+    width: 30rem;
+    height: 34rem;
+}
+
+.total {
+    width: 100%;
+    background-color: var(--primary);
+}

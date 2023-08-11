@@ -1,0 +1,19 @@
+:root {
+    --dark: #333333;
+    --light: #fdfdfd;
+    --medium: #aaaaaa;
+    --primary: #FADF70;
+    --secondary: #b1d463;
+    --warning: #edc447;
+    --danger: #ed5d47;
+    --border: #cccccc;
+}
+
+html {
+    color: var(--dark);
+}
+
+.base-container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
