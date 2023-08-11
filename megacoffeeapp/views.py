@@ -6,3 +6,6 @@ from django.views.generic import TemplateView
 
 class StartTemplateView(TemplateView):
      template_name = 'megacoffeeapp/start.html'
+
+# def option(request):
+#      return render(request, 'option.html')
