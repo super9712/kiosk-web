@@ -1,28 +1,27 @@
-{% extends "base.html" %}
-{% block content %}
-
+{% extends "base.html" %} 
+{% block content %} 
 {% load static %}
-        <div class = "wrapper">
-                <div>
-                        <span class ="font-bold">원하시는 브랜드의 키오스크를 선택해주세요</span>
-                </div>
-        </div>
-        <div class = "brand_list">
-                <ul>
-                        <li>
-                                <a href="{% url 'introapp:mission' %}">
-                                        <img src = "{% static 'img/메가커피.png' %}">
-                                        <div class = "flex justify-center">메가커피</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href = "#">
-                                        <img src = "{% static 'img/mcdonalds.png' %}">
-                                        <div class = "flex justify-center">맥도날드</div>
-                                </a>
-                        </li>
-                </ul>
-        </div>
+
+<div class="container wrapper pt-40">
+  <div>
+    <span class="font-bold">연습해보실 브랜드의 키오스크를 선택해주세요</span>
+  </div>
+</div>
+<div class="brand_list mx-40">
+  <ul class="flex-row justify-between flex-wrap">
+    <li>
+      <a href="{% url 'introapp:mission' %}">
+        <img class="mx-5" src="{% static 'img/메가커피.png' %}" />
+        <div class="flex justify-center">메가커피</div>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="{% static 'img/mcdonalds.png' %}" />
+        <div class="flex justify-center">맥도날드</div>
+      </a>
+    </li>
+  </ul>
+</div>
 
 {% endblock %}
-

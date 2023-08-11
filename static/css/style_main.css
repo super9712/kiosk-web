@@ -4,21 +4,6 @@
 
 */
 
-:root {
-    --dark: #333333;
-    --light: #fdfdfd;
-    --medium: #aaaaaa;
-    --primary: #FADF70;
-    --secondary: #b1d463;
-    --warning: #edc447;
-    --danger: #ed5d47;
-    --border: #cccccc;
-}
-
-html {
-    color: var(--dark);
-}
-
 .background {
     background-color: var(--primary);
 }
@@ -80,15 +65,17 @@ layout
 }
 
 .brand_list ul li{
-    margin: auto;
+    margin: 1rem;
+    max-width: 30vw;
+    min-width: 100px;
     background : var(--primary);
     border-radius: 1rem;
 }
 
 .brand_list a img {
-    margin : 1rem;
-    width : 19rem;
-    height : 19rem;
+    width: 85%;
+    object-fit: cover;
+    margin : 1rem auto;
 }
 
 .brand_list a div{
