@@ -10,5 +10,7 @@
     <div class="btn"><button onClick="history.go(-1)">◀</button></div>
 
     <div class="title">현금을 투입해 주십시오</div>
-    <img src="{% static 'img/inputcash.png' %}" , onclick="location.href='complete'"/>
+    <a href="{% url 'mcdonaldapp:complete' %}">
+        <img src="{% static 'img/inputcash.png' %}" , onclick="location.href='complete'"/>
+    </a>
 {% endblock %}

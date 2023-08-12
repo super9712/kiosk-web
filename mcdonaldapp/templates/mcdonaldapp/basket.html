@@ -8,27 +8,27 @@
     <script type="text/javascript">
     $(document).ready(function(){
 
-    	var rowCnt = 0;
-    	var colIdx = 0;
-    	var colSum = 0;
+      var rowCnt = 0;
+      var colIdx = 0;
+      var colSum = 0;
 
-    	$("#orderedmenu tr").each(function(){
-    		if( rowCnt != 0 ){
-    			var sell = $(this).children("td");
-    			$(sell).each(function(){
-    				var idx = $(this).index();
-    				var val = $(this).text();
+      $("#orderedmenu tr").each(function(){
+        if( rowCnt != 0 ){
+          var sell = $(this).children("td");
+          $(sell).each(function(){
+            var idx = $(this).index();
+            var val = $(this).text();
 
-    				if( idx == colIdx ){
-    					colSum += parseInt(val);
-    				}
-    			});
-    	  }
+            if( idx == colIdx ){
+              colSum += parseInt(val);
+            }
+          });
+        }
 
-    		  rowCnt++;
-    	});
+          rowCnt++;
+      });
 
-    	$("#a_sum").text(colSum);
+      $("#a_sum").text(colSum);
 
     });
 
@@ -61,19 +61,25 @@
                 <td>{{ cart.CartMenu }}</td>
                 <td>{{ cart.CartQty }}</td>
                 <td>{{ cart.CartPrice }}</td>
-                <td><button onclick="rowDel(this); location.href='{% url 'MacKiosk:cancelMenu' cart.id %}'">취소</button></td>
+                <td><button onclick="rowDel(this); location.href='mcdonaldapp/cancelMenu cart.id'">취소</button></td>
             </tr>
             </tbody>
             {% endfor %}
             <tbody></tbody>
         </table>
     </div>
-    <div class="rollback"><button id='btn-empty' onclick="location.href='{% url 'MacKiosk:reset' %}'">전체취소</button></div>
+    <div class="rollback"><button id='btn-empty' onclick="location.href='mcdonaldapp/templates/reset.html'">전체취소</button></div>
     <div class="basket">
       <div class="total">Total:  </div>
       <p id="total_price">{{ total_price }}</p>
       <div class="won"> 원</div>
+      <a href="{% url 'mcdonaldapp:index' %}">
+        계속 쇼핑하기
+      </a>
       <button class="goshopping" type="button" onclick="location.href='menus'">계속 쇼핑하기</button>
-      <button class="charge" type="button" onclick="location.href='selectPay'">결제하기</button>
+      <a href="{% url 'mcdonaldapp:index3' %}">
+        결제하기
+      </a>
+      <button class="charge" type="button" src="{% url 'mcdonaldapp:index3' %}">결제하기</button>
     </div>
 {% endblock %}

@@ -10,33 +10,33 @@
         var numnum = 0;
         var stat3 = $('#increasePrice').text();
         var ProductPrice = parseInt(stat3,10);
-      $('#decreaseQuantity').click(function(e){
+    $('#decreaseQuantity').click(function(e){
+    e.preventDefault();
+        var stat = $('#numberUpDown').val();
+        var stat2 = $('#total_price').text();
+
+        var num = parseInt(stat,10);
+        var price = parseInt(stat2,10);
+
+        num--;
+        price = price - ProductPrice
+        $('#numberUpDown').val(num);
+        $('#total_price').text(price);
+        });
+    $('#increaseQuantity').click(function(e){
         e.preventDefault();
-          var stat = $('#numberUpDown').val();
-          var stat2 = $('#total_price').text();
+        var stat = $('#numberUpDown').val();
+        var stat2 = $('#total_price').text();
 
-          var num = parseInt(stat,10);
-          var price = parseInt(stat2,10);
+        var num = parseInt(stat,10);
 
-          num--;
-          price = price - ProductPrice
-          $('#numberUpDown').val(num);
-          $('#total_price').text(price);
-          });
-      $('#increaseQuantity').click(function(e){
-            e.preventDefault();
-            var stat = $('#numberUpDown').val();
-            var stat2 = $('#total_price').text();
+        var price = parseInt(stat2,10);
 
-            var num = parseInt(stat,10);
-
-            var price = parseInt(stat2,10);
-
-            num++;
-            price = price + ProductPrice
-            $('#numberUpDown').val(num);
-            $('#total_price').text(price);
-            });
+        num++;
+        price = price + ProductPrice
+        $('#numberUpDown').val(num);
+        $('#total_price').text(price);
+        });
 
     });
     </script>
@@ -45,13 +45,13 @@
 {% block content %}
     <style>
     #logo{
-  width: 170px;
-}
+        width: 170px;
+    }
     </style>
-    <form method="post" action="/kiosk/addCart">{% csrf_token %}
+    <form method="post" action="/mcdonaldapp/basket.html">{% csrf_token %}
         <input type="hidden" name="MenuID" value="{{ menu.id }}">
         <li class="menu">
-            <div class="photo">
+            <div class="photo"> 
                 <img src="{{ menu.image.url }}" />
             </div>
             <div class="menu_list">
@@ -68,14 +68,14 @@
         </li>
         <li class="button_1">
             <button type="submit" >장바구니 추가</button>
-            <button type="button" onclick="location.href='/kiosk/menus'">취소</button>
+            <button type="button" onclick="location.href='./mcdonaldapp/index.html'">취소</button>
         </li>
 </form>
     <div class="select">
     <div class="basket">
-      <div class="total">Total:  </div>
-      <p id="total_price">0</p>
-      <div class="won"> 원</div>
+    <div class="total">Total:  </div>
+    <p id="total_price">0</p>
+    <div class="won"> 원</div>
 
     </div>
     </div>
