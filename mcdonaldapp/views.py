@@ -10,3 +10,4 @@ class MenuTemplateView(TemplateView):
     template_name = 'mcdonaldapp/index.html'
 
 
+    
