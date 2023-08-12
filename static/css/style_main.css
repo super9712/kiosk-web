@@ -78,6 +78,7 @@ layout
     object-fit: cover;
     margin : 1rem auto;
     border-radius : 1rem;
+
 }
 
 .brand_list a div{
@@ -221,9 +222,10 @@ mission page
 }
 
 .wrap img {
-    width: 200px;
-    height: 200px;
-    margin: 0 2rem;
+    width: 9rem;
+    height: 9rem;
+    margin: 1.5rem 2rem;
+    border-radius: 1rem;
 }
 
 .wrap p {

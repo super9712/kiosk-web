@@ -2,16 +2,18 @@
 {% block content %} 
 {% load static %}
 
+
 <div class="container wrapper pt-40">
   <div>
     <span class="font-bold">연습해보실 브랜드의 키오스크를 선택해주세요</span>
   </div>
 </div>
-<div class="brand_list mx-40">
+<div class="brand_list">
   <ul class="flex-row justify-between flex-wrap">
     <li>
       <a href="{% url 'introapp:mission_mega' %}">
         <img class="mx-5 my-5" src="{% static 'img/메가커피.png' %}" />
+
         <div class="flex justify-center">메가커피</div>
       </a>
     </li>
