@@ -260,4 +260,13 @@ const submitOrder = () => {
     getClickData('submit order');
     const modal = document.querySelector('.pay-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
+    // 데이터 local storage에 저장 
+    localStorage.setItem("clickData", JSON.stringify(clickData));
+    localStorage.setItem("orderMenu", JSON.stringify(orderMenu));
+    localStorage.setItem("remain_time", JSON.stringify(remain_time));
+    localStorage.setItem("total_price", JSON.stringify(document.querySelector('.total-item-price').innerHTML));
+
+    console.log(document.querySelector('.total-item-price').innerHTML);
+
+    window.location.href="/megacoffee/receipt/";
 }
