@@ -121,6 +121,11 @@ layout
 
 }
 
+form {
+    padding : 1rem 2rem;
+    margin : auto;
+    background-color : var(--primary);
+}
 
 /*
 
