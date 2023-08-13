@@ -66,22 +66,59 @@ layout
 
 .brand_list ul li{
     margin: 1rem;
-    max-width: 30vw;
-    min-width: 100px;
+        width : 400px;
     background : var(--primary);
     border-radius: 1rem;
 }
+.brand_list a {
 
+}
 .brand_list a img {
-    width: 85%;
+    width: 350px;
     object-fit: cover;
     margin : 1rem auto;
+    border-radius : 1rem;
+
 }
 
 .brand_list a div{
     padding : 0 1rem 1rem 1rem ;
     font-size: 1.5rem;
     font-weight: 700;
+}
+
+.ordered {
+    background : var(--light);
+    margin-top : 50px;
+    margin-bottom : 50px;
+    width : 80vh;
+    height : content;
+    border-radius : 0.5rem;
+}
+
+.highlight {
+    background : var(--light);
+    margin : auto;
+    border-radius : 0.5rem;
+}
+
+.title {
+    background : var(--secondary);
+    margin: auto;
+    padding : 1rem 2rem;
+    border : var(--dark);
+    border-radius : 0.5rem;
+}
+
+.answer {
+    background : var(--light);
+    margin-top : 50px;
+    margin-bottom : 50px;
+
+    width : 80vh;
+    height : content;
+    border-radius : 0.5rem;
+
 }
 
 
@@ -185,9 +222,10 @@ mission page
 }
 
 .wrap img {
-    width: 200px;
-    height: 200px;
-    margin: 0 2rem;
+    width: 9rem;
+    height: 9rem;
+    margin: 1.5rem 2rem;
+    border-radius: 1rem;
 }
 
 .wrap p {

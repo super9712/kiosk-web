@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -51,6 +51,11 @@ button {
     cursor: pointer;
     border-radius: 5px;
     outline: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 /*

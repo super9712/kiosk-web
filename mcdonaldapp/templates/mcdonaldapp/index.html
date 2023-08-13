@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>맥도날드 키오스크</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       rel="stylesheet"
@@ -13,463 +14,648 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-      <script>
-    $(document).ready(function(){
-	    $('ul.category li').click(function(){
-		    var tab_id = $(this).attr('data-tab');
-
-		    $('ul.category li').removeClass('current');
-		    $('.menu').removeClass('current');
-
-		    $(this).addClass('current');
-		    $("#"+tab_id).addClass('current');
-	})
-
-})
-      </script>
+    <script>
+      $(document).ready(function(){
+        $('ul.category li').click(function(){
+          var tab_id = $(this).attr('data-tab');
+          $('ul.category li').removeClass('current');
+          $('.menu').removeClass('current');
+          $(this).addClass('current');
+          $("#"+tab_id).addClass('current');
+        })
+      })
+    </script>
   </head>
   <body>
-    <div class="banner">
-      <p>로고나 브랜드명</p>
-    </div>
+    <div class="wrapper">
+      <div class="header">
+        <div class="banner">
+          <p>
+            <img src="{% static 'img/MacLogo.png' %}" alt="">
+          </p>
+        </div>
+      </div>
       <div class="tab">
         <ul class="category">
-            <li data-tab="tab-1" class="tab-link current">세트메뉴</li>
-            <li data-tab="tab-2" class="tab-link">단품</li>
-            <li data-tab="tab-3" class="tab-link">사이드</li>
-            <li data-tab="tab-4" class="tab-link">디저트</li>
-            <li data-tab="tab-5" class="tab-link">음료</li>
+          <li data-tab="tab-1" class="tab-link current">세트메뉴</li>
+          <li data-tab="tab-2" class="tab-link">단품</li>
+          <li data-tab="tab-3" class="tab-link">사이드</li>
+          <li data-tab="tab-4" class="tab-link">디저트</li>
+          <li data-tab="tab-5" class="tab-link">음료</li>
         </ul>
         <div class="menu current" id="tab-1">
-            <ul class="menu_list" id="menuList">
-                <li>
-                  <div class="photo">
-                    <img src="{% static 'img/double cheese set.png' %}" />
-                  </div>
-                  <div class="menu_name">
-                    <a href="howmany" clas="menu_name">더블 치즈 버거 세트</a>
-                    <div class="price">\ 6700</div>
-                  </div>
-                </li>
-                <li>
-                <div class="photo">
-                    <img src="{% static 'img/cheese burger set.png' %}" />
-                </div>
-                <div class="menu_name">
-                    <a href="howmany" clas="menu_name">치즈 버거 세트</a>
-                    <div class="price">\ 5500</div>
-                </div>
-                </li>
-                <li>
-                <div class="photo">
-            <img src="{% static 'img/bulgogi set.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">불고기 버거 세트</a>
-            <div class="price">\ 4900</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/shbe set.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">슈비 버거 세트</a>
-            <div class="price">\ 8000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/susu set.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">슈슈 버거 세트</a>
-            <div class="price">\ 6500</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/bacon tomato set.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">베이컨 토마토 디럭스 세트</a>
-            <div class="price">\ 7800</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/QuaterPounderSet.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">쿼터 파운더 치즈 세트</a>
-            <div class="price">\ 7500</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/EggBulgogiSet.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">에그 불고기 세트</a>
-            <div class="price">\ 5500</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/DoubleBulgogiSet.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">더블 불고기 세트</a>
-            <div class="price">\ 6200</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="menu" id="tab-2">
-            <ul class="menu_list" id="menuList">
-                <li>
-                  <div class="photo">
-                    <img src="{% static 'img/DoubleCheese.png' %}" />
-                  </div>
-                  <div class="menu_name">
-                    <a href="howmany" clas="menu_name">더블 치즈 버거</a>
-                    <div class="price">\ 5100</div>
-                  </div>
-                </li>
-                <li>
-                <div class="photo">
-                    <img src="{% static 'img/Cheese.png' %}" />
-                </div>
-                <div class="menu_name">
-                    <a href="howmany" clas="menu_name">치즈 버거</a>
-                    <div class="price">\ 2900</div>
-                </div>
-                </li>
-                <li>
-                <div class="photo">
-            <img src="{% static 'img/Bulgogi.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">불고기 버거</a>
-            <div class="price">\ 2700</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/Shbe.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">슈비 버거</a>
-            <div class="price">\ 6200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/Susu.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">슈슈 버거</a>
-            <div class="price">\ 5000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/BaconTomato.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">베이컨 토마토 디럭스</a>
-            <div class="price">\ 6000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/QuaterPounder.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">쿼터 파운드 치즈</a>
-            <div class="price">\ 5700</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/EggBulgogi.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">에그 불고기</a>
-            <div class="price">\ 3700</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/DoubleBulgogi.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">더블 불고기</a>
-            <div class="price">\ 5100</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="menu" id="tab-3">
-            <ul class="menu_list" id="menuList">
-                <li>
-                  <div class="photo">
-                    <img src="{% static 'img/ApplePie.png' %}" />
-                  </div>
-                  <div class="menu_name">
-                    <a href="howmany" clas="menu_name">애플 파이</a>
-                    <div class="price">\ 1700</div>
-                  </div>
-                </li>
-                <li>
-                <div class="photo">
-                    <img src="{% static 'img/taro-pie.png' %}" />
-                </div>
-                <div class="menu_name">
-                    <a href="howmany" clas="menu_name">타로 파이</a>
-                    <div class="price">\ 1700</div>
-                </div>
-                </li>
-                <li>
-                <div class="photo">
-            <img src="{% static 'img/ChickenTender.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">맥스파이시 치킨 텐더 2조각</a>
-            <div class="price">\ 3200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/SnackWrap.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">상하이 치킨 스낵랩</a>
-            <div class="price">\ 2700</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/CheeseStick.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">골든 모짜렐라 치즈 스틱 2조각</a>
-            <div class="price">\ 2700</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/MacNuggets.jpg' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">맥너겟 4조각</a>
-            <div class="price">\ 2400</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/Fries.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">후렌치 후라이</a>
-            <div class="price">\ 2300</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/HashBrown.jpg' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">해시 브라운</a>
-            <div class="price">\ 2000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/StringCheese.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">스트링 치즈</a>
-            <div class="price">\ 2300</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="menu" id="tab-4">
-            <ul class="menu_list" id="menuList">
-                <li>
-                  <div class="photo">
-                    <img src="{% static 'img/OreoMc.png' %}" />
-                  </div>
-                  <div class="menu_name">
-                    <a href="howmany" clas="menu_name">오레오 맥플러리</a>
-                    <div class="price">\ 3200</div>
-                  </div>
-                </li>
-                <li>
-                <div class="photo">
-                    <img src="{% static 'img/ChcoOreo.png' %}" />
-                </div>
-                <div class="menu_name">
-                    <a href="howmany" clas="menu_name">초코 오레오 맥플러리</a>
-                    <div class="price">\ 3500</div>
-                </div>
-                </li>
-                <li>
-                <div class="photo">
-            <img src="{% static 'img/StrawberryOreo.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">스트로베리 오레오 맥플러리</a>
-            <div class="price">\ 3500</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/IcecreamCone.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">아이스크림콘</a>
-            <div class="price">\ 800</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/ChocoCone.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">초코콘</a>
-            <div class="price">\ 1000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/ChocoSundae.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">초코 선데이 아이스크림</a>
-            <div class="price">\ 2200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/BerrySundae.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">스트로베리 선데이 아이스크림</a>
-            <div class="price">\ 2200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/CaramelSundae.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">카라멜 선데이 아이스크림</a>
-            <div class="price">\ 2200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/OreoAffo.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">오레오 아포카토</a>
-            <div class="price">\ 2500</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="menu" id="tab-5">
-            <ul class="menu_list" id="menuList">
-                <li>
-                  <div class="photo">
-                    <img src="{% static 'img/VanillaShake.png' %}" />
-                  </div>
-                  <div class="menu_name">
-                    <a href="howmany" clas="menu_name">바닐라 쉐이크</a>
-                    <div class="price">\ 3200</div>
-                  </div>
-                </li>
-                <li>
-                <div class="photo">
-                    <img src="{% static 'img/StrawberryShake.png' %}" />
-                </div>
-                <div class="menu_name">
-                    <a href="howmany" clas="menu_name">딸기 쉐이크</a>
-                    <div class="price">\ 3200</div>
-                </div>
-                </li>
-                <li>
-                <div class="photo">
-            <img src="{% static 'img/ChocoShake.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">초코 쉐이크</a>
-            <div class="price">\ 3200</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/OrangeJuice.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">오렌지 주스</a>
-            <div class="price">\ 1000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/CocaCola.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">코카 콜라</a>
-            <div class="price">\ 2000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/ColaZero.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">코카 콜라 제로</a>
-            <div class="price">\ 2000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/Sprite.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">스프라이트</a>
-            <div class="price">\ 2000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/Fanta.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">환타</a>
-            <div class="price">\ 2000</div>
-          </div>
-        </li>
-        <li>
-          <div class="photo">
-            <img src="{% static 'img/milk.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="howmany" clas="menu_name">우유</a>
-            <div class="price">\ 1000</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    </div>
-    <div class="basket">
-      <p id="total_price">{{ total_price }}</p>
-      <button>초기화</button>
-        <div class="title"><a href="basket">장바구니</a></div>
+          <ul class="menu_list" id="menuList">
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/double cheese set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  더블 치즈 버거 세트
+                </a>
+                <div class="price">6,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/cheese burger set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  치즈 버거 세트
+                </a>
+                <div class="price">5,500원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/bulgogi set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  불고기 버거 세트
+                </a>
+                <div class="price">4,900원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/shbe set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  슈비 버거 세트
+                </a>
+                <div class="price">8,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/susu set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  슈슈 버거 세트
+                </a>
+                <div class="price">6,500원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/bacon tomato set.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  베이컨 토마토 디럭스 세트
+                </a>
+                <div class="price">7,800원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/QuaterPounderSet.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  쿼터 파운더 치즈 세트
+                </a>
+                <div class="price">7,500원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/EggBulgogiSet.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  에그 불고기 세트
+                </a>
+                <div class="price">5,500원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/DoubleBulgogiSet.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  더블 불고기 세트
+                </a>
+                <div class="price">6,200원</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="menu" id="tab-2">
+          <ul class="menu_list" id="menuList">
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/DoubleCheese.png' %}" />
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  더블 치즈 버거
+                </a>
+                <div class="price">5,100원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Cheese.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  치즈 버거
+                </a>
+                <div class="price">2,900원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Bulgogi.png' %}" />
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  불고기 버거
+                </a>
+                <div class="price">2,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Shbe.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  슈비 버거
+                </a>
+                <div class="price">6,200원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Susu.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  슈슈 버거
+                </a>
+                <div class="price">5,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/BaconTomato.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  베이컨 토마토 디럭스
+                </a>
+                <div class="price">6,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/QuaterPounder.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  쿼터 파운드 치즈
+                </a>
+                <div class="price">5,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/EggBulgogi.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  에그 불고기
+                </a>
+                <div class="price">3,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/DoubleBulgogi.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  더블 불고기
+                </a>
+                <div class="price">5,100원</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="menu" id="tab-3">
+          <ul class="menu_list" id="menuList">
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ApplePie.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  애플 파이
+                </a>
+                <div class="price">1,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/taro-pie.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                  <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                    타로 파이
+                  </a>
+                  <div class="price">1,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ChickenTender.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  맥스파이시 치킨 텐더 2조각
+                </a>
+                <div class="price">3,200원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/SnackWrap.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  상하이 치킨 스낵랩
+                </a>
+                <div class="price">2,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/CheeseStick.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  골든 모짜렐라 치즈 스틱 2조각
+                </a>
+                <div class="price">2,700원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/MacNuggets.jpg' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  맥너겟 4조각
+                </a>
+                <div class="price">2,400원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Fries.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  후렌치 후라이
+                </a>
+                <div class="price">2,300원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/HashBrown.jpg' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  해시 브라운
+                </a>
+                <div class="price">2,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/StringCheese.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  스트링 치즈
+                </a>
+                <div class="price">2,300원</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="menu" id="tab-4">
+          <ul class="menu_list" id="menuList">
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/OreoMc.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  오레오 맥플러리
+                </a>
+                <div class="price">\ 3200</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ChcoOreo.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  초코 오레오 맥플러리
+                </a>
+                <div class="price">\ 3500</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/StrawberryOreo.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  스트로베리 오레오 맥플러리
+                </a>
+                <div class="price">\ 3500</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/IcecreamCone.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  아이스크림콘
+                </a>
+                <div class="price">\ 800</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ChocoCone.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  초코콘
+                </a>
+                <div class="price">\ 1000</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ChocoSundae.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  초코 선데이 아이스크림
+                </a>
+                <div class="price">\ 2200</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/BerrySundae.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  스트로베리 선데이 아이스크림
+                </a>
+                <div class="price">\ 2200</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/CaramelSundae.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  카라멜 선데이 아이스크림
+                </a>
+                <div class="price">\ 2200</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/OreoAffo.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  오레오 아포카토
+                </a>
+                <div class="price">\ 2500</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="menu" id="tab-5">
+          <ul class="menu_list" id="menuList">
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/VanillaShake.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  바닐라 쉐이크
+                </a>
+                <div class="price">3,200원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/StrawberryShake.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  딸기 쉐이크
+                </a>
+                <div class="price">3,200원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ChocoShake.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  초코 쉐이크
+                </a>
+                <div class="price">3,200원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/OrangeJuice.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  오렌지 주스
+                </a>
+                <div class="price">1,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/CocaCola.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  코카 콜라
+                </a>
+                <div class="price">2,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/ColaZero.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  코카 콜라 제로
+                </a>
+                <div class="price">2,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Sprite.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  스프라이트
+                </a>
+                <div class="price">2,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/Fanta.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  환타
+                </a>
+                <div class="price">2,000원</div>
+              </div>
+            </li>
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}">
+                  <img src="{% static 'img/milk.png' %}" />
+                </a>
+              </div>
+              <div class="menu_name">
+                <a href="{% url 'mcdonaldapp:howmany(example)' %}" clas="menu_name">
+                  우유
+                </a>
+                <div class="price">1,000원</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="basket">
+        <p id="total_price">{{ total_price }}</p>
+        <button class="reset">
+          <a href="">초기화</a>
+        </button>
+        <button class="cart">
+          <a href="{% url 'mcdonaldapp:basket' %}">장바구니</a>
+        </button>
+      </div>
     </div>
   </body>
 </html>
