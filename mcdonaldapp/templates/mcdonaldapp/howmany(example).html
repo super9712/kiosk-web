@@ -3,6 +3,8 @@
 
 {% block extra-style %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style4.css' %}" />
 
     <script>
@@ -43,40 +45,53 @@
 {% endblock %}
 
 {% block content %}
-    <style>
-    #logo{
-        width: 170px;
-    }
-    </style>
-    <form method="post" action="/mcdonaldapp/basket.html">{% csrf_token %}
+<div class="wrapper">
+    <div class="banner">
+        <p>
+            <img src="{% static 'img/MacLogo.png' %}" alt="">
+        </p>
+    </div>
+    <form method="post">{% csrf_token %}
         <input type="hidden" name="MenuID" value="{{ menu.id }}">
-        <li class="menu">
-            <div class="photo"> 
-                <img src="{{ menu.image.url }}" />
+        <div class="flex row">
+            <div class="select_menu">
+                <li>
+                    <div class="photo"> 
+                        <img src="{% static 'img/double cheese set.png' %}" />
+                    </div>
+                    <div class="menu_list">
+                        <a class="menu_name" name="MenuName">
+                            {{ menu.MenuName}}
+                        </a>
+                        <div class="price" id="increasePrice" name="MenuPrice">
+                            {{ menu.MenuPrice }}원
+                        </div>
+                    </div>
+                </li>
             </div>
-            <div class="menu_list">
-                <a class="menu_name" name="MenuName">{{ menu.MenuName}}</a>
-                <div class="price" id="increasePrice" name="MenuPrice">{{ menu.MenuPrice }}원</div>
-            </div>
-        </li>
-        <li class="arrows">
-            <img class="triangle" src="{% static 'img/triangle-up.png' %}" id="increaseQuantity">
-            <input class="count" id="numberUpDown" name="MenuQty" value="0">
-
-
-            <img class="triangle" src="{% static 'img/triangle-down.png' %}" id="decreaseQuantity">
-        </li>
-        <li class="button_1">
-            <button type="submit" >장바구니 추가</button>
-            <button type="button" onclick="location.href='./mcdonaldapp/index.html'">취소</button>
-        </li>
-</form>
+            <li class="arrows">
+                <img class="triangle" src="{% static 'img/triangle-up.png' %}" id="increaseQuantity">
+                <input class="count" id="numberUpDown" name="MenuQty" value="0">
+                <img class="triangle" src="{% static 'img/triangle-down.png' %}" id="decreaseQuantity">
+            </li>
+            <li class="button_1">
+                <button type="submit" class="btn-yellow">
+                    <a href="{% url 'mcdonaldapp:basket' %}">장바구니 추가</a>
+                </button>
+                <button type="button" onclick="location.href='./mcdonaldapp/index.html'">
+                    <a href="{% url 'mcdonaldapp:index' %}">취소</a>
+                </button>
+            </li>
+        </div>
+    </form>
     <div class="select">
-    <div class="basket">
-    <div class="total">Total:  </div>
-    <p id="total_price">0</p>
-    <div class="won"> 원</div>
-
+        <div class="priceWrap font-bold">
+            <div class="textCenter">
+                <div class="total">Total:  </div>
+                <p id="total_price">0</p>
+                <div class="won"> 원</div>
+            </div>
+        </div>
     </div>
-    </div>
+</div>
 {% endblock %}

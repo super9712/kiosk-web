@@ -70,7 +70,7 @@
   margin: 1rem;
 }
 
-.photo a img {
+.photo a img, .photo img {
   width: 25rem;
   height: 20rem;
   padding: 2rem 0;
@@ -129,7 +129,8 @@
   width: 15rem;
   height: 15rem;
   border-radius: 1rem;
-  padding: 1rem 0;
+  margin: 1rem 0;
+  padding: 0;
 }
 
 .menu {
@@ -180,19 +181,85 @@
   border: 0;
 } 
 
+/* howmany(example).html */
 
-/* .buttonWrapper{
+.flex {
   display: flex;
-  justify-content: right; /* 가로정렬 중앙 */
-/*  align-items: center; /* 세로정렬 중앙 */
-/* } */
+  justify-content: center;
+  align-items: center;
+}
 
-/* .title{
-  background-color: #EEBF53;
-  background-color : #91891a;
-  opacity : 1;
-} */
+.row {
+  flex-direction: row;
+}
 
-/* .reset{
-  background-color: red;
-} */
+.select_menu {
+  flex: 1;
+  margin: 5rem;
+}
+
+.select_menu li {
+  border: 5px solid orange;
+  border-radius: 1rem;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.arrows {
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.triangle {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.count {
+  width: 5rem;
+  border: none;
+  font-size: 3rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.button_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_1 button {
+  background: transparent;
+  width: 12rem;
+  height: 5rem;
+  border: 3px solid orange;
+  margin: 1.5rem 0;
+}
+
+.button_1 a {
+  font-size: 1.5rem;
+}
+
+.select {
+  width: 100%;
+}
+
+.priceWrap {
+  height: 5rem;
+  background-color: #11410f;
+}
+
+.textCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.priceWrap .total, .priceWrap p, .priceWrap .won {
+  float: left;
+}
+
