@@ -29,9 +29,9 @@
     </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
-        <li id="seasonmenu" class="tab-list trans">시즌 메뉴</li>
-        <li id="hotmenu" class="tab-list trans">커피(HOT)</li>
-        <li id="icemenu" class="tab-list trans btn-active">커피(ICE)</li>
+            <li id="seasonmenu" class="tab-list trans"><span href="{% url 'megacoffeeapp:start_2' %}"></span>시즌 메뉴</li>
+            <li id="hotmenu" class="tab-list trans"><span href="{% url 'megacoffeeapp:hot_coffee' %}"></span>커피(HOT)</li>
+            <li id="icemenu" class="tab-list trans btn-active"><span href="{% url 'megacoffeeapp:ice_coffee' %}"></span>커피(ICE)</li>
         </ul>
     </nav>
     </header>
@@ -133,9 +133,15 @@
                 </figure>
             </li>
             <li class="modal-item">
-                <button class="btn btn-size-up"><i class="fa fa-coffee" aria-hidden="true"></i> 사이즈 업</button>
+                <button class="btn btn-size-up">
+                    <i class="fa fa-coffee" aria-hidden="true"></i>
+                    <span>사이즈 업</span> 
+                </button>
                 <span class="size-up-price">1,000원</span>
-                <button class="btn btn-addshot"><i class="fa fa-coffee" aria-hidden="true"></i> 샷 추가</button>
+                <button class="btn btn-addshot">
+                    <i class="fa fa-coffee" aria-hidden="true"></i>
+                    <span>샷 추가</span>
+                </button>
                 <span class="size-up-price">1,000원</span>
             </li>
             <li class="modal-item">
@@ -152,10 +158,8 @@
         남은시간 <span class="remaining-time"></span>초
     </div>
     `<ul class="order-list">
-        <li id="${id}" class="order-item">
-        <i class="remove-item far fa-times-circle"></i>
-        <span class="item-name">${menuName}</span>
-        <span class="item-price">${price}원</span>
+        <li id="no-item" class="order-item">
+            담은 메뉴가 없습니다.
         </li>
     </ul>`
     <div class="selected-item-container">
@@ -165,6 +169,7 @@
         <span class="total-price"></span> 결제하기
     </button>
     <button class="delete-all-items">전체삭제</button>
+
     <!-- 결제 내역 모달 영역 -->
     <div class="pay-modal-container modal-invisible">
         <div class="pay-modal">
@@ -194,12 +199,6 @@
     </div>
     </footer>
 
-    <script type="text/javascript" src="{% static 'js/footerController.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/menuController.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/menuModalController.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/menuSetController.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/navController.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/refreshPage.js' %}"></script>
-
+    <script type="text/javascript" src="{% static 'js/megacoffee/menu.js' %}"></script> 
 </body>
 </html>

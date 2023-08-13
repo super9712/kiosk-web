@@ -1,6 +1,6 @@
 from django.urls import path
 
-from megacoffeeapp.views import StartTemplateView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView, CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView
+from megacoffeeapp.views import StartTemplateView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView, CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView, HotCoffeeTemplateView, IceCoffeeTemplateView
 
 app_name = "megacoffeeapp"
 
@@ -14,5 +14,7 @@ urlpatterns = [
     path('phone/', PhoneTemplateView.as_view(), name='pay_phone'),
     path('barcode/', BarcodeTemplateView.as_view(), name='pay_barcode'),
     path('paying/', PayingTemplateView.as_view(), name='paying'),
-    path('pay_complete/', PayCompleteTemplateView.as_view(), name='pay_complete')
+    path('pay_complete/', PayCompleteTemplateView.as_view(), name='pay_complete'),
+    path('hot/', HotCoffeeTemplateView.as_view(), name='hot_coffee'),
+    path('ice/', IceCoffeeTemplateView.as_view(), name='ice_coffee'),
 ]
