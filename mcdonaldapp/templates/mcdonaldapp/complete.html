@@ -2,20 +2,35 @@
 {% load static %}
 
 {% block extra-style %}
-    <link rel="stylesheet" href="{% static 'css/style7.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <script type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="main"></div>
-        <div class="title">결제가 완료되었습니다<br>
+
+    <div class="wrapper">
+        <div class="header">
+            <div class="banner">
+                <p>
+                <img src="{% static 'img/MacLogo.png' %}" alt="">
+                </p>
+            </div>
+        </div>
+        <div class="title">
+            결제가 완료되었습니다.
+            <br>
             고객님의 주문 번호는
         </div>
         <div class="number">
             {{o_qs.OrderNum}}
         </div>
         <div class="title">입니다.</div>
-    <div class="back">
-        <a href="{% url 'mcdonaldapp:start' %}">메인화면으로 돌아가기</a>
+        <div class="back">
+            <a href="{% url 'mcdonaldapp:start' %}">
+                메인화면으로 돌아가기
+            </a>
+        </div>
     </div>
+        
 {% endblock %}

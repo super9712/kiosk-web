@@ -4,34 +4,41 @@
 {% block extra-style %}
   <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/style3.css' %}" />
 
   <script type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="btn"><button onClick="history.go(-1)">◀</button></div>
 
-    <div id=div_01>
-    <div class="menu">
-      <ul class="menu_list" id="menuList">
+  <div class="wrapper">
+    <div class="banner">
+      <p>
+        <button onClick="history.go(-1)">◀</button>
+        <img src="{% static 'img/MacLogo.png' %}" alt="">
+      </p>
+    </div>
+    <div class="pay">
+      <ul class="pay_list">
         <li>
-          <div class="photo">
-            <img class="payment" src="{% static 'img/debit-card.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="{% url 'mcdonaldapp:inputcard' %}" class="menu_name">카드 결제</a>
+          <div class="payment">
+            <a href="{% url 'mcdonaldapp:inputcard' %}">
+              <img src="{% static 'img/credit.png' %}" />
+            </a>
+            <div class="pay_name">
+              <a href="{% url 'mcdonaldapp:inputcard' %}">카드 결제</a>
+            </div>
           </div>
         </li>
         <li>
-          <div class="photo">
-            <img class="payment" src="{% static 'img/cash-payment.png' %}" />
-          </div>
-          <div class="menu_name">
-            <a href="{% url 'mcdonaldapp:inputcash' %}" class="menu_name">현금 결제</a>
+          <div class="payment">
+            <a href="{% url 'mcdonaldapp:inputcash' %}">
+              <img class="payment" src="{% static 'img/cash.png' %}" />
+            </a>
+            <div class="pay_name">
+              <a href="{% url 'mcdonaldapp:inputcard' %}">현금 결제</a>
+            </div>
           </div>
         </li>
-
       </ul>
     </div>
   </div>
