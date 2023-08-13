@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.views.generic import TemplateView
 
 
-class StartTemplateView(TemplateView):
-     template_name = 'megacoffeeapp/start.html'
+class MissionDetailView(TemplateView):
+    template_name = 'megacoffeeapp/start.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['mission_menu'] = self.kwargs['mission_menu']
+        return context
+
 
 class QuestionTemplateView(TemplateView):
      template_name = 'megacoffeeapp/question.html'
@@ -33,5 +39,11 @@ class PayingTemplateView(TemplateView):
      
 class PayCompleteTemplateView(TemplateView):
      template_name = 'megacoffeeapp/pay_complete.html'
+
+class HotCoffeeTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/hot_coffee.html'
+
+class IceCoffeeTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/ice_coffee.html'
 
 
