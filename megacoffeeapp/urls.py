@@ -5,7 +5,7 @@ from megacoffeeapp.views import StartTemplateView, QuestionTemplateView, MenuTem
 app_name = "megacoffeeapp"
 
 urlpatterns = [
-    path('start/', StartTemplateView.as_view(), name='start'),
+    path('start/<str:mission>', StartTemplateView.as_view(), name='start'),
     path('question/', QuestionTemplateView.as_view(), name='question'),
     path('menu/', MenuTemplateView.as_view(), name='start_2'),
     path('receipt/', ReceiptTemplateView.as_view(), name='receipt'),

@@ -13,12 +13,12 @@
 
         <div class="mission">
             <p class="mission_text">
-                {{mission}}
+                {{ mission }}
             </p>
             
         </div>
         <div class = "flex justify-center align-center items-center my-5">
-            <a class = "btn-big" href="{% url 'megacoffeeapp:start' %}">주문하러 가기</a>
+            <a class = "btn-big" href="{% url 'megacoffeeapp:start' mission%}">주문하러 가기</a>
         </div>
     </div>
     
