@@ -1,5 +1,5 @@
 // for using data
-const clickData = [];
+let clickData = [];
 
 // for menu
 let orderMenu = [];
@@ -11,6 +11,26 @@ let remain_time = MAX_TIME;
 
 // add onClicks & logics
 window.addEventListener('DOMContentLoaded', function(){
+    // local storage에 데이터 있는지 확인
+    if ( localStorage.getItem("clickData") ) {
+        clickData = JSON.parse(localStorage.getItem("clickData"));
+        console.log('click data: ', clickData, typeof(clickData))
+        localStorage.removeItem('clickData');
+    }
+
+    if ( localStorage.getItem("orderMenu") ) {
+        orderMenu = JSON.parse(localStorage.getItem("orderMenu"));
+        console.log(orderMenu)
+        localStorage.removeItem('orderMenu');
+        updateOrderList();
+    }
+
+    if ( localStorage.getItem("remain_time") ) {
+        remain_time = parseInt(localStorage.getItem("remain_time"));
+        console.log(remain_time)
+        localStorage.removeItem('remain_time');
+    }
+
     // 종료 카운트 다운
     this.setInterval(() => {
         document.querySelector('.remaining-time').innerHTML = remain_time;
@@ -35,7 +55,8 @@ window.addEventListener('DOMContentLoaded', function(){
     })
 
     // close modal 
-    document.querySelector('.btn-close').addEventListener('click', closeModal);
+    document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
+    document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
 
     // order button
     document.querySelector('.btn-order').addEventListener('click', setMenu);
@@ -43,6 +64,10 @@ window.addEventListener('DOMContentLoaded', function(){
     // delete items 
     document.querySelector('.delete-all-items').addEventListener('click', deleteItems);
 
+    // order
+    document.querySelector('.order-btn').addEventListener('click', checkOrder);
+    document.querySelector('.pay-result-check').addEventListener('click', submitOrder);
+    
 });
 
 
@@ -58,6 +83,12 @@ const getClickData = (button_name) => {
 
 const clickTab = (e) => {
     getClickData('탭 변경' + e.target.innerHTML);
+    // 데이터 local storage에 저장 
+    localStorage.setItem("clickData", JSON.stringify(clickData));
+    localStorage.setItem("orderMenu", JSON.stringify(orderMenu));
+    localStorage.setItem("remain_time", JSON.stringify(remain_time));
+    // 링크 이동
+    window.location.href = e.target.querySelector('span').getAttribute('href');
 }
 
 
@@ -98,8 +129,8 @@ const openModal = (e) => {
 
 }
 
-const closeModal = () => {
-    getClickData('close modal');
+const closeMenuModal = () => {
+    getClickData('close menu modal');
     const modal = document.querySelector('.menu-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
@@ -164,7 +195,8 @@ const setMenu = (e) => {
     })
 
     // 종료
-    closeModal();
+    const modal = document.querySelector('.menu-modal-container');
+    modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
 
 // 전체 아이템 삭제 
@@ -176,4 +208,56 @@ const deleteItems = () => {
             담은 메뉴가 없습니다.
         </li>
     `;
+}
+
+
+// 결제하기
+const checkOrder = () => {
+    getClickData('주문 확인');
+
+    // 선택된 메뉴 없을 경우 return
+    if ( orderMenu.length === 0 ) {
+        window.alert('선택된 메뉴가 없습니다. 주문하실 메뉴를 선택해주세요.');
+        return;
+    }
+
+    // 모달 렌더링
+    // 주문 목록
+    const pay_list = document.querySelector('.pay-list');
+    let render_list = '';
+    let total_price = 0;
+
+    orderMenu.map((e, id) => {
+        render_list += `
+            <li id="${id}" class="pay-item">
+                <span class="item-name">${e.menu_name}</span>
+                <span class="item-price">${e.menu_price}</span>
+            </li>
+        `;
+
+        e.menu_price.replace
+        total_price += parseInt(e.menu_price.replaceAll(',', ''));
+    });
+    pay_list.innerHTML = render_list;
+
+    // 총 금액
+    const pay_result = document.querySelector('.pay-result');
+    pay_result.querySelector('.total-item-num').innerHTML = orderMenu.length + '개';
+    pay_result.querySelector('.total-item-price').innerHTML = total_price + '원';
+
+    // 모달 열기
+    const modal = document.querySelector('.pay-modal-container');
+    modal.setAttribute('style', 'opacity: 1; z-index: 999;');
+}
+
+const closeOrderModal = () => {
+    getClickData('close order modal');
+    const modal = document.querySelector('.pay-modal-container');
+    modal.setAttribute('style', 'opacity: 0; z-index: -10;');
+}
+
+const submitOrder = () => {
+    getClickData('submit order');
+    const modal = document.querySelector('.pay-modal-container');
+    modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
