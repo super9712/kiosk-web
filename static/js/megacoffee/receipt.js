@@ -24,12 +24,10 @@ window.addEventListener('DOMContentLoaded', function(){
     clickData = JSON.parse(localStorage.getItem("clickData"));
     orderMenu = JSON.parse(localStorage.getItem("orderMenu"));
     remain_time = localStorage.getItem("remain_time");
-    total_price = localStorage.getItem("total_price").replaceAll(',', '').replaceAll('원', '');
-      
-    console.log(total_price, parseInt("17800"))
+    total_price = localStorage.getItem("total_price").replaceAll(',', '').replaceAll('\"', '');
     
     // render data
-    document.querySelector('.total').innerHTML = '총 결제 금액 : ' +  parseInt(total_price, 10) + ' 원';
+    document.querySelector('.total').innerHTML = '총 결제 금액 : ' + parseInt(total_price).toLocaleString() + "원";
 
     let result = "";
     orderMenu.map((e) => {
