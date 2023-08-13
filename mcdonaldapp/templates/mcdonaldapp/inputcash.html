@@ -2,15 +2,26 @@
 {% load static %}
 
 {% block extra-style %}
-    <link rel="stylesheet" href="{% static 'css/style6.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <script type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="btn"><button onClick="history.go(-1)">◀</button></div>
-
-    <div class="title">현금을 투입해 주십시오</div>
+<div class="wrapper">
+    <div class="banner">
+        <p>
+            <button onClick="history.go(-1)">◀</button>
+            <img src="{% static 'img/MacLogo.png' %}" alt="">
+        </p>
+    </div>
+    <div class="title">
+        현금을 아래의 투입구에
+        <br>
+        삽입해 주세요.
+    </div>
     <a href="{% url 'mcdonaldapp:complete' %}">
-        <img src="{% static 'img/inputcash.png' %}" , onclick="location.href='complete'"/>
+        <img src="{% static 'img/cash-payment.png' %}" class="pay_img" />
     </a>
+</div>
 {% endblock %}
