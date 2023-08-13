@@ -3,6 +3,7 @@ let clickData = [];
 
 // for menu
 let orderMenu = [];
+let currentOption = [];
 
 // for timer
 const MAX_TIME = 60;
@@ -54,6 +55,11 @@ window.addEventListener('DOMContentLoaded', function(){
         item.addEventListener('click', openModal);
     })
 
+    // option onclick
+    const option_btns = document.querySelectorAll('.btn')
+    option_btns.forEach((item) => {
+        item.addEventListener('click', addOption);
+    })
     // close modal 
     document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
     document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
@@ -67,7 +73,6 @@ window.addEventListener('DOMContentLoaded', function(){
     // order
     document.querySelector('.order-btn').addEventListener('click', checkOrder);
     document.querySelector('.pay-result-check').addEventListener('click', submitOrder);
-    
 });
 
 
@@ -131,6 +136,7 @@ const openModal = (e) => {
 
 const closeMenuModal = () => {
     getClickData('close menu modal');
+    currentOption = [];
     const modal = document.querySelector('.menu-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
@@ -161,21 +167,26 @@ const updateOrderList = () => {
 
 // 메뉴 담기
 const setMenu = (e) => {
-    const menu_name = document.querySelector('.modal-title').innerHTML;
-    const menu_price = document.querySelector('.modal-price').innerHTML;
+    let menu_name = document.querySelector('.modal-title').innerHTML;
+    let menu_price = document.querySelector('.modal-price').innerHTML;
 
-    getClickData('주문 담기 ' + menu_name);
-
+    if ( currentOption.length !== 0 ) {
+       currentOption.map((element) => {
+            menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) !== 1 ? element.optionCount + '회' : '' }` 
+            menu_price = parseInt(menu_price.replaceAll(',', '')) + parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount) + "원";
+        })
+    } 
+    
     orderMenu.push({
         menu_name: menu_name,
         menu_price: menu_price,
-        /*
-        options: [
-            option_name: 
-        ]
-        */
     });
 
+    // 옵션 초기화
+    currentOption = [];
+
+    getClickData('주문 담기 ' + menu_name);
+    
     // 렌더링
     updateOrderList();
 
@@ -269,4 +280,40 @@ const submitOrder = () => {
     console.log(document.querySelector('.total-item-price').innerHTML);
 
     window.location.href="/megacoffee/receipt/";
+}
+
+const addOption = (e) => {
+    let optionName = "";
+    let optionPrice = "";
+
+    console.log(e.target)
+    if ( e.target.tagName === "BUTTON" ) {
+        optionName = e.target.querySelector('span').innerHTML;
+        optionPrice = e.target.nextElementSibling.innerHTML;
+    } else if ( e.target.tagName === "I" ) {
+        optionName = e.target.nextElementSibling.innerHTML;
+        optionPrice = e.target.parentNode.nextElementSibling.innerHTML;
+    } else  {
+        optionName = e.target.innerHTML;
+        optionPrice = e.target.parentNode.nextElementSibling.innerHTML;
+    }
+
+    flag = false; // 이미 존재하는 옵션인지 확인 
+
+    currentOption.map((item) => {
+        if ( item.optionName === optionName ) {
+            flag = true;
+            item.optionCount++;
+        }
+    });
+    
+    if ( ! flag ) {
+        currentOption.push({
+            optionName: optionName,
+            optionPrice: optionPrice,
+            optionCount: 1,
+        });
+    };
+
+    console.log(currentOption);
 }
