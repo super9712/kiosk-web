@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class = "background">
+    <div class = "center">
+        <ul>키오스크 사용하는 과정에서 어려웠던 부분을 골라주세요
+            <li>메뉴선택</li>
+            <li>추가옵션</li>
+            <li>결제하기</li>
+        </ul>
+        <ul>시니스크를 사용하면서 불편했거나 필요한 점이 있었나요?
+            <li>글씨가 작다</li>
+            <li>버튼이 작다</li>
+            <li>화면의 어디를 눌러야 할 지 모르겠다</li>
+            <li>선택할 게 많다</li>
+            <li>불편하지만 정확하게 특정하기 어렵다</li>
+        </ul>
+
+
+    </div>
+</div>
+<form action = "#" method = "post">
+    {% csrf_token %}
+    <div>
+
+    </div>
+    <a class = "btn">제출</a>
+</form>
+
+{% endblock content %}
