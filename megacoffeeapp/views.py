@@ -34,4 +34,10 @@ class PayingTemplateView(TemplateView):
 class PayCompleteTemplateView(TemplateView):
      template_name = 'megacoffeeapp/pay_complete.html'
 
+class HotCoffeeTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/hot_coffee.html'
+
+class IceCoffeeTemplateView(TemplateView):
+     template_name = 'megacoffeeapp/ice_coffee.html'
+
 

@@ -24,20 +24,22 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
 
 </head>
+
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
 <body>
     <header class="header">
     <div class="header-container">
         <button class="btn-home trans">
             <i class="fas fa-home"></i>
         </button>
-        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
+        <h1 class="home"><a href="{% url 'megacoffeeapp:start' %}">Senisk</a> <span>Kiosk</span></h1>
     </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
-        <li id="seasonmenu" class="tab-list trans btn-active">시즌 메뉴</li>
-        <li id="hotmenu" class="tab-list trans">커피(HOT)</li>
-        <li id="icemenu" class="tab-list trans">커피(ICE)</li>
+            <li id="seasonmenu" class="tab-list trans btn-active"><a href=""></a href="{% url 'megacoffeeapp:start_2' %}">시즌 메뉴</li>
+            <li id="hotmenu" class="tab-list trans"><a href="{% url 'megacoffeeapp:hot_coffee' %}">커피(HOT)</a></li>
+            <li id="icemenu" class="tab-list trans"><a href="{% url 'megacoffeeapp:ice_coffee' %}">커피(ICE)</a></li>
         </ul>
     </nav>
     </header>
@@ -156,15 +158,13 @@
     <!-- footer 주문 내역 영역 -->
     <footer class="footer">
     <div class="remaining-time-container">
-        남은시간 <span class="remaining-time"></span>초
+        남은시간 <span class="remaining-time">60</span>초
     </div>
     `<ul class="order-list">
         <li id="${id}" class="order-item">
-        <i class="remove-item far fa-times-circle"></i>
-        <span class="item-name">${menuName}</span>
-        <span class="item-price">${price}원</span>
+            담은 메뉴가 없습니다.
         </li>
-    </ul>`
+    </ul>
     <div class="selected-item-container">
         선택한 상품 <span class="selected-item-num"></span>
     </div>
@@ -185,8 +185,8 @@
             </div>
             <ul class="pay-list">
             <li id="${id}" class="pay-item">
-            <span class="item-name">${item}</span>
-            <span><span class="item-price">${price}</span>원</span>
+            <span class="item-name"></span>
+            <span><span class="item-price"></span>원</span>
         </li>
             </ul>
         </div>
@@ -195,20 +195,13 @@
             <span>총 결제금액 <span class="total-item-price"></span></span>
         </div>
         <div>
-            <button class="pay-result-check">확 인</button>
+            <button class="pay-result-check" onclick="">확 인</button>
             <button class="pay-result-cancel">취 소</button>
         </div>
         </div>
     </div>
     </footer>
 
-
-    <script type="module" src="{% static 'js/footerController.js' %}"></script>
-    <script type="module" src="{% static 'js/menuController.js' %}"></script>
-    <script type="module" src="{% static 'js/menuModalController.js' %}"></script>
-    <script type="module" src="{% static 'js/menuSetController.js' %}"></script>
-    <script type="module" src="{% static 'js/navController.js' %}"></script>
-    <script type="module" src="{% static 'js/refreshPage.js' %}"></script>
-
+    <script type="text/javascript" src="{% static 'js/megacoffee/onclick.js' %}"></script> 
 </body>
 </html>
