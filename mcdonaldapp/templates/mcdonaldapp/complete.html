@@ -26,11 +26,13 @@
             {{o_qs.OrderNum}}
         </div>
         <div class="title">입니다.</div>
-        <div class="back">
-            <a href="{% url 'mcdonaldapp:start' %}">
-                메인화면으로 돌아가기
+        <button class="back">
+            <a class = "btn" href="{% url 'introapp:complete' %}">
+                키오스크 마스터로
+                <br>
+                돌아가서 확인하기
             </a>
-        </div>
+        </button>
     </div>
         
 {% endblock %}
