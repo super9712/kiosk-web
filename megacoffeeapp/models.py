@@ -1,49 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Page(models.Model):
+    start_time = models.DateTimeField()              # 페이지 사용 시작 시간
+    using_page = models.IntegerField()              # 페이지 사용 시간
 
-class Menu(models.Model):
-    # 메뉴명
-    menu_name = models.CharField(max_length=40)
-
-    # 수량
-    menu_count = models.IntegerField()
-
-    # 가격
-    menu_price = models.IntegerField()
-
-class MenuOption(models.Model):
-    # 옵션 명
-    option_name = models.CharField(max_length=40)
-
-    # 옵션 가격
-    option_price = models.IntegerField()
-
-class Order(models.Model):
-    # 주문 번호
-    order = models.IntegerField(unique=True)
-
-    # 주문 일시
-    order_time = models.DateTimeField(auto_now_add=True)
-
-    # 총 가격
-    total_price = models.IntegerField()
-
-    # 결제 방법
-    payment = models.CharField(max_length=40)
-
-    # 걸린 시간
-    time = models.IntegerField()
-
-class Answer(models.Model):
-    # 정답 메뉴
-    answer_menu = models.CharField(max_length=40)
-
-    # 정답 메뉴 수량
-    answer_menu_count = models.IntegerField()
-
-    # 정답 옵션
-    answer_option_name = models.CharField(max_length=40)
-
-    # 정답 결제 방법
-    answer_payment = models.CharField(max_length=40)
+class Button(models.Model):
+    button_name = models.CharField(max_length=50)                   # 클릭된 버튼 이름
+    click_time = models.DateTimeField()                             # 클릭한 시간
+    page_number = models.ForeignKey(Page, on_delete=models.CASCADE) # 페이지 번호
+    is_right = models.BooleanField()                                # 이 버튼이 맞는가
