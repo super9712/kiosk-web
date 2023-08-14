@@ -47,3 +47,11 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
+class Question1_TemplateView(TemplateView):
+    template_name = 'introapp/question1.html'
+
+class Question2_TemplateView(TemplateView):
+    template_name = 'introapp/question2.html'
+
+class Question3_TemplateView(TemplateView):
+    template_name = 'introapp/question3.html'

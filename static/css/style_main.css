@@ -121,7 +121,17 @@ layout
 
 }
 
+form {
+    padding : 2rem 2rem;
+    margin : 5vh;
+    background-color : var(--primary);
+}
 
+.survey {
+    background-color : var(--light);
+    padding : 2rem 2rem;
+    margin : 5vh;
+}
 /*
 
 components
@@ -155,6 +165,7 @@ components
     display: flex;
     padding: 1rem 2rem;
     font-weight: 700;
+    margin : auto;
 }
 
 /* question.html */

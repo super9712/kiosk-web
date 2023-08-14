@@ -43,8 +43,9 @@
             </div>
         </div>
         
-        <div class = "flex justify-center align-center items-center my-5">
-            <a class = "btn" href="{% url 'introapp:main' %}">종료하기</a>
+        <div class = "flex justify-evenly align-center items-center my-5">
+            <a class = "btn mx-5" href="{% url 'introapp:main' %}">설문조사 없이 종료하기</a>
+            <a class = "btn mx-5" href = "{% url 'introapp:question1' %}">설문조사 하러가기</a>
         </div>
     </div>
 </div>
