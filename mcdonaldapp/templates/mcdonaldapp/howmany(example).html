@@ -5,7 +5,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style4.css' %}" />
 
     <script>
     $(function(){
@@ -51,7 +50,7 @@
             <img src="{% static 'img/MacLogo.png' %}" alt="">
         </p>
     </div>
-    <form method="post">{% csrf_token %}
+    <form method="post" action="{% url 'mcdonaldapp:basket' %}">{% csrf_token %}
         <input type="hidden" name="MenuID" value="{{ menu.id }}">
         <div class="flex row">
             <div class="select_menu">
@@ -78,7 +77,7 @@
                 <button type="submit" class="btn-yellow">
                     <a href="{% url 'mcdonaldapp:basket' %}">장바구니 추가</a>
                 </button>
-                <button type="button" onclick="location.href='./mcdonaldapp/index.html'">
+                <button type="button">
                     <a href="{% url 'mcdonaldapp:index' %}">취소</a>
                 </button>
             </li>
@@ -88,7 +87,7 @@
         <div class="priceWrap font-bold">
             <div class="textCenter">
                 <div class="total">Total:  </div>
-                <p id="total_price">0</p>
+                <p id="total_price">{{ total_price }}</p>
                 <div class="won"> 원</div>
             </div>
         </div>

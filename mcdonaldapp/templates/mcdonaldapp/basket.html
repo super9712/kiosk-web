@@ -3,7 +3,9 @@
 
 {% block extra-style %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style5.css' %}" />
+    
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     <script type="text/javascript">
     $(document).ready(function(){
@@ -47,39 +49,64 @@
 
 {% block content %}
 
-    <div class="title">장바구니</div>
+  <div class="wrapper">
+    <div class="banner">
+      <p>
+        <button onClick="history.go(-1)">
+            <p>◀</p>
+        </button>
+        <img src="{% static 'img/MacLogo.png' %}" alt="">
+      </p>
+    </div>
+    <div class="title title_cart">
+      장바구니
+    </div>
+    <button id='btn-empty'>
+      전체취소
+    </button>
     <div class="table">
-        <table id = 'orderedmenu'>
-            <th>메뉴명</th>
-            <th>수량</th>
-            <th>가격</th>
-            <th>취소</th>
-            <tbody></tbody>
-            {% for cart in cart_list %}
-            <tbody class="allDelete">
-            <tr>
-                <td>{{ cart.CartMenu }}</td>
-                <td>{{ cart.CartQty }}</td>
-                <td>{{ cart.CartPrice }}</td>
-                <td><button onclick="rowDel(this); location.href='mcdonaldapp/cancelMenu cart.id'">취소</button></td>
-            </tr>
-            </tbody>
-            {% endfor %}
-            <tbody></tbody>
-        </table>
+      <table id = 'orderedmenu'>
+        <th>메뉴명</th>
+        <th>수량</th>
+        <th>가격</th>
+        <th>취소</th>
+        <tbody></tbody>
+        {% for cart in cart_list %}
+        <tbody class="allDelete">
+          <tr>
+            <td>{{ cart.CartMenu }}</td>
+            <td>{{ cart.CartQty }}</td>
+            <td>{{ cart.CartPrice }}</td>
+            <td>
+              <button onclick="rowDel(this); location.href='mcdonaldapp/cancelMenu cart.id'">
+                취소
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+        <tbody></tbody>
+      </table>
     </div>
-    <div class="rollback"><button id='btn-empty' onclick="location.href='mcdonaldapp/templates/reset.html'">전체취소</button></div>
-    <div class="basket">
-      <div class="total">Total:  </div>
-      <p id="total_price">{{ total_price }}</p>
-      <div class="won"> 원</div>
-      <a href="{% url 'mcdonaldapp:index' %}">
-        계속 쇼핑하기
-      </a>
-      <button class="goshopping" type="button" onclick="location.href='menus'">계속 쇼핑하기</button>
-      <a href="{% url 'mcdonaldapp:index3' %}">
-        결제하기
-      </a>
-      <button class="charge" type="button" src="{% url 'mcdonaldapp:index3' %}">결제하기</button>
+    <div class="select">
+      <div class="priceWrap font-bold">
+        <div class="textCenter">
+          <div class="total">Total:  </div>
+          <p id="total_price">{{ total_price }}</p>
+          <div class="won"> 원</div>
+        </div>
+        <button class="goshopping" type="button">
+          <a href="{% url 'mcdonaldapp:index' %}">
+            계속 쇼핑하기
+          </a>
+        </button>
+        <button class="charge" type="button">
+          <a href="{% url 'mcdonaldapp:index3' %}">
+            결제하기
+          </a>
+        </button>
+      </div>
     </div>
+  </div>
+    
 {% endblock %}

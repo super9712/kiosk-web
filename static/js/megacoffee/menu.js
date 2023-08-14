@@ -101,19 +101,19 @@ const clickTab = (e) => {
 const openModal = (e) => {
     // 모달 내부 내용 변경
     if (e.target.tagName === 'IMG') {
-         const menu_item = e.target.parentNode;
-         const modal_title = document.querySelector('.modal-title');
-         modal_title.innerHTML = menu_item.querySelector('div .menu-title').innerHTML;
-         const modal_price = document.querySelector('.modal-price');
-         modal_price.innerHTML = menu_item.querySelector('.menu-price').innerHTML;
-         const modal_img = document.querySelector('.modal-img');
-         modal_img.setAttribute('src', e.target.getAttribute('src'));
+        const menu_item = e.target.parentNode;
+        const modal_title = document.querySelector('.modal-title');
+        modal_title.innerHTML = menu_item.querySelector('div .menu-title').innerHTML;
+        const modal_price = document.querySelector('.modal-price');
+        modal_price.innerHTML = menu_item.querySelector('.menu-price').innerHTML;
+        const modal_img = document.querySelector('.modal-img');
+        modal_img.setAttribute('src', e.target.getAttribute('src'));
     } else if (e.target.tagName === 'SPAN' || e.target.tagName === 'FIGCAPTION') {
         const menu_item = e.target.parentNode.parentNode;
-         const modal_title = document.querySelector('.modal-title');
-         modal_title.innerHTML = menu_item.querySelector('div .menu-title').innerHTML;
-         const modal_price = document.querySelector('.modal-price');
-         modal_price.innerHTML = menu_item.querySelector('div .menu-price').innerHTML;
+        const modal_title = document.querySelector('.modal-title');
+        modal_title.innerHTML = menu_item.querySelector('div .menu-title').innerHTML;
+        const modal_price = document.querySelector('.modal-price');
+        modal_price.innerHTML = menu_item.querySelector('div .menu-price').innerHTML;
         const modal_img = document.querySelector('.modal-img');
         modal_img.setAttribute('src', menu_item.querySelector('.menu-img').getAttribute('src'));
     } else {
@@ -171,7 +171,7 @@ const setMenu = (e) => {
     let menu_price = document.querySelector('.modal-price').innerHTML;
 
     if ( currentOption.length !== 0 ) {
-       currentOption.map((element) => {
+        currentOption.map((element) => {
             menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) !== 1 ? element.optionCount + '회' : '' }` 
             menu_price = parseInt(menu_price.replaceAll(',', '')) + parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount) + "원";
         })

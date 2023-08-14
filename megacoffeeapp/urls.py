@@ -1,11 +1,11 @@
 from django.urls import path
 
-from megacoffeeapp.views import StartTemplateView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView, CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView, HotCoffeeTemplateView, IceCoffeeTemplateView
+from megacoffeeapp.views import MissionDetailView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView, CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView, HotCoffeeTemplateView, IceCoffeeTemplateView
 
 app_name = "megacoffeeapp"
 
 urlpatterns = [
-    path('start/', StartTemplateView.as_view(), name='start'),
+    path('start/<str:mission_menu>', MissionDetailView.as_view(), name='start'),
     path('question/', QuestionTemplateView.as_view(), name='question'),
     path('menu/', MenuTemplateView.as_view(), name='start_2'),
     path('receipt/', ReceiptTemplateView.as_view(), name='receipt'),
