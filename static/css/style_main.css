@@ -122,11 +122,16 @@ layout
 }
 
 form {
-    padding : 1rem 2rem;
-    margin : auto;
+    padding : 2rem 2rem;
+    margin : 5vh;
     background-color : var(--primary);
 }
 
+.survey {
+    background-color : var(--light);
+    padding : 2rem 2rem;
+    margin : 5vh;
+}
 /*
 
 components
