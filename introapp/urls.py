@@ -1,12 +1,6 @@
 from django.urls import path
 
-from introapp.views import IntroTemplateView, BrandTemplateView, Mission_MegaTemplateView, CompleteTemplateView, \
-<<<<<<< HEAD
-    Mission_McTemplateView, SurveyView
-=======
-    Mission_McTemplateView, Question1, Question2, Question3
->>>>>>> 87e485f88ab8a24779b4bd0f3b964b339404c6f1
-
+from introapp.views import IntroTemplateView, BrandTemplateView, Mission_MegaTemplateView, CompleteTemplateView, Mission_McTemplateView, SurveyView
 app_name = "introapp"
 
 urlpatterns = [
