@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<form action = "{% url 'introapp:question3' %}" method = "get">
+    {% csrf_token %}
+
+    <div class = "survey">
+            <span class = "font-bold fs-1">시니스크가 어떤 점에서 도움이 되었나요?<br></span>
+
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_a">자신감 상승<br>
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_b">뒷사람에 대한 부담감이 없다<br>
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_c">간편하게 키오스크를 경험할 수 있어 좋았다<br>
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_d">익숙해졌다<br>
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_e">반복 연습할 수 있어서 적응이 쉬웠다<br>
+            <input class = "my-5" type = "checkbox" name = "help" value = "help_f">전혀 도움이 안된다<br>
+
+    </div>
+    <div class = "survey">
+            <span class = "font-bold fs-1">해당 기업 에서 키오스크를 사용하는 것에 불편한 점은 무엇인가요?<br></span>
+
+            <input class = "my-5" type = "checkbox" name = "brand" value = "brand_a">메뉴가 너무 다양해서 찾기 힘들다<br>
+            <input class = "my-5" type = "checkbox" name = "brand" value = "brand_b">추가 옵션이 많아 설정이 어렵다<br>
+            <input class = "my-5" type = "checkbox" name = "brand" value = "brand_c">카드 투입구를 찾기 힘들었다<br>
+            <input class = "my-5" type = "checkbox" name = "brand" value = "brand_d">메뉴 이름이 어렵고 직관적이지 않다<br>
+            <input class = "my-5" type = "checkbox" name = "brand" value = "brand_e">여러 메뉴를 주문하기 까다롭다<br>
+    </div>
+        <button type = "submit" class = "btn" >다음 화면으로 넘어가기</button>
+</form>
+
+{% endblock content %}

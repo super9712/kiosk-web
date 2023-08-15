@@ -5,7 +5,11 @@ from django.views.generic import View, TemplateView
 
 import random
 
+<<<<<<< HEAD
 from introapp.models import Question, Answer, Response
+=======
+from introapp.models import Question
+>>>>>>> 87e485f88ab8a24779b4bd0f3b964b339404c6f1
 
 
 class IntroTemplateView(TemplateView):
@@ -50,6 +54,7 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
+<<<<<<< HEAD
 
 class SurveyView(View):
     template_name = 'introapp/survey.html'
@@ -70,3 +75,48 @@ class SurveyView(View):
                 response.save()
                 response.answer.set(selected_answers)
         return redirect('introapp:brand')
+=======
+class Question1(TemplateView):
+
+    template_name = 'introapp/question1.html'
+    next_url = 'introapp:question2'
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        answers= []
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i}')
+            answers.append(answer)
+
+        request.session['answers'] = answers
+        return redirect(self.next_url)
+
+class Question2(TemplateView):
+    template_name = 'introapp/question2.html'
+    next_url = 'introapp:question3'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        answers= []
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i+2}')
+            answers.append(answer)
+
+        request.session['answers'] = answers
+        return redirect(self.next_url)
+
+class Question3(TemplateView):
+    template_name = 'introapp/question3.html'
+    next_url = 'introapp:complete'
+
+    def post(self, request):
+        answers = request.session.pop('answers')
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i+4}')
+            answers.append(answer)
+
+        return redirect(self.next_url)
+>>>>>>> 87e485f88ab8a24779b4bd0f3b964b339404c6f1
