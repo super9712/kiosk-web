@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<form action = "#" method = "post">
+<form action = "{% url 'introapp:question3' %}" method = "get">
     {% csrf_token %}
 
     <div class = "survey">
@@ -25,7 +25,7 @@
             <input class = "my-5" type = "checkbox" name = "brand" value = "brand_d">메뉴 이름이 어렵고 직관적이지 않다<br>
             <input class = "my-5" type = "checkbox" name = "brand" value = "brand_e">여러 메뉴를 주문하기 까다롭다<br>
     </div>
-    <a class = "btn" href = "{% url 'introapp:question3' %}">다음 화면으로 넘어가기</a>
+        <button type = "submit" class = "btn" >다음 화면으로 넘어가기</button>
 </form>
 
 {% endblock content %}
