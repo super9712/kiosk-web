@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.views.generic import TemplateView
+from django.views.generic import View, TemplateView
 
 import random
+
+from introapp.models import Question, Answer, Response
+
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -47,11 +50,23 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
-class Question1_TemplateView(TemplateView):
-    template_name = 'introapp/question1.html'
 
-class Question2_TemplateView(TemplateView):
-    template_name = 'introapp/question2.html'
+class SurveyView(View):
+    template_name = 'introapp/survey.html'
 
-class Question3_TemplateView(TemplateView):
-    template_name = 'introapp/question3.html'
+    def get(self, request):
+        questions = Question.objects.all()
+        context = {'questions': questions}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        for question_id, answer_ids in request.POST.items():
+            if question_id.startswith('question_'):
+                question_id = question_id.replace('question_', '')
+                question = Question.objects.get(id=question_id)
+                selected_answers = Answer.objects.filter(id__in=answer_ids.split(','))
+                response = Response(question=question)
+                response.brand = 'megacoffee'
+                response.save()
+                response.answer.set(selected_answers)
+        return redirect('introapp:brand')
