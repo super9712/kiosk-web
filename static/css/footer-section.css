@@ -270,3 +270,20 @@
     font-weight: bold;
     letter-spacing: 15px;
 }
+
+/* 주문리스트 반응형 웹, 아직 못함 */
+@media screen and (max-width: 768px){
+    .pay-modal-container{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pay-modal-heading{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+
+
+}

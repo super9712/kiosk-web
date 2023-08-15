@@ -213,3 +213,18 @@
 .dev-modal-container .dev-modal-btn button:disabled {
     background: #eee;
 }
+
+/* 메뉴선택화면 반응형 웹, 아직 못함 */
+@media screen and (max-width: 768px) {
+    .header{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-container{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+}
