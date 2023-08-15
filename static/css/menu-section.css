@@ -126,6 +126,14 @@
     font-weight: 700;
 }
 
+.menu-modal-container .modal .modal-item .btn:active {
+    background-color: #FFB800;
+}
+
+.menu-modal-container .modal .modal-item .btn:active span {
+    color: white;
+}
+
 .menu-modal-container .modal .modal-item .btn:disabled {
     box-shadow: none;
 }
