@@ -33,7 +33,7 @@
         <button class="btn-home trans">
             <i class="fas fa-home"></i>
         </button>
-        <h1 class="home"><a href="{% url 'megacoffeeapp:start_2' %}">Senisk</a> <span>Kiosk</span></h1>
+        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
     </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
@@ -154,6 +154,18 @@
                     <span class="size-up-price">1,000원</span>
                 </li>
                 <li class="modal-item">
+                    <button class="btn btn-size-up">
+                        <i aria-hidden="true"></i>
+                        <span>휘핑크림<br>추가</span> 
+                    </button>
+                    <span class="size-up-price">1,000원</span>
+                    <button class="btn btn-size-up">
+                        <i aria-hidden="true"></i>
+                        <span>휘핑크림<br>빼기</span> 
+                    </button>
+                    <span class="size-up-price">0원</span>
+                </li>
+                <li class="modal-item">
                     <button class="btn-order">주문 담기</button>
                     <button class="btn-close">취소</button>
                 </li>
@@ -201,8 +213,8 @@
             <span>총 결제금액 <span class="total-item-price"></span></span>
         </div>
         <div>
-            <button class="pay-result-check" onclick="">확 인</button>
-            <button class="pay-result-cancel">취 소</button>
+            <button class="pay-result-check" onclick="">결제하기</button>
+            <button class="pay-result-cancel">취소하기</button>
         </div>
         </div>
     </div>

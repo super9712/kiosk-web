@@ -7,11 +7,6 @@ from django.views.generic import TemplateView
 class MissionDetailView(TemplateView):
      template_name = 'megacoffeeapp/start.html'
 
-     def get_context_data(self, **kwargs):
-               context = super().get_context_data(**kwargs)
-               context['mission_menu'] = self.kwargs['mission_menu']
-               return context
-
 
 class QuestionTemplateView(TemplateView):
      template_name = 'megacoffeeapp/question.html'
