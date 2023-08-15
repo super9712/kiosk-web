@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<form action = "#" method = "post">
+<form action = "{% url 'introapp:complete' %}" method = "get">
     {% csrf_token %}
 
     <div class = "survey">
@@ -26,7 +26,7 @@
 
             <input class = "my-5" type = "text" name = "new" value = "자유롭게 작성해주세요">
     </div>
-    <a class = "btn" href = "#">제출하기</a>
+    <button type = "submit" class = "btn" >제출</button>
 </form>
 
 {% endblock content %}

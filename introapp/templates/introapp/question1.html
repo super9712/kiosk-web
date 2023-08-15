@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<form action = "#" method = "post">
+<form action = "{% url 'introapp:question2' %}" method = "get">
     {% csrf_token %}
 
     <div class = "survey">
@@ -22,7 +22,7 @@
             <input class = "my-5" type = "checkbox" name = "uncomfort" value = "uncomfort_d">선택할 게 많다<br>
             <input class = "my-5" type = "checkbox" name = "uncomfort" value = "uncomfort_e">불편하지만 정확하게 특정하기 어렵다<br>
     </div>
-    <a class = "btn" href = "{% url 'introapp:question2' %}">다음 화면으로 넘어가기</a>
+        <button type = "submit" class = "btn" >다음 화면으로 넘어가기</button>
 </form>
 
 {% endblock content %}
