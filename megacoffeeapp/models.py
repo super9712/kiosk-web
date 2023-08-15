@@ -1,6 +1,27 @@
 from django.db import models
 
 # Create your models here.
+
+class Menu(models.Model):
+    name = models.CharField(max_length=100)
+
+class Quantity(models.Model):
+    value = models.IntegerField()
+
+class Option(models.Model):
+    name = models.CharField(max_length=100)
+
+class Order(models.Model):
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    quantity = models.ForeignKey(Quantity, on_delete=models.CASCADE)
+    option = models.ForeignKey(Option, on_delete=models.CASCADE)
+
+class Payment(models.Model):
+    method = models.CharField(max_length=100)
+    packaging = models.CharField(max_length=50)
+    orders = models.ManyToManyField(Order)
+
+
 class Page(models.Model):
     start_time = models.DateTimeField()              # 페이지 사용 시작 시간
     using_page = models.IntegerField()              # 페이지 사용 시간
@@ -10,3 +31,4 @@ class Button(models.Model):
     button_name = models.CharField(max_length=50)                   # 클릭된 버튼 이름
     click_time = models.DateTimeField()                             # 클릭한 시간
     is_right = models.BooleanField()                                # 이 버튼이 맞는가
+
