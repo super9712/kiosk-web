@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views.generic import TemplateView
 
 import random
+
+from introapp.models import Question
+
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -47,11 +50,46 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
-class Question1_TemplateView(TemplateView):
+class Question1(TemplateView):
+
     template_name = 'introapp/question1.html'
+    next_url = 'introapp:question2'
+    def get(self, request):
+        return render(request, self.template_name)
 
-class Question2_TemplateView(TemplateView):
+    def post(self, request):
+        answers= []
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i}')
+            answers.append(answer)
+
+        request.session['answers'] = answers
+        return redirect(self.next_url)
+
+class Question2(TemplateView):
     template_name = 'introapp/question2.html'
+    next_url = 'introapp:question3'
 
-class Question3_TemplateView(TemplateView):
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        answers= []
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i+2}')
+            answers.append(answer)
+
+        request.session['answers'] = answers
+        return redirect(self.next_url)
+
+class Question3(TemplateView):
     template_name = 'introapp/question3.html'
+    next_url = 'introapp:complete'
+
+    def post(self, request):
+        answers = request.session.pop('answers')
+        for i in range(1, 3):
+            answer = request.POST.get(f'answer{i+4}')
+            answers.append(answer)
+
+        return redirect(self.next_url)
