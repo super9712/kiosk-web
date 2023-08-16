@@ -123,8 +123,14 @@ layout
 
 form {
     padding : 2rem 2rem;
-    margin : 5vh;
+    margin : 30vh;
     background-color : var(--primary);
+}
+
+form legend {
+    background-color : var(--secondary);
+    padding : 10px;
+    border-radius : 0.5rem;
 }
 
 .survey {
@@ -286,4 +292,108 @@ receipt.html
 .total {
     width: 100%;
     background-color: var(--primary);
+}
+
+@media screen and (max-width: 950px){
+    .wrap{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .select{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .select > img{
+        margin: 0 0;
+    }
+
+    .select > p{
+        margin-bottom: 40px;
+    }
+
+    .mission{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .flex{
+        justify-content: center;
+        width: 100%;
+    }
+
+
+
+    /* .center{
+        flex-direction: column;
+        align-items: flex-start; 
+    } */
+
+    .flex.justify-center.align-center.items-center.my-5{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    svg{
+        margin-left: 110px;
+        margin-bottom: 30px;
+    }
+
+    .receipt.flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .receipt_list{
+        /* align-items: center;
+        flex-direction: row; */
+        justify-content: center;
+        width: 100%;
+        margin-left: 20px;
+        
+    }
+
+    .list{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .list > p {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .total{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .flex.column{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 30px;
+    }
+
+    .flex.my-5{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn.btn-pay.btn-square-small{
+        flex-direction: column;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
 }
