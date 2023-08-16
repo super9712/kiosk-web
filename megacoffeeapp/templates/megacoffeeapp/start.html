@@ -12,6 +12,13 @@
                 <br>
                 주문하시려면 아래의 버튼을 눌러주세요.
             </span>
+            <!-- 이거 예시보여주려고 쓴겁니다 이런식으로 db 접근해주세요 -->
+            <p class="mission_text">
+                {% for order in payment.orders.all %}
+                    {{ order.menu.name }} {{ order.option.name }}해서 {{ order.quantity.value }}개<br>
+                {% endfor %}
+                {{ payment.packaging }}으로 하고, 결제는 {{ payment.method }}로(으로) 할게요.
+            </p>
         </div>
         <div class = "flex justify-center align-center items-center my-5">
             <a class="btn mission-start" href="{% url 'megacoffeeapp:question' %}" data-mission="{{  mission_menu }}">주문하기</a>
