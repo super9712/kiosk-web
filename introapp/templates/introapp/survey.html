@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<form method = "post" action="{% url 'introapp:survey' %}">
+    {% csrf_token %}
+    {% for question in questions %}
+    <fieldset class = "survey">
+      <legend class = "font-bold fs-1">{{ question.text }}</legend>
+      {% for answer in question.answer_set.all %}
+        <label>
+          <input class = "my-5" type="checkbox" name="question_{{ question.id }}" value="{{ answer.id }}">
+          {{ answer.text }}
+        </label><br>
+      {% endfor %}
+    </fieldset>
+  {% endfor %}
+  <button type="submit" class = "btn">제출</button>
+</form>
+
+
+{% endblock content %}

@@ -13,18 +13,18 @@ const getClickData = () => {
 }
 
 window.addEventListener('DOMContentLoaded', function(){
-    if ( ! localStorage.getItem('clickData') ) {
+    if ( ! sessionStorage.getItem('clickData') ) {
         window.alert('잘못된 접근입니다.');
         this.window.location.href = window.history.back();
     } else {
-        console.log(localStorage.getItem("total_price"));
+        console.log(sessionStorage.getItem("total_price"));
     }
     
     // get datas from local storage
-    clickData = JSON.parse(localStorage.getItem("clickData"));
-    orderMenu = JSON.parse(localStorage.getItem("orderMenu"));
-    remain_time = localStorage.getItem("remain_time");
-    total_price = localStorage.getItem("total_price").replaceAll(',', '').replaceAll('\"', '');
+    clickData = JSON.parse(sessionStorage.getItem("clickData"));
+    orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
+    remain_time = sessionStorage.getItem("remain_time");
+    total_price = sessionStorage.getItem("total_price").replaceAll(',', '').replaceAll('\"', '');
     
     // render data
     document.querySelector('.total').innerHTML = '총 결제 금액 : ' + parseInt(total_price).toLocaleString() + "원";

@@ -13,23 +13,23 @@ let remain_time = MAX_TIME;
 // add onClicks & logics
 window.addEventListener('DOMContentLoaded', function(){
     // local storage에 데이터 있는지 확인
-    if ( localStorage.getItem("clickData") ) {
-        clickData = JSON.parse(localStorage.getItem("clickData"));
+    if ( sessionStorage.getItem("clickData") ) {
+        clickData = JSON.parse(sessionStorage.getItem("clickData"));
         console.log('click data: ', clickData, typeof(clickData))
-        localStorage.removeItem('clickData');
+        sessionStorage.removeItem('clickData');
     }
 
-    if ( localStorage.getItem("orderMenu") ) {
-        orderMenu = JSON.parse(localStorage.getItem("orderMenu"));
+    if ( sessionStorage.getItem("orderMenu") ) {
+        orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
         console.log(orderMenu)
-        localStorage.removeItem('orderMenu');
+        sessionStorage.removeItem('orderMenu');
         updateOrderList();
     }
 
-    if ( localStorage.getItem("remain_time") ) {
-        remain_time = parseInt(localStorage.getItem("remain_time"));
+    if ( sessionStorage.getItem("remain_time") ) {
+        remain_time = parseInt(sessionStorage.getItem("remain_time"));
         console.log(remain_time)
-        localStorage.removeItem('remain_time');
+        sessionStorage.removeItem('remain_time');
     }
 
     // 종료 카운트 다운
@@ -89,9 +89,9 @@ const getClickData = (button_name) => {
 const clickTab = (e) => {
     getClickData('탭 변경' + e.target.innerHTML);
     // 데이터 local storage에 저장 
-    localStorage.setItem("clickData", JSON.stringify(clickData));
-    localStorage.setItem("orderMenu", JSON.stringify(orderMenu));
-    localStorage.setItem("remain_time", JSON.stringify(remain_time));
+    sessionStorage.setItem("clickData", JSON.stringify(clickData));
+    sessionStorage.setItem("orderMenu", JSON.stringify(orderMenu));
+    sessionStorage.setItem("remain_time", JSON.stringify(remain_time));
     // 링크 이동
     window.location.href = e.target.querySelector('span').getAttribute('href');
 }
@@ -272,10 +272,10 @@ const submitOrder = () => {
     const modal = document.querySelector('.pay-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
     // 데이터 local storage에 저장 
-    localStorage.setItem("clickData", JSON.stringify(clickData));
-    localStorage.setItem("orderMenu", JSON.stringify(orderMenu));
-    localStorage.setItem("remain_time", JSON.stringify(remain_time));
-    localStorage.setItem("total_price", JSON.stringify(document.querySelector('.total-item-price').innerHTML));
+    sessionStorage.setItem("clickData", JSON.stringify(clickData));
+    sessionStorage.setItem("orderMenu", JSON.stringify(orderMenu));
+    sessionStorage.setItem("remain_time", JSON.stringify(remain_time));
+    sessionStorage.setItem("total_price", JSON.stringify(document.querySelector('.total-item-price').innerHTML));
 
     console.log(document.querySelector('.total-item-price').innerHTML);
 
