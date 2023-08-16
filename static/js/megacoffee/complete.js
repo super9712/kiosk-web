@@ -44,6 +44,6 @@ window.addEventListener('DOMContentLoaded', function() {
         sessionStorage.getItem("mission");
 
         // redirecting
-        // window.location.href = href;
+        window.location.href = href;
     });
 });

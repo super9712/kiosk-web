@@ -1,6 +1,8 @@
 from django.urls import path
 
-from megacoffeeapp.views import MissionDetailView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView, CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView, HotCoffeeTemplateView, IceCoffeeTemplateView
+from megacoffeeapp.views import MissionDetailView, QuestionTemplateView, MenuTemplateView, ReceiptTemplateView, CardTemplateView,\
+    CouponTemplateView, PhoneTemplateView, BarcodeTemplateView, PayingTemplateView, PayCompleteTemplateView, HotCoffeeTemplateView,\
+    IceCoffeeTemplateView
 
 app_name = "megacoffeeapp"
 
