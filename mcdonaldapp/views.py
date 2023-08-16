@@ -15,6 +15,9 @@ class MenuTemplateView(TemplateView):
 class HowmanyTemplateView(TemplateView):
     template_name = 'mcdonaldapp/howmany(example).html'
 
+
+    
+
 class BasketTemplateView(TemplateView):
     template_name = 'mcdonaldapp/basket.html'
 
@@ -29,3 +32,4 @@ class InputcashTemplateView(TemplateView):
 
 class CompletecashTemplateView(TemplateView):
     template_name = 'mcdonaldapp/complete.html'
+
