@@ -5,9 +5,28 @@ window.addEventListener('DOMContentLoaded', function(){
     sessionStorage.removeItem("total_price");
     sessionStorage.removeItem("mission");
 
+    // 미션 가져오기
+    const form = this.document.querySelector('.mission_text');
+    const missions = [];
+
+    for ( let i = 0 ; i < form.children.length - 2 ; i++ ) {
+        // packaging, method 제외 나머지 확인
+        missions.push({
+            menu: form.children[i].querySelector('.menu_name').value,
+            option: form.children[i].querySelector('.option_name').value,
+            quantity: form.children[i].querySelector('.quantity').value,
+        })
+    }
+
+    const order = {
+        missions: missions,
+        pacakging: form.children[form.children.length - 2],
+        method: form.children[form.children.length - 1],
+    }
+
     // 시작 버튼 누르면 미션 등록
     const start_btn = document.querySelector('.mission-start');
     start_btn.addEventListener('click', () => {
-        mission_menu.setItem("mission", start_btn.dataset['mission']);
+        this.sessionStorage.setItem("mission", JSON.stringify(order));
     })
 });
