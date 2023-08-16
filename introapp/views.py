@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.views.generic import TemplateView
+from django.views.generic import View, TemplateView
 
 import random
+
+from introapp.models import Question, Answer, Response
+from megacoffeeapp.models import Menu, Quantity, Option, Order, Payment
+
+
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -12,33 +17,37 @@ class BrandTemplateView(TemplateView):
     template_name = 'introapp/brand.html'
 
 class Mission_MegaTemplateView(TemplateView):
+    model = Payment
     template_name = 'introapp/mission_mega.html'
     def get(self, request):
-        mission_list = {
-            "사과 유자차": "사과 유자차 2잔을 포장해주세요 한잔은 차가운거, 한잔은 뜨거운 것으로 부탁합니다.",
-            "카페모카": "카페모카 시럽추가 해서 얼음 적게 한잔 매장에서 먹고 갈게요.",
-            "복숭아 아이스티": "복숭아 아이스티에 샷추가 하고 쿠폰 사용할게요 차액은 카드결제로 하고 포장해갈게요.",
-            "얼그레이차": "얼그레이차 따듯하게 시럽 추가해서 포장해갈게요.",
-            "초코허니퐁크러쉬": "초코허니퐁크러쉬 한잔과 바나나 퐁크러쉬 두잔을 매장에서 먹고갈게요.",
-            "유니콘 매직에이드": "유니콘 매직에이드 블루 한잔과 유니콘 프라페 두잔 포장해 갈게요.",
-            "아메리카노": "아이스 아메리카노 5잔, 카페라떼 뜨거운 걸로 3잔 포장해갈게요.",
-            "체리콕": "체리콕 2잔 매장에서 먹고갈게요.",
-            "꿀 아메리카노": "꿀 아메리카노 한잔과 바닐라 아메리카노 따듯하게 한잔과 바닐라 라떼에 샷추가 해서 따듯하게 한잔 포장으로 주문해주세요.",
-            "연유라떼": "연유라떼 두잔 중 한잔은 디카페인으로 변경할게요 둘 다 뜨거운 걸로 포장해주세요.",
-            "딸기라떼": "딸기라떼 차갑게 한잔과 딸기쿠키프라페에 휘핑크림 올려서 한잔 주문할게요 먹고갈게요.",
-            "고흥 유자망고": "고흥 유자망고 스무디 두잔과 나주 플럼코트 스무디 한잔 포장해 갈게요.",
-            "에스프레소": "에스프레소 피에노 한잔 먹고갈게요.",
-            "쿠키프라페": "쿠키프라페 휘핑크림 추가해주시고요 고구마라떼 한잔 주세요 포장해갈게요.",
-            "아메리카노": "아이스 아메리카노 한잔 먹고갈게요.",
-            "흑당버블밀크티": "흑당버블밀크티 하나 포장해갈게요.",
-            "오레오 초코라떼": "오레오 초코라떼 휘핑크림 없이 포장해갈게요.",
-            "메가초코": "메가초코 3잔 포장해갈게요.",
-            "카푸치노": "카푸치노 따듯하게 시나몬 파우더 없이 우유는 아몬드밀크로 변경해서 포장해갈게요.",
-            "아메리카노": "아이스 아메리카노 샷추가해서 얼음 많이 포장해갈게요."
-        }
-        mission_menu = random.choice(list(mission_list.keys()))
-        mission = mission_list[mission_menu]
-        return render(request, 'introapp/mission_mega.html', {'mission_menu': mission_menu, 'mission': mission})
+        payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이', ]
+        packaging = ['포장', '매장']
+
+        method = random.choice(payments)
+        packaging = random.choice(packaging)
+
+        menus = random.sample(list(Menu.objects.all()), random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
+        quantities = random.sample(list(Quantity.objects.all()), len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
+        options = random.sample(list(Option.objects.all()), len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
+        menu_names = [menu.name for menu in menus]
+        quantity_names = [quantity.value for quantity in quantities]
+        option_names = [option.name for option in options]
+
+        orders = []
+        for menu_id, quantity_id, option_id in zip(menu_names, quantity_names, option_names):
+            menu = Menu.objects.get(name=menu_id)
+            quantity = Quantity.objects.get(value=quantity_id)
+            option = Option.objects.get(name=option_id)
+
+            order = Order.objects.create(menu=menu, quantity=quantity, option=option)
+            orders.append(order)
+
+        payment = Payment.objects.create(method=method, packaging=packaging)
+        for order in orders:
+            payment.orders.add(order)  # 모든 주문을 하나의 결제에 연결
+        payment.save()
+
+        return render(request, 'introapp/mission_mega.html', {'payment': payment})
 
 
 class CompleteTemplateView(TemplateView):
@@ -47,11 +56,24 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
-class Question1_TemplateView(TemplateView):
-    template_name = 'introapp/question1.html'
 
-class Question2_TemplateView(TemplateView):
-    template_name = 'introapp/question2.html'
+class SurveyView(View):
+    template_name = 'introapp/survey.html'
 
-class Question3_TemplateView(TemplateView):
-    template_name = 'introapp/question3.html'
+    def get(self, request):
+        questions = Question.objects.all()
+        context = {'questions': questions}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        for question_id, answer_ids in request.POST.items():
+            if question_id.startswith('question_'):
+                question_id = question_id.replace('question_', '')
+                question = Question.objects.get(id=question_id)
+                selected_answers = Answer.objects.filter(id__in=answer_ids.split(','))
+                response = Response(question=question)
+                response.brand = 'megacoffee'
+                response.save()
+                response.answer.set(selected_answers)
+        return redirect('introapp:brand')
+
