@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
+    // 기존 내용이 있다면 삭제
     sessionStorage.removeItem("clickData");
     sessionStorage.removeItem("orderMenu");
     sessionStorage.removeItem("remain_time");
@@ -20,13 +21,15 @@ window.addEventListener('DOMContentLoaded', function(){
 
     const order = {
         missions: missions,
-        pacakging: form.children[form.children.length - 2],
-        method: form.children[form.children.length - 1],
+        packaging: form.children[form.children.length - 2].value,
+        method: form.children[form.children.length - 1].value,
     }
 
     // 시작 버튼 누르면 미션 등록
     const start_btn = document.querySelector('.mission-start');
     start_btn.addEventListener('click', () => {
         this.sessionStorage.setItem("mission", JSON.stringify(order));
+        console.log(JSON.stringify(order));
+        location.href = '/megacoffee/question/';
     })
 });
