@@ -132,13 +132,13 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
     display: flex;
     transition: 0.3s;
     justify-content: center;
     align-items: center;
-    opacity: 0;
     z-index: -10;
 }
 
@@ -152,12 +152,8 @@
     z-index: -10;
 }
 
-.pay-modal {
-    transform: translate(0, -75%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 600px;
+.pay-modal-container .modal {
+    width: 500px;
     background: #fff;
     border-radius: 10px;
 }
@@ -166,7 +162,7 @@
     font-size: 2rem;
     font-weight: bold;
     color: #FFB800;
-    margin: 15px;
+    margin: 1.2rem;
 }
 
 .pay-modal-text {
@@ -243,32 +239,24 @@
     color: blueviolet;
 }
 
-.pay-result-check {
-    background: #FFB800;
+.pay-result-check, .pay-result-cancel {
     margin: 10px;
-    padding-left: 5%;
-    width: 40%;
-    height: 80px;
+    width: 43%;
+    height: 3.75rem;
     border: 0;
     border-radius: 10px;
     color: #fff;
     font-size: 1.4rem;
     font-weight: bold;
-    letter-spacing: 15px;
+
+}
+
+.pay-result-check {
+    background: #FFB800;
 }
 
 .pay-result-cancel {
     background: #d9d9d9;
-    margin: 10px;
-    padding-left: 5%;
-    width: 40%;
-    height: 80px;
-    border: 0;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: bold;
-    letter-spacing: 15px;
 }
 
 /* 주문리스트 반응형 웹, 아직 못함 */

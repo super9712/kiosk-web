@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>메가커피</title>
     <link
     rel="stylesheet"
     href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -43,7 +43,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630171805_1656577085458_7skvYFEJwH.jpg">
                     <div>
-                        <figcaption class="menu-title">아메리카노</figcaption>
+                        <figcaption class="menu-title">아이스 아메리카노</figcaption>
                         <span class="menu-price">2,000원</span>
                     </div>
                 </figure>
@@ -53,7 +53,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165440_1656575680273_1mqBtip7qh.jpg">
                     <div>
-                        <figcaption class="menu-title">카페라떼</figcaption>
+                        <figcaption class="menu-title">아이스 카페라떼</figcaption>
                         <span class="menu-price">2,900원</span>
                     </div>
                 </figure>
@@ -63,7 +63,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165339_1656575619040_5XSmRW4GJT.jpg">
                     <div>
-                        <figcaption class="menu-title">카라멜마끼아또</figcaption>
+                        <figcaption class="menu-title">아이스 카라멜 마끼아또</figcaption>
                         <span class="menu-price">3,700원</span>
                     </div>
                 </figure>
@@ -73,7 +73,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165146_1656575506210_0DJPVTvDIa.jpg">
                     <div>
-                        <figcaption class="menu-title">바닐라라떼</figcaption>
+                        <figcaption class="menu-title">아이스 바닐라 라떼</figcaption>
                         <span class="menu-price">3,400원</span>
                     </div>
                 </figure>
@@ -83,7 +83,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165537_1656575737487_Bxg3VBe7i4.jpg">
                     <div>
-                        <figcaption class="menu-title">카페모카</figcaption>
+                        <figcaption class="menu-title">아이스 카페모카</figcaption>
                         <span class="menu-price">3,900원</span>
                     </div>
                 </figure>
@@ -93,7 +93,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165819_1656575899792_ItfqiNDhPh.jpg">
                     <div>
-                        <figcaption class="menu-title">콜드브루오리지널</figcaption>
+                        <figcaption class="menu-title">아이스 콜드브루 오리지널</figcaption>
                         <span class="menu-price">3,500원</span>
                     </div>
                 </figure>
@@ -103,7 +103,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630165911_1656575951121_0YxlHWvpqC.jpg">
                     <div>
-                        <figcaption class="menu-title">헤이즐넛라떼</figcaption>
+                        <figcaption class="menu-title">아이스 헤이즐넛 라떼</figcaption>
                         <span class="menu-price">3,400원</span>
                     </div>
                 </figure>
@@ -113,7 +113,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630170029_1656576029152_FYWEDbVbFT.jpg">
                     <div>
-                        <figcaption class="menu-title">헤이즐넛아메리카노</figcaption>
+                        <figcaption class="menu-title">아이스 헤이즐넛 아메리카노</figcaption>
                         <span class="menu-price">2,700원</span>
                     </div>
                 </figure>
@@ -145,14 +145,14 @@
                 <span class="size-up-price">1,000원</span>
             </li>
             <li class="modal-item">
-                <button class="btn btn-size-up">
+                <button class="btn btn-cream btn-add-cream">
                     <i aria-hidden="true"></i>
-                    <span>휘핑크림<br>추가</span> 
+                    <span>휘핑크림 추가</span> 
                 </button>
                 <span class="size-up-price">1,000원</span>
-                <button class="btn btn-size-up">
+                <button class="btn btn-cream btn-out-cream">
                     <i aria-hidden="true"></i>
-                    <span>휘핑크림<br>빼기</span> 
+                    <span>휘핑크림 빼기</span> 
                 </button>
                 <span class="size-up-price">0원</span>
             </li>
@@ -184,7 +184,7 @@
 
     <!-- 결제 내역 모달 영역 -->
     <div class="pay-modal-container modal-invisible">
-        <div class="pay-modal">
+        <div class="modal">
         <h3 class="pay-modal-heading">주문리스트</h3>
         <p class="pay-modal-text"><span>주문리스트</span>를 확인해 주세요.</p>
         <div class="pay-list-container">
@@ -193,10 +193,10 @@
             <span>가격</span>
             </div>
             <ul class="pay-list">
-            `<li id="${id}" class="pay-item">
-            <span class="item-name">${item}</span>
-            <span><span class="item-price">${price}</span>원</span>
-        </li>` 
+                `<li id="${id}" class="pay-item">
+                    <span class="item-name">${item}</span>
+                    <span><span class="item-price">${price}</span>원</span>
+                </li>` 
             </ul>
         </div>
         <div class="pay-result">
@@ -204,8 +204,8 @@
             <span>총 결제금액 <span class="total-item-price"></span></span>
         </div>
         <div>
-            <button class="pay-result-check" onclick="">결제하기</button>
-            <button class="pay-result-cancel">취소하기</button>
+            <button class="pay-result-check" onclick="">결제 하기</button>
+            <button class="pay-result-cancel">취소 하기</button>
         </div>
         </div>
     </div>
