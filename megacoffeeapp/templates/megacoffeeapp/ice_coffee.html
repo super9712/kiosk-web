@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>메가커피</title>
     <link
     rel="stylesheet"
     href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -145,14 +145,14 @@
                 <span class="size-up-price">1,000원</span>
             </li>
             <li class="modal-item">
-                <button class="btn btn-size-up">
+                <button class="btn btn-cream btn-add-cream">
                     <i aria-hidden="true"></i>
-                    <span>휘핑크림<br>추가</span> 
+                    <span>휘핑크림 추가</span> 
                 </button>
                 <span class="size-up-price">1,000원</span>
-                <button class="btn btn-size-up">
+                <button class="btn btn-cream btn-out-cream">
                     <i aria-hidden="true"></i>
-                    <span>휘핑크림<br>빼기</span> 
+                    <span>휘핑크림 빼기</span> 
                 </button>
                 <span class="size-up-price">0원</span>
             </li>
@@ -184,7 +184,7 @@
 
     <!-- 결제 내역 모달 영역 -->
     <div class="pay-modal-container modal-invisible">
-        <div class="pay-modal">
+        <div class="modal">
         <h3 class="pay-modal-heading">주문리스트</h3>
         <p class="pay-modal-text"><span>주문리스트</span>를 확인해 주세요.</p>
         <div class="pay-list-container">
@@ -193,10 +193,10 @@
             <span>가격</span>
             </div>
             <ul class="pay-list">
-            `<li id="${id}" class="pay-item">
-            <span class="item-name">${item}</span>
-            <span><span class="item-price">${price}</span>원</span>
-        </li>` 
+                `<li id="${id}" class="pay-item">
+                    <span class="item-name">${item}</span>
+                    <span><span class="item-price">${price}</span>원</span>
+                </li>` 
             </ul>
         </div>
         <div class="pay-result">
@@ -204,8 +204,8 @@
             <span>총 결제금액 <span class="total-item-price"></span></span>
         </div>
         <div>
-            <button class="pay-result-check" onclick="">결제하기</button>
-            <button class="pay-result-cancel">취소하기</button>
+            <button class="pay-result-check" onclick="">결제 하기</button>
+            <button class="pay-result-cancel">취소 하기</button>
         </div>
         </div>
     </div>
