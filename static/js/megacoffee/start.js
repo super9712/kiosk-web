@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
     sessionStorage.removeItem("total_price");
     sessionStorage.removeItem("mission");
 
+
     // 미션 가져오기
     const form = this.document.querySelector('.mission_text');
     const missions = [];

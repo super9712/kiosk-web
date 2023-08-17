@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-
 <div class="background">
     <div class = "center">
         <div class = "flex justify-center align-center items-center my-5">
@@ -13,21 +12,9 @@
                 <br>
                 주문하시려면 아래의 버튼을 눌러주세요.
             </span>
-
-            <form class="mission_text" style="display: none;">
-                {% for order in payment.orders.all %}
-                <div>
-                    <input type="hidden" class="menu_name" value="{{ order.menu.name }}" />
-                    <input type="hidden" class="option_name" value="{{ order.option.name }}" />
-                    <input type="hidden" class="quantity" value="{{ order.quantity.value }}" />
-                </div>
-                {% endfor %}
-                <input type="hidden" class="packaging" value="{{ payment.packaging }}" />
-                <input type="hidden" class="method" value="{{ payment.method }}" />
-            </form>
         </div>
         <div class = "flex justify-center align-center items-center my-5">
-            <a class="btn mission-start">주문하기</a>
+            <a class="btn mission-start" href="{% url 'megacoffeeapp:question' %}" data-mission="{{  mission_menu }}">주문하기</a>
         </div>
     </div>
 
