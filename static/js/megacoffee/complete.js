@@ -1,17 +1,34 @@
 const setAccuracy = (orderMenu, mission) => {
     let correct = 0;
-    let total = 0;
+    let total = 2;
+
+    console.log('orderMenu', orderMenu)
+    console.log('mission', mission)
     
     mission.missions.map((m) => {
-        total += 2
+        correct += 1;
+        if ( m.method === orderMenu[0].method ) {
+            console.log('same method')
+            correct++; // 결제 방식
+        }
+        if ( m.packaging === orderMenu[0].packaging ) {
+            console.log('same packaging')
+            correct++; // 포장 여부
+        }
         for ( let i=0 ; i < orderMenu.length ; i++ ) {
-            if ( orderMenu[i].split('/')[0] === m.menu_name ) {
-                correct += 1;
-                if ( orderMenu[i].split('/')[1] === m.option_name ) {
-                    correct += 1; 
+            if ( orderMenu[i].menu_name.split('/')[0] === m.menu_name ) {
+                console.log('same menu')
+                correct += 1; // 메뉴
+
+                if ( orderMenu[i].menu_name.split('/')[1] ) {
+                    total ++;
+                    if ( orderMenu[i].menu_name.split('/')[1] === m.option_name ) {
+                        correct += 1; // 추가 옵션
+                    }
                 }
-                if ( orderMenu[i].split('/')[2] && orderMenu[i].split('/')[2] === m.quantity ) {
-                    correct += 1; 
+
+                if ( orderMenu[i].quantity === m.quantity ) {
+                    correct += 1; // 개수
                 }
             }
         }

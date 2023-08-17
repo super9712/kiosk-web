@@ -22,12 +22,12 @@
             </div>
             <div class="flex column">
                 <div class = "flex my-5">
-                    <a class = "btn btn-pay btn-square-small no-margin-right" href="{% url 'megacoffeeapp:pay_card' %}">카드</a>
-                    <a class = "btn btn-pay btn-square-small" href="{% url 'megacoffeeapp:pay_coupon' %}">모바일<br>쿠폰</a>
+                    <a class = "btn btn-pay btn-square-small no-margin-right" data-href="{% url 'megacoffeeapp:pay_card' %}" data-pay="카드">카드</a>
+                    <a class = "btn btn-pay btn-square-small" data-href="{% url 'megacoffeeapp:pay_coupon' %}" data-pay="모바일쿠폰">모바일<br>쿠폰</a>
                 </div>
                 <div class = "flex my-5">
-                    <a class = "btn btn-pay btn-square-small no-margin-right" href="{% url 'megacoffeeapp:pay_phone' %}">삼성페이 <br>/<br> 애플페이</a>
-                    <a class = "btn btn-pay btn-square-small" href="{% url 'megacoffeeapp:pay_barcode' %}">카카오페이 <br>/<br> 네이버페이</a>
+                    <a class = "btn btn-pay btn-square-small no-margin-right" data-href="{% url 'megacoffeeapp:pay_phone' %}" data-pay="삼성페이/애플페이">삼성페이 <br>/<br> 애플페이</a>
+                    <a class = "btn btn-pay btn-square-small" data-href="{% url 'megacoffeeapp:pay_barcode' %}" data-pay="카카오페이/네이버페이">카카오페이 <br>/<br> 네이버페이</a>
                 </div>
             </div>
         </div>

@@ -11,8 +11,8 @@
             </span>
         </div>
         <div class = "flex justify-center align-center items-center my-5">
-            <a class = "btn btn-square btn-yellow" href="{% url 'megacoffeeapp:start_2' %}">포장하기</a>
-            <a class = "btn btn-square" href="{% url 'megacoffeeapp:start_2' %}">
+            <a class = "btn btn-packaging btn-square btn-yellow" data-href="{% url 'megacoffeeapp:start_2' %}" data-pack="포장">포장하기</a>
+            <a class = "btn btn-packaging btn-square" data-href="{% url 'megacoffeeapp:start_2' %}" data-pack="매장">
                 매장에서
                 <br>
                 식사
@@ -21,4 +21,5 @@
     </div>
 </div>
 
+<script type="text/javascript" src="{% static 'js/megacoffee/questions.js' %}"></script> 
 {% endblock%}

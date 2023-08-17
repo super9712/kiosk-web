@@ -8,11 +8,12 @@ let currentOption = [];
 // for timer
 const MAX_TIME = 60;
 let remain_time = MAX_TIME;
+let times = sessionStorage.getItem('times') ? sessionStorage.getItem('times') : '';
 
 
 // add onClicks & logics
 window.addEventListener('DOMContentLoaded', function(){
-    // local storage에 데이터 있는지 확인
+    // storage에 데이터 있는지 확인
     if ( sessionStorage.getItem("clickData") ) {
         clickData = JSON.parse(sessionStorage.getItem("clickData"));
         console.log('click data: ', clickData, typeof(clickData))
@@ -130,8 +131,6 @@ const openModal = (e) => {
     // 모달 열기
     const modal = document.querySelector('.menu-modal-container');
     modal.setAttribute('style', 'opacity: 1; z-index: 999;');
-
-
 }
 
 const closeMenuModal = () => {
@@ -145,11 +144,12 @@ const updateOrderList = () => {
     // 주문 목록 업데이트
     const order_list = document.querySelector('.order-list');
     let render_list = '';
+    console.log(orderMenu)
     orderMenu.map((e, id) => {
         render_list += `
             <li key="${id}" id="${id}" class="order-item">
                 <i class="remove-item far fa-times-circle"></i>
-                <span class="item-name">${e.menu_name}</span>
+                <span class="item-name">${e.menu_name} ${e.quantity}개</span>
                 <span class="item-price">${e.menu_price}</span>
             </li>
         `
@@ -172,15 +172,32 @@ const setMenu = (e) => {
 
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
-            menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) !== 1 ? element.optionCount + '회' : '' }` 
-            menu_price = parseInt(menu_price.replaceAll(',', '')) + parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount) + "원";
+            menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) >= 1 ? element.optionCount + '회' : '' }` 
+            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt (parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount ? element.optionCount : 0))) + "원";
         })
     } 
-    
-    orderMenu.push({
-        menu_name: menu_name,
-        menu_price: menu_price,
-    });
+
+    let flag = false; 
+
+    orderMenu.map((e) => {
+        if ( e.menu_name === menu_name ) {
+            // 동일한 메뉴가 이미 담겨있을 경우
+            e.quantity++;
+            e.menu_price = (parseInt(e.menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(menu_price.replaceAll(',', '').replaceAll('원', ''))) + "원";
+            flag = true;
+        } 
+    })
+
+    if ( !flag ) {
+        console.log(sessionStorage.getItem('method'));
+        orderMenu.push({
+            menu_name: menu_name,
+            menu_price: menu_price,
+            quantity: 1,
+            method: sessionStorage.getItem('method'),
+            packaging: sessionStorage.getItem('packaging'),
+        });
+    }
 
     // 옵션 초기화
     currentOption = [];
@@ -246,9 +263,9 @@ const checkOrder = () => {
             </li>
         `;
 
-        e.menu_price.replace
         total_price += parseInt(e.menu_price.replaceAll(',', ''));
     });
+
     pay_list.innerHTML = render_list;
 
     // 총 금액
@@ -271,11 +288,13 @@ const submitOrder = () => {
     getClickData('submit order');
     const modal = document.querySelector('.pay-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
+
     // 데이터 local storage에 저장 
     sessionStorage.setItem("clickData", JSON.stringify(clickData));
     sessionStorage.setItem("orderMenu", JSON.stringify(orderMenu));
+    sessionStorage.setItem('times', sessionStorage.getItem('times') + ' / ' + 60 - remain_time )
     sessionStorage.setItem("remain_time", JSON.stringify(remain_time));
-    sessionStorage.setItem("total_price", JSON.stringify(document.querySelector('.total-item-price').innerHTML));
+    sessionStorage.setItem("total_price", JSON.stringify(document.querySelector('.total-item-price') ? document.querySelector('.total-item-price').innerHTML : null));
 
     console.log(document.querySelector('.total-item-price').innerHTML);
 
@@ -284,9 +303,8 @@ const submitOrder = () => {
 
 const addOption = (e) => {
     let optionName = "";
-    let optionPrice = "";
+    let optionPrice = 0;
 
-    console.log(e.target)
     if ( e.target.tagName === "BUTTON" ) {
         optionName = e.target.querySelector('span').innerHTML;
         optionPrice = e.target.nextElementSibling.innerHTML;
@@ -310,10 +328,8 @@ const addOption = (e) => {
     if ( ! flag ) {
         currentOption.push({
             optionName: optionName,
-            optionPrice: optionPrice,
-            optionCount: 1,
+            optionPrice: optionPrice.replaceAll(',', '').replaceAll('원', ''),
+            quantity: 1,
         });
     };
-
-    console.log(currentOption);
 }
