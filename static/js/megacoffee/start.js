@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     const order = {
         missions: missions,
-        pacakging: form.children[form.children.length - 2].value,
+        packaging: form.children[form.children.length - 2].value,
         method: form.children[form.children.length - 1].value,
     }
 
