@@ -172,8 +172,9 @@ const setMenu = (e) => {
 
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
+            console.log('option', element)
             menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) >= 1 ? element.optionCount + '회' : '' }` 
-            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt (parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount ? element.optionCount : 0))) + "원";
+            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount ? element.optionCount : 1))) + "원";
         })
     } 
 
@@ -332,4 +333,6 @@ const addOption = (e) => {
             quantity: 1,
         });
     };
+
+    console.log(currentOption)
 }

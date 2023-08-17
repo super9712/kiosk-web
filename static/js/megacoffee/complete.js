@@ -4,7 +4,6 @@ const setAccuracy = (orderMenu, mission) => {
 
     console.log('orderMenu', orderMenu)
     console.log('mission', mission)
-    
 
     if ( mission.method === orderMenu[0].method ) {
         console.log('same method')
@@ -24,22 +23,22 @@ const setAccuracy = (orderMenu, mission) => {
                 correct += 1; // 메뉴
 
                 if ( orderMenu[i].menu_name.split('/')[1] ) {
-                    total ++;
                     if ( orderMenu[i].menu_name.split('/')[1] === m.option ) {
                         console.log('same option',)
                         correct += 1; // 추가 옵션
                     } 
+                    if ( orderMenu[i].quantity == m.quantity ) {
+                        correct += 1; // 개수
+                    }
                 } else {
                     if ( m.option === '추가 옵션 없음' ) {
                         console.log('no option',)
                         correct += 1; // 추가 옵션
                     }
+                    if ( orderMenu[i].quantity == m.quantity ) {
+                        correct += 1; // 개수
+                    }
                 }
-
-                if ( orderMenu[i].quantity == m.quantity ) {
-                    correct += 1; // 개수
-                }
-
                 break;
             } 
         }
@@ -56,24 +55,17 @@ window.addEventListener('DOMContentLoaded', function() {
     const mission = JSON.parse(sessionStorage.getItem("mission"));
 
     document.querySelector('.complete-btn').addEventListener('click', () => {
-        const href = document.querySelector('.complete-btn').dataset['href'];
-
         // 정확도 계산
         // 현재는 단일 string으로 들어오기 때문에 그냥 돌리지만 이후에는 누적 계산해야 함
 
-        const { correct, total } = setAccuracy(orderMenu, order);
+        const { correct, total } = setAccuracy(orderMenu, mission);
         console.log(correct, total, correct/total*100);
+        sessionStorage.setItem('accuracy', correct/total*100);
         
         // send data ( 예정 )
-        
-        // remove datas
-        sessionStorage.getItem("clickData");
-        sessionStorage.getItem("orderMenu");
-        sessionStorage.getItem("remain_time");
-        sessionStorage.getItem("total_price");
-        sessionStorage.getItem("mission");
+
 
         // redirecting
-        window.location.href = href;
+        window.location.href = '/complete/';
     });
 });
