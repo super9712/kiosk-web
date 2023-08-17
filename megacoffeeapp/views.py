@@ -2,10 +2,20 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.views.generic import TemplateView
-
+from megacoffeeapp.models import Payment
 
 class MissionDetailView(TemplateView):
+     model = Payment
      template_name = 'megacoffeeapp/start.html'
+
+     def get_context_data(self, **kwargs):
+          context = super().get_context_data(**kwargs)
+          payment_pk = self.kwargs.get('payment_pk')
+          payment = Payment.objects.get(pk=payment_pk)
+
+          context['payment'] = payment
+
+          return context
 
 
 class QuestionTemplateView(TemplateView):
