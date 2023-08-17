@@ -4,26 +4,35 @@
 
 {% block content %}
 <div class="background">
-    <div class = "center">
-        <div class = "highlight flex justify-center align-center items-center my-5 ">
+    <div class = "center long-height">
+        <div class = "font-big flex justify-center align-center items-center my-5 ">
             <span class = "font-bold fs-1">주문을 완료하셨습니다.</span>
         </div>
-        <div class = "ordered flex justify-evenly">
-            <div>
-                <span class ="title font-bold fs-3">주문한 내역</span>
-                <div class="method-order">결제 방법 : ____</div>
+        <div class = "flex ordered orderWrap">
+            <div class="flex column">
+                <div class ="title font-bold fs-3">주문한 내역</div>
+                <div class="title font-bold method-order">결제 방법 : ____</div>
             </div>
 
-            <div class = "flex justify-evenly order-list">
+            <div class = "justify-evenly order-list">
             </div>
         </div>
-        <div class = "answer flex justify-evenly">
-            <div>
-                <span class ="title font-bold fs-3">주문했어야 하는 내역</span>
-                <div class="method-mission">결제 방법 : ____</div>
+        <div class = "flex answer missionWrap">
+            <div class="flex column">
+                <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
+                <div class="title font-bold method-mission">결제 방법 : ____</div>
             </div>
 
-            <div class = "flex justify-evenly answer-list">
+            <div class = "justify-evenly answer-list">
+            </div>
+        </div>
+        <div class = "answer justify-evenly correctWrap">
+            <div>
+                <div class ="font-bold fs-3">정확도 : ** %</div>
+                <div class ="font-bold fs-3">주문까지 걸린 시간 : **분 **초</div>
+            </div>
+
+            <div class = "justify-evenly answer-list">
             </div>
         </div>
         
