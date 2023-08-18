@@ -48,9 +48,7 @@ const setAccuracy = (orderMenu, mission) => {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-    const clickData = JSON.parse(sessionStorage.getItem("clickData"));
     const orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
-    const remain_time = parseInt(sessionStorage.getItem("remain_time"));
     const total_price = sessionStorage.getItem("total_price");
     const mission = JSON.parse(sessionStorage.getItem("mission"));
 
@@ -64,8 +62,8 @@ window.addEventListener('DOMContentLoaded', function() {
         
         // send data ( 예정 )
 
-
+        
         // redirecting
-        window.location.href = '/complete/';
+        location.href = '/complete/';
     });
 });
