@@ -44,6 +44,7 @@
 
 .column {
     flex-direction: column;
+    width : 50%;
 }
 
 /*
