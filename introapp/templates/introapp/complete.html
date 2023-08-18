@@ -11,31 +11,30 @@
         <div class = "flex ordered orderWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문한 내역</div>
-                <div class="title font-bold method-order">결제 방법 : ____</div>
+                <div class="method-order">결제 방법 : </div>
             </div>
-
-            <div class = "flex align-center items-center order-list">
+            <div class = "menu justify-evenly order-list">
             </div>
         </div>
         <div class = "flex answer missionWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="title font-bold method-mission">결제 방법 : ____</div>
+                <div class="method-mission">결제 방법 : </div>
             </div>
 
-            <div class = "justify-evenly answer-list">
+            <div class = "menu justify-evenly answer-list">
             </div>
         </div>
         <div class = "answer justify-evenly correctWrap">
             <div>
-                <div class ="font-bold fs-3 accuracy">정확도 : ** %</div>
-                <div class ="font-bold fs-3 using-time">주문까지 걸린 시간 : **분 **초</div>
+                <div class ="font-bold fs-3 accuracy">정확도 :  %</div>
+                <div class ="font-bold fs-3 using-time">주문까지 걸린 시간 : 분 **초</div>
             </div>
 
             <div class = "justify-evenly answer-list">
             </div>
         </div>
-        
+
         <div class = "flex justify-evenly align-center items-center my-5">
             <a class = "btn mx-5" href="{% url 'introapp:main' %}">설문조사 없이 종료하기</a>
             <a class = "btn mx-5" href = "{% url 'introapp:survey' %}">설문조사 하러가기</a>

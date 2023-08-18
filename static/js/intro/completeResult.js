@@ -35,6 +35,6 @@ window.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.method-mission').innerHTML = '결제 수단 : ' + order.method;
 
     // 정확도 및 시간 출력
-    document.querySelector('.accuracy').innerHTML = '정확도 : ' + accuracy + '%';
+    document.querySelector('.accuracy').innerHTML = '정확도 : ' + Math.round(accuracy) + '%';
     document.querySelector('.using-time').innerHTML = '걸린 시간 : ' + (60 - remain_time) + '초';
 });
