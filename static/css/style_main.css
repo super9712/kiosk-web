@@ -350,8 +350,26 @@ complete.html
         width: 100%;
     }
 
+    .flex.my-5{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .flex.my-5.pay{
+        flex-direction: column;
+        align-items: flex-start;
+        width: 92%;
+    }   
+
     .flex.justify-center.align-center.items-center.my-5{
         flex-direction: row;
+        align-items: center;   
+        width: 100%;
+    }
+    
+    .flex.justify-center.align-center.items-center.my-5.pay{
+        flex-direction: column;
         align-items: center;
         width: 100%;
     }
@@ -361,9 +379,17 @@ complete.html
         margin-bottom: 30px;
     }
 
-    .receipt.flex {
+    .receipt.flex.align-center.my-5.column.pay {
         flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .flex.column.pay{
+        flex-direction: column;    
         align-items: flex-start;
+        margin: 0;s
     }
 
     .receipt_list{
@@ -372,7 +398,6 @@ complete.html
         justify-content: center;
         width: 100%;
         margin-left: 20px;
-        
     }
 
     .list{
@@ -395,7 +420,7 @@ complete.html
     }
 
     .flex.column{
-        flex-direction: row;
+        flex-direction: row;    
         align-items: flex-start;
         margin-top: 10rem;
     }
@@ -408,7 +433,6 @@ complete.html
         font-size: 1.1rem;
         width: 100%;
     }
-
 }
 
 @media screen and (max-width: 780px) {
