@@ -10,9 +10,29 @@ const MAX_TIME = 60;
 let remain_time = MAX_TIME;
 let times = sessionStorage.getItem('times') ? sessionStorage.getItem('times') : '';
 
-
 // add onClicks & logics
 window.addEventListener('DOMContentLoaded', function(){
+    const setHeader = () => {
+        const missions = JSON.parse(sessionStorage.getItem('mission'));
+        const headerMissionList = document.querySelector('.mission-list');
+
+        let missionList = '';
+        missionList += `<h3>미션</h3>`
+        missionList += `<div>결제 방식 : ${missions.method}</div>`;
+        missionList += `<div>포장 여부 : ${missions.packaging}</div>`;
+        missions.missions.map((e) => {
+            missionList += `
+                <div>
+                    ${e.menu} / ${e.option} / ${e.quantity}
+                </div>
+            `;
+        })
+        console.log(headerMissionList)
+        headerMissionList.innerHTML = missionList;
+    }
+
+    setHeader();
+
     // storage에 데이터 있는지 확인
     if ( sessionStorage.getItem("clickData") ) {
         clickData = JSON.parse(sessionStorage.getItem("clickData"));

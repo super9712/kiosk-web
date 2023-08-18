@@ -5,7 +5,7 @@
     class="-translate-x-60 "
     style="
       height: 100vh;
-      z-index: 1;
+      z-index: 100;
       background-color: #f0f2f3;
       width: 10rem;
       position: absolute;
@@ -23,15 +23,13 @@
     <div>
       <a><img src="{% static 'img/logo.png' %}" alt="senisk-logo" /></a>
     </div>
-    <div >
-    </div>
+    <div class="mission-list"></div>
   </nav>
-
   <div
     id="open-nav"
     class="p-5 rounded-r-md"
     style="
-      z-index: 1;
+      z-index: 1000;
       background-color: #f0f2f3;
       position: absolute;
       margin-top: 1rem;
@@ -48,6 +46,7 @@
       </span>
     </button>
   </div>
+  </header>
 
   <script>
     function onClickClose() {
