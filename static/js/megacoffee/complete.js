@@ -54,15 +54,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector('.complete-btn').addEventListener('click', () => {
         // 정확도 계산
-        // 현재는 단일 string으로 들어오기 때문에 그냥 돌리지만 이후에는 누적 계산해야 함
-
         const { correct, total } = setAccuracy(orderMenu, mission);
         console.log(correct, total, correct/total*100);
         sessionStorage.setItem('accuracy', correct/total*100);
-        
-        // send data ( 예정 )
 
-        
         // redirecting
         location.href = '/complete/';
     });
