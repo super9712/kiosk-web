@@ -37,6 +37,8 @@
 
 .column {
     flex-direction: column;
+    justify-content : space-evenly;
+    width : 400px;
 }
 
 /*
@@ -103,8 +105,9 @@ layout
 
 .title {
     background : var(--secondary);
-    margin: auto;
+    margin: 30px;
     padding : 1rem 2rem;
+    width : 300px;
     border : var(--dark);
     border-radius : 0.5rem;
 }
@@ -295,7 +298,8 @@ complete.html
 
 .method-order, .method-mission {
     background-color: var(--light);
-    margin-left: 1rem;
+    margin : 1rem;
+
 }
 
 .font-big {
@@ -308,6 +312,11 @@ complete.html
 
 .orderWrap, .missionWrap {
     height: 60vh;
+}
+
+.menu {
+    border-radius : 0.5rem;
+    border-color : var(--secondary);
 }
 
 @media screen and (max-width: 950px){
@@ -412,4 +421,3 @@ complete.html
     }
 
 }
-
