@@ -44,8 +44,8 @@
 
 .column {
     flex-direction: column;
-    justify-content : space-evenly;
-    width : 400px;
+    width : 50%;
+
 }
 
 /*
@@ -299,13 +299,25 @@ complete.html
 
 */
 
+
 .long-height {
-    height: 140vh;
+    height: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align : center;
+    font-size : 1.9rem;
 }
 
 .method-order, .method-mission {
     background-color: var(--light);
-    margin : 1rem;
+    margin-left: 1rem;
+
+    border : 3px solid var(--primary);
+    border-radius : 0.5rem;
+    padding : 1rem 1rem;
+
 
 }
 
@@ -315,9 +327,10 @@ complete.html
 
 .orderWrap, .missionWrap, .correctWrap {
     width: 60vw;
+    height : content;
 }
 
-.orderWrap, .missionWrap {
+.orderWrap {
     height: 60vh;
 }
 
