@@ -40,8 +40,8 @@ window.addEventListener('DOMContentLoaded', function() {
                 getClickData('결제 방법 선택' +  e.dataset['pay']);
                 // add payment
                 const orderMenuWithPayment = [];
-                orderMenu.map((e) => {
-                    orderMenuWithPayment.push(Object.assign(e, {payment: e.dataset['pay']}));
+                orderMenu.map((element) => {
+                    orderMenuWithPayment.push(Object.assign(element, {method: e.dataset['pay']}));
                 })
                 sessionStorage.setItem("orderMenu", JSON.stringify(orderMenuWithPayment));
                 
