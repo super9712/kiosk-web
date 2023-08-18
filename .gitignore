@@ -86,3 +86,6 @@ __pycache__/
 
 .vscode
 Scripts/
+
+db.sqlite3
+
