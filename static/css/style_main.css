@@ -35,6 +35,13 @@
     padding : 2rem 0;
 }
 
+.complete_menu {
+    border : 3px solid var(--secondary);
+    border-radius : 0.5rem;
+    padding : 1rem 1rem;
+}
+
+
 .column {
     flex-direction: column;
     justify-content : space-evenly;
