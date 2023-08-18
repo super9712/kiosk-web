@@ -66,6 +66,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
         // redirecting
-        window.location.href = '/complete/';
+        location.href = '/complete/';
     });
 });

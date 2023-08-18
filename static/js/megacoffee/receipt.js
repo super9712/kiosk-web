@@ -26,9 +26,6 @@ window.addEventListener('DOMContentLoaded', function(){
         paymentBtns.forEach((e) => {
             const href = e.dataset['href'];
             e.addEventListener('click', () => {
-                orderMenu.push({
-                    method: sessionStorage.getItem('method'),
-                });
                 sessionStorage.setItem('method', e.dataset['pay']);
                 console.log(orderMenu)
                 console.log('결제', e.dataset['pay'])
@@ -44,8 +41,8 @@ window.addEventListener('DOMContentLoaded', function(){
     total_price = sessionStorage.getItem("total_price") ? sessionStorage.getItem("total_price").replaceAll(',', '').replaceAll('\"', '') : '0';
 
     // add payment
-    orderMenu = Object.assign(orderMenu, {payment: payment});
-    sessionStorage.setItem("orderMenu", orderMenu);
+    orderMenu = Object.assign(orderMenu, {payment: sessionStorage.getItem('method')});
+    sessionStorage.setItem("orderMenu", JSON.stringify(orderMenu));
 
     // render data
     document.querySelector('.total').innerHTML = '총 결제 금액 : ' + parseInt(total_price).toLocaleString() + "원";
