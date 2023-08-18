@@ -283,6 +283,33 @@ receipt.html
     background-color: var(--primary);
 }
 
+/* 
+
+complete.html
+
+*/
+
+.long-height {
+    height: 140vh;
+}
+
+.method-order, .method-mission {
+    background-color: var(--light);
+    margin-left: 1rem;
+}
+
+.font-big {
+    font-size: 2.5rem;
+}
+
+.orderWrap, .missionWrap, .correctWrap {
+    width: 60vw;
+}
+
+.orderWrap, .missionWrap {
+    height: 60vh;
+}
+
 @media screen and (max-width: 950px){
     .wrap{
         flex-direction: column;
@@ -314,15 +341,8 @@ receipt.html
         width: 100%;
     }
 
-
-
-    /* .center{
-        flex-direction: column;
-        align-items: flex-start; 
-    } */
-
     .flex.justify-center.align-center.items-center.my-5{
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         width: 100%;
     }
@@ -366,14 +386,9 @@ receipt.html
     }
 
     .flex.column{
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
-        margin-right: 30px;
-    }
-
-    .flex.my-5{
-        flex-direction: column;
-        align-items: flex-start;
+        margin-top: 10rem;
     }
     
     .btn.btn-pay.btn-square-small{
@@ -387,30 +402,14 @@ receipt.html
 
 }
 
+@media screen and (max-width: 780px) {
+    .mission p{
+        font-size: 1.5rem;
+    }
 
-/* 
+    .btn-big{
+        width: 20rem;
+    }
 
-complete.html
-
-*/
-
-.long-height {
-    height: 140vh;
 }
 
-.method-order, .method-mission {
-    background-color: var(--light);
-    margin-left: 1rem;
-}
-
-.font-big {
-    font-size: 2.5rem;
-}
-
-.orderWrap, .missionWrap, .correctWrap {
-    width: 60vw;
-}
-
-.orderWrap, .missionWrap {
-    height: 60vh;
-}

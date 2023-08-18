@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
     sessionStorage.removeItem("total_price");
     sessionStorage.removeItem("mission");
 
+
     // 미션 가져오기
     const form = this.document.querySelector('.mission_text');
     const missions = [];
@@ -25,11 +26,13 @@ window.addEventListener('DOMContentLoaded', function(){
         method: form.children[form.children.length - 1].value,
     }
 
+    console.log(order);
+
     // 시작 버튼 누르면 미션 등록
     const start_btn = document.querySelector('.mission-start');
     start_btn.addEventListener('click', () => {
-        this.sessionStorage.setItem("mission", JSON.stringify(order));
-        console.log(JSON.stringify(order));
+        sessionStorage.setItem("mission", JSON.stringify(order));
+        console.log(JSON.stringify(order)); 
         location.href = '/megacoffee/question/';
     })
 });

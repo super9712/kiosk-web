@@ -14,7 +14,11 @@
         <div class="mission">
             <p class="mission_text">
                 {% for order in payment.orders.all %}
-                    {{ order.menu.name }} {{ order.option.name }}해서 {{ order.quantity.value }}개<br>
+                    {% if order.option.name == "추가 옵션 없음" %}
+                        {{ order.menu.name }} {{ order.quantity.value }}개<br>
+                    {% else %}
+                        {{ order.menu.name }} {{ order.option.name }}해서 {{ order.quantity.value }}개<br>
+                    {% endif %}
                 {% endfor %}
                 {{ payment.packaging }}으로 하고, 결제는 {{ payment.method }}로(으로) 할게요.
             </p>

@@ -4,7 +4,6 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from megacoffeeapp.models import Payment
 
-
 class MissionDetailView(TemplateView):
      model = Payment
      template_name = 'megacoffeeapp/start.html'

@@ -27,6 +27,10 @@ window.addEventListener('DOMContentLoaded', function(){
             const href = e.dataset['href'];
             e.addEventListener('click', () => {
                 sessionStorage.setItem('method', e.dataset['pay']);
+                orderMenu.push({
+                    method: sessionStorage.getItem('method'),
+                });
+                console.log(orderMenu)
                 console.log('결제', e.dataset['pay'])
                 location.href = href;
             })
