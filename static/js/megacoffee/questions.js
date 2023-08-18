@@ -1,4 +1,4 @@
-const getClickData = () => {
+const getClickData = (button_name) => {
     const date = new Date();
     clickData.push({
         button_name: button_name,
@@ -6,6 +6,7 @@ const getClickData = () => {
     });
 
     console.log("click data: ", clickData);
+    sessionStorage.setItem('clickData', JSON.stringify(clickData));
 }
 
 window.addEventListener('DOMContentLoaded', function(){

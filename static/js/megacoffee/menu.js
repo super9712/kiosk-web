@@ -61,6 +61,7 @@ window.addEventListener('DOMContentLoaded', function(){
     option_btns.forEach((item) => {
         item.addEventListener('click', addOption);
     })
+
     // close modal 
     document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
     document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
@@ -316,6 +317,8 @@ const addOption = (e) => {
         optionName = e.target.innerHTML;
         optionPrice = e.target.parentNode.nextElementSibling.innerHTML;
     }
+
+    getClickData('option 추가 ' + optionName);
 
     flag = false; // 이미 존재하는 옵션인지 확인 
 
