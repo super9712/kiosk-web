@@ -16,7 +16,7 @@ class Menu(models.Model):
     }
     category = models.CharField(max_length=30, default='single', choices=CATEGORIES)
 
-class Cart(models.Model):
-    menu = models.CharField(max_length=50)
-    qty = models.IntegerField()
-    price = models.IntegerField()
+class Payment(models.Model):
+    method = models.CharField(max_length=100)
+    packing = models.CharField(max_length=50)
+    menu = models.ManyToManyField(Menu)

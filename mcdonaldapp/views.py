@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponseRedirect
+
 from django.views.generic import TemplateView
+from mcdonaldapp.models import Payment, Menu
 
 
 # Create your views here.
@@ -7,16 +10,21 @@ class StartTemplateView(TemplateView):
     template_name = 'mcdonaldapp/start.html'
 
 
-class SelectTemplateView(TemplateView):
+class PackingTempleteView(TemplateView):
     template_name = 'mcdonaldapp/here_togo.html'
 
 
 class MenuTemplateView(TemplateView):
+    model = Payment
     template_name = 'mcdonaldapp/menu.html'
 
+    def get(self, request, *args, **kwargs):
+        packing = request.GET.get('packing', '')
+        return render(request, 'mcdonaldapp/menu.html', {'packing': packing})
 
 class HowmanyTemplateView(TemplateView):
     template_name = 'mcdonaldapp/quantity.html'
+
 
 
 class BasketTemplateView(TemplateView):
