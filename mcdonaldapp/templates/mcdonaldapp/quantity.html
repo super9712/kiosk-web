@@ -51,19 +51,19 @@
         </p>
     </div>
     <form method="post" action="{% url 'mcdonaldapp:basket' %}">{% csrf_token %}
-        <input type="hidden" name="MenuID" value="{{ menu.id }}">
+        <input type="hidden" name="MenuID" value="{{ name }}">
         <div class="flex row">
             <div class="select_menu">
                 <li>
                     <div class="photo"> 
-                        <img src="{% static 'img/double cheese set.png' %}" />
+                        <img src="{% static 'img/'|add:image|add:'.png' %}" />
                     </div>
                     <div class="menu_list">
                         <a class="menu_name" name="MenuName">
-                            {{ menu.MenuName}}
+                            {{ name}}
                         </a>
                         <div class="price" id="increasePrice" name="MenuPrice">
-                            {{ menu.MenuPrice }}원
+                            {{ price }}원
                         </div>
                     </div>
                 </li>
@@ -75,10 +75,10 @@
             </li>
             <li class="button_1">
                 <button type="submit" class="btn-yellow">
-                    <a href="{% url 'mcdonaldapp:basket' %}">장바구니 추가</a>
+                    <a href="{% url 'mcdonaldapp:basket' %}?packing={{ packing }}&name={{ name }}&price={{ price }}">장바구니 추가</a>
                 </button>
                 <button type="button">
-                    <a href="{% url 'mcdonaldapp:menu' %}">취소</a>
+                    <a href="{% url 'mcdonaldapp:menu' %}?packing={{ packing }}">취소</a>
                 </button>
             </li>
         </div>
@@ -87,7 +87,7 @@
         <div class="priceWrap font-bold">
             <div class="textCenter">
                 <div class="total">Total:  </div>
-                <p id="total_price">{{ total_price }}</p>
+                <p id="total_price">{{ price }}</p>
                 <div class="won"> 원</div>
             </div>
         </div>
