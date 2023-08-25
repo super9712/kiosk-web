@@ -39,7 +39,6 @@ const setAccuracy = (orderMenu, mission) => {
                         correct += 1; // 개수
                     }
                 }
-                break;
             } 
         }
     })
