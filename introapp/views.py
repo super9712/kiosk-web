@@ -18,7 +18,9 @@ class BrandTemplateView(TemplateView):
 
 class Mission_MegaTemplateView(TemplateView):
     model = Payment
+
     template_name = 'introapp/mission_mega.html'
+
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이', ]
         packaging = ['포장', '매장']
@@ -26,28 +28,33 @@ class Mission_MegaTemplateView(TemplateView):
         method = random.choice(payments)
         packaging = random.choice(packaging)
 
-        menus = random.sample(list(Menu.objects.all()), random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
-        quantities = random.sample(list(Quantity.objects.all()), len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
-        options = random.sample(list(Option.objects.all()), len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
-        menu_names = [menu.name for menu in menus]
-        quantity_names = [quantity.value for quantity in quantities]
-        option_names = [option.name for option in options]
+        payment = {
+            'payments': method,
+            'packaging': packaging
+        }
 
-        orders = []
-        for menu_id, quantity_id, option_id in zip(menu_names, quantity_names, option_names):
-            menu = Menu.objects.get(name=menu_id)
-            quantity = Quantity.objects.get(value=quantity_id)
-            option = Option.objects.get(name=option_id)
+        # 딕셔너리는 1:1 맵핑밖에안돼서 그냥 메뉴랑 옵션 합쳐서 리스트 하나로 만들어야할듯
+        menu_option = [
+            '고흥 유자망고 스무디', '고흥 유자망고 스무디 사이즈업 해서',
+            '고흥 유자 하이볼 에이드', '고흥 유자 하이볼 에이드 사이즈업 해서',
+            '나주 플럼코트 스무디', '나주 플럼코트 스무디 사이즈업 해서',
+            '아메리카노', '아메리카노 샷추가 해서',
+        ]
 
-            order = Order.objects.create(menu=menu, quantity=quantity, option=option)
-            orders.append(order)
+        quantity = [1, 2, 3]
 
-        payment = Payment.objects.create(method=method, packaging=packaging)
-        for order in orders:
-            payment.orders.add(order)  # 모든 주문을 하나의 결제에 연결
-        payment.save()
+        menus = random.sample(menu_option, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
+        # options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
+        quantities = random.sample(quantity, len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
 
-        return render(request, 'introapp/mission_mega.html', {'payment': payment})
+        order = dict(zip(menus, quantities))
+
+        context = {
+            'order': order,
+            'payment': payment
+        }
+
+        return render(request, 'introapp/mission_mega.html', context)
 
 
 class CompleteTemplateView(TemplateView):
@@ -63,16 +70,26 @@ class Mission_McTemplateView(TemplateView):
         "오레오 맥플러리", "초코 오레오 맥플러리", "스트로베리 오레오 맥플러리", "아이스크림콘", "초코콘", "초코 선데이 아이스크림", "스트로베리 선데이 아이스크림", "오레오 아포카토",
         "바닐라 쉐이크", "딸기 쉐이크", "초코 쉐이크", "오렌지 주스", "코카 콜라", "코카 콜라 제로", "스프라이트", "환타", "우유"
     ]
-
     quantity = [1, 2, 3]
 
     def get(self, request):
+        payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이']
+        packaging = ['포장', '매장']
+
+        method = random.choice(payments)
+        packaging = random.choice(packaging)
+
+        payment = {
+            'payments': method,
+            'packaging': packaging
+        }
+
         menus = random.sample(self.menu_name_list, random.randint(1, 3))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
         quantities = random.sample(self.quantity, len(menus))                               # 선택한 메뉴 수량과 동일한 수량 선택
 
         result = dict(zip(menus, quantities))
 
-        context = {'order': result}
+        context = {'order': result, 'payment': payment}
         return render(request, self.template_name, context)
 
 
