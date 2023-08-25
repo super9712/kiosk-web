@@ -45,12 +45,12 @@
         tr.parentNode.removeChild(tr);
       }
 
-    function cancelOrder(menuId) {
+    function cancelOrder(name) {
         $.ajax({
           url: '{% url "mcdonaldapp:basket" %}',
           method: 'POST',
           data: {
-            'menu_id': menuId,
+            'name': name,
             'csrfmiddlewaretoken': '{{ csrf_token }}'
           },
           success: function(response) {
@@ -85,14 +85,14 @@
         <th>가격</th>
         <th>취소</th>
         <tbody></tbody>
-        {% for menu in menus %}
+        {% for name, price in menus.items %}
         <tbody class="allDelete">
           <tr>
-            <td>{{ menu.name }}</td>
-            <td>{{ menu.quantity }}개</td>
-            <td>{{ menu.price }}원</td>
+            <td>{{ name }}</td>
+            <td>1개</td>
+            <td>{{ price }}원</td>
             <td>
-              <button onclick="cancelOrder({{ menu.id }})">
+              <button onclick="cancelOrder('{{ name }}')">
                 취소
               </button>
             </td>
@@ -107,7 +107,10 @@
         <div class="textCenter">
           <div class="total">Total:  {{ total_price }}원</div>
         </div>
-        <button class="goshopping" type="button">
+      </div>
+    </div>
+    <div>
+          <button class="goshopping" type="button">
           <a href="{% url 'mcdonaldapp:menu' %}">
             계속 쇼핑하기
           </a>
@@ -117,7 +120,6 @@
             결제하기
           </a>
         </button>
-      </div>
     </div>
   </div>
     
