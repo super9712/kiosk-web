@@ -5,17 +5,17 @@ from django.views.generic import TemplateView
 from megacoffeeapp.models import Payment
 
 class MissionDetailView(TemplateView):
-     model = Payment
+     # model = Payment
      template_name = 'megacoffeeapp/start.html'
 
-     def get_context_data(self, **kwargs):
-          context = super().get_context_data(**kwargs)
-          payment_pk = self.kwargs.get('payment_pk')
-          payment = Payment.objects.get(pk=payment_pk)
+     #def get_context_data(self, **kwargs):        # 여기 없애면 complete에서 원래 미션 품목 안보임, 근데 없애야 start 화면으로 넘어옴
+          #context = super().get_context_data(**kwargs)
+          #payment_pk = self.kwargs.get('payment_pk')
+          #payment = Payment.objects.get(pk=payment_pk)
 
-          context['payment'] = payment
+          #context['payment'] = payment
 
-          return context
+          #return context
 
 
 class QuestionTemplateView(TemplateView):
