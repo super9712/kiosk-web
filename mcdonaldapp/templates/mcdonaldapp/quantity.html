@@ -8,22 +8,26 @@
 
     <script>
     $(function(){
-        var numnum = 0;
+        var num = 0;
         var stat3 = $('#increasePrice').text();
         var ProductPrice = parseInt(stat3,10);
+
     $('#decreaseQuantity').click(function(e){
-    e.preventDefault();
+        e.preventDefault();
         var stat = $('#numberUpDown').val();
         var stat2 = $('#total_price').text();
 
         var num = parseInt(stat,10);
         var price = parseInt(stat2,10);
-
+        console.log(num, price, stat2)
         num--;
-        price = price - (ProductPrice * num);
+        price = ProductPrice * num;
+
+        console.log(num, price)
         $('#numberUpDown').val(num);
         $('#total_price').text(price);
         });
+
     $('#increaseQuantity').click(function(e){
         e.preventDefault();
         var stat = $('#numberUpDown').val();
@@ -32,9 +36,10 @@
         var num = parseInt(stat,10);
 
         var price = parseInt(stat2,10);
-
+        var total_price = 0;
         num++;
-        price = price + (ProductPrice * num);
+        price = ProductPrice * num;
+        total_price = ProductPrice * num;
         $('#numberUpDown').val(num);
         $('#total_price').text(price);
         });
@@ -86,7 +91,7 @@
     <div class="select">
         <div class="priceWrap font-bold">
             <div class="textCenter">
-                <div class="total">Total: {{ price }}원 </div>
+                <div class="total">Total: <span id="total_price">{{ total_price }}원</span> </div>
             </div>
         </div>
     </div>

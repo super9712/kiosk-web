@@ -32,10 +32,10 @@
     {% include 'header.html' %}
     <header class="header">
     <div class="header-container">
-        <button class="btn-home trans">
-        <i class="fas fa-home"></i>
-        </button>
-        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
+        <a class="btn-home trans ml-20" href="{% url 'megacoffeeapp:start_2' %}">
+            <i class="fas fa-home"></i>
+        </a>
+        <a class="home" href="{% url 'megacoffeeapp:start_2' %}"><span>Senisk</span> <span>Kiosk</span></a>
     </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
@@ -167,8 +167,8 @@
                 <span class="size-up-price">0원</span>
             </li>
             <li class="modal-item">
-                <button class="btn-order">주문 담기</button>
-                <button class="btn-close">취소</button>
+                <button class="btn btn-order">주문 담기</button>
+                <button class="btn btn-close">취소</button>
             </li>
         </ul>
         </div>
@@ -188,9 +188,9 @@
         선택한 상품 <span class="selected-item-num"></span>
     </div>
     <button class="order-btn order-btn-invalid">
-        <span class="total-price"></span> 결제하기
+        <span class="btn total-price"></span> 결제하기
     </button>
-    <button class="delete-all-items">전체삭제</button>
+    <button class="btn delete-all-items">전체삭제</button>
     <!-- 결제 내역 모달 영역 -->
     <div class="pay-modal-container modal-invisible">
         <div class="modal">
@@ -213,8 +213,8 @@
             <span>총 결제금액 <span class="total-item-price"></span></span>
         </div>
         <div>
-            <button class="pay-result-check" onclick="">결제 하기</button>
-            <button class="pay-result-cancel">취소 하기</button>
+            <button class="btn pay-result-check" onclick="">결제 하기</button>
+            <button class="btn pay-result-cancel">취소 하기</button>
         </div>
         </div>
     </div>
