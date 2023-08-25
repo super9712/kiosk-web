@@ -1,0 +1,131 @@
+{% extends 'mac_kiosk_base.html' %}
+{% load static %}
+
+
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+    <script>
+      $(document).ready(function(){
+        $('ul.category li').click(function(){
+          var tab_id = $(this).attr('data-tab');
+          $('ul.category li').removeClass('current');
+          $('.menu').removeClass('current');
+          $(this).addClass('current');
+          $("#"+tab_id).addClass('current');
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="banner">
+          <p>
+            <img src="{% static 'img/MacLogo.png' %}" alt="">
+          </p>
+        </div>
+      </div>
+      <div class="tab">
+        <ul class="category">
+          <li data-tab="tab-1" class="tab-link current">세트메뉴</li>
+          <li data-tab="tab-2" class="tab-link">단품</li>
+          <li data-tab="tab-3" class="tab-link">사이드</li>
+          <li data-tab="tab-4" class="tab-link">디저트</li>
+          <li data-tab="tab-5" class="tab-link">음료</li>
+        </ul>
+        <div class="menu current" id="tab-1">
+          <ul class="menu_list" id="menuList">
+            {% for set_name, set_info in sets.items %}
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ set_name }}&image={{ set_info.0 }}&price={{ set_info.1 }}">
+                  <img src="{% static 'img/'|add:set_info.0|add:'.png' %}" />
+                  <div class="menu_name"> {{ set_name }} </div>
+                  <div class="price">{{ set_info.1 }}원</div>
+                </a>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menu" id="tab-2">
+          <ul class="menu_list" id="menuList">
+            {% for single_name, single_info in singles.items %}
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ single_name }}&image={{ single_info.0 }}&price={{ single_info.1 }}">
+                  <img src="{% static 'img/'|add:single_info.0|add:'.png' %}" />
+                  <div class="menu_name"> {{ single_name }} </div>
+                  <div class="price">{{ single_info.1 }}원</div>
+                </a>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menu" id="tab-3">
+          <ul class="menu_list" id="menuList">
+            {% for side_name, side_info in sides.items %}
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ side_name }}&image={{ side_info.0 }}&price={{ side_info.1 }}">
+                  <img src="{% static 'img/'|add:side_info.0|add:'.png' %}" />
+                </a>
+                <div class="menu_name"> {{ side_name }} </div>
+                <div class="price">{{ side_info.1 }}원</div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menu" id="tab-4">
+          <ul class="menu_list" id="menuList">
+            {% for dessert_name, dessert_info in desserts.items %}
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ dessert_name }}&image={{ dessert_info.0 }}&price={{ dessert_info.1 }}">
+                  <img src="{% static 'img/'|add:dessert_info.0|add:'.png' %}" />
+                </a>
+                <div class="menu_name"> {{ dessert_name }} </div>
+                <div class="price">{{ dessert_info.1 }}원</div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menu" id="tab-5">
+          <ul class="menu_list" id="menuList">
+            {% for drink_name, drink_info in drinks.items %}
+            <li>
+              <div class="photo">
+                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ drink_name }}&image={{ dink_info.0 }}&price={{ drink_info.1 }}">
+                  <img src="{% static 'img/'|add:drink_info.0|add:'.png' %}" />
+                </a>
+                <div class="menu_name"> {{ drink_name }} </div>
+                <div class="price">{{ drink_info.1 }}원</div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="basket">
+        <p id="total_price">{{ total_price }}</p>
+        <button class="reset">
+          <a href="">초기화</a>
+        </button>
+        <button class="cart">
+          <a href="{% url 'mcdonaldapp:basket' %}">장바구니</a>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+{% endblock %}

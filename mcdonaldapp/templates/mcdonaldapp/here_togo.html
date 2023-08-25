@@ -1,0 +1,71 @@
+
+{% extends 'mac_kiosk_base.html' %}
+{% load static %}
+
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+<!-- <div class="btn"><button onClick="history.go(-1)">◀</button></div> -->
+<div class="wrapper background">
+  <div class="text">
+    <span class="font-bold">
+      식사하실 장소를 선택해주세요.
+    </span>
+  </div>
+  <div class="place_select">
+    <ul>
+      <li>
+        <div class="photo">
+            <a href="{% url 'mcdonaldapp:menu' %}" id="menu-link">
+                <img src="{% static 'img/heremac.png' %}" />
+            </a>
+            <input type="hidden" id="packing-input" name="packing" value="매장" />
+
+            <script>
+            document.getElementById('menu-link').addEventListener('click', function(event) {
+                // 클릭 이벤트를 중지하고 해당 URL로 이동하는 것을 방지
+                event.preventDefault();
+
+                // 선택한 정보 가져오기
+                var packing = document.getElementById('packing-input').value;
+
+                var url = document.getElementById('menu-link').getAttribute('href');
+                window.location.href = url + '?packing=' + encodeURIComponent(packing);
+            });
+            </script>
+        </div>
+        <div class="place">
+          <a>매장에서 식사</a>
+        </div>
+      </li>
+      <li>
+        <div class="photo">
+            <a href="{% url 'mcdonaldapp:menu' %}" id="menu-link2">
+              <img src="{% static 'img/takeout.jpeg' %}" />
+            </a>
+            <input type="hidden" id="packing-input2" name="packing" value="포장" />
+
+            <script>
+            document.getElementById('menu-link2').addEventListener('click', function(event) {
+                // 클릭 이벤트를 중지하고 해당 URL로 이동하는 것을 방지
+                event.preventDefault();
+
+                // 선택한 정보 가져오기
+                var packing = document.getElementById('packing-input2').value;
+
+                var url = document.getElementById('menu-link').getAttribute('href');
+                window.location.href = url + '?packing=' + encodeURIComponent(packing);
+            });
+            </script>
+        </div>
+        <div class="place">
+          <a>테이크 아웃</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

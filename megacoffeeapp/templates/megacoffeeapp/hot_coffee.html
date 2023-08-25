@@ -18,8 +18,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer-section.css' %}?after" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_main.css' %}?after" />
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- google meterial icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
 <body>
+    {% include 'header.html' %}
     <header class="header">
     <div class="header-container">
         <button class="btn-home trans">
@@ -63,7 +73,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630163626_1656574586502_Hh19hMijc6.jpg">
                     <div>
-                        <figcaption class="menu-title">카라멜마끼아또</figcaption>
+                        <figcaption class="menu-title">카라멜 마끼아또</figcaption>
                         <span class="menu-price">3,700원</span>
                     </div>
                 </figure>
@@ -93,7 +103,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164717_1656575237515_oZTJ4tIb1r.jpg">
                     <div>
-                        <figcaption class="menu-title">콜드브루오리지널</figcaption>
+                        <figcaption class="menu-title">콜드브루 오리지널</figcaption>
                         <span class="menu-price">3,500원</span>
                     </div>
                 </figure>
@@ -113,7 +123,7 @@
                     <img class="menu-img"
                         src="https://img.79plus.co.kr/megahp/manager/upload/menu/20220630164924_1656575364475_feNS9vEV6A.jpg">
                     <div>
-                        <figcaption class="menu-title">헤이즐넛아메리카노</figcaption>
+                        <figcaption class="menu-title">헤이즐넛 아메리카노</figcaption>
                         <span class="menu-price">2,700원</span>
                     </div>
                 </figure>

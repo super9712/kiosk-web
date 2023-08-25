@@ -39,7 +39,6 @@ const setAccuracy = (orderMenu, mission) => {
                         correct += 1; // 개수
                     }
                 }
-                break;
             } 
         }
     })
@@ -48,24 +47,17 @@ const setAccuracy = (orderMenu, mission) => {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-    const clickData = JSON.parse(sessionStorage.getItem("clickData"));
     const orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
-    const remain_time = parseInt(sessionStorage.getItem("remain_time"));
     const total_price = sessionStorage.getItem("total_price");
     const mission = JSON.parse(sessionStorage.getItem("mission"));
 
     document.querySelector('.complete-btn').addEventListener('click', () => {
         // 정확도 계산
-        // 현재는 단일 string으로 들어오기 때문에 그냥 돌리지만 이후에는 누적 계산해야 함
-
         const { correct, total } = setAccuracy(orderMenu, mission);
         console.log(correct, total, correct/total*100);
         sessionStorage.setItem('accuracy', correct/total*100);
-        
-        // send data ( 예정 )
-
 
         // redirecting
-        window.location.href = '/complete/';
+        location.href = '/complete/';
     });
 });

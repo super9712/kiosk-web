@@ -10,9 +10,29 @@ const MAX_TIME = 60;
 let remain_time = MAX_TIME;
 let times = sessionStorage.getItem('times') ? sessionStorage.getItem('times') : '';
 
-
 // add onClicks & logics
 window.addEventListener('DOMContentLoaded', function(){
+    const setHeader = () => {
+        const missions = JSON.parse(sessionStorage.getItem('mission'));
+        const headerMissionList = document.querySelector('.mission-list');
+
+        let missionList = '';
+        missionList += `<h3>미션</h3>`
+        missionList += `<div>결제 방식 : ${missions.method}</div>`;
+        missionList += `<div>포장 여부 : ${missions.packaging}</div>`;
+        missions.missions.map((e) => {
+            missionList += `
+                <div>
+                    ${e.menu} / ${e.option} / ${e.quantity}
+                </div>
+            `;
+        })
+        console.log(headerMissionList)
+        headerMissionList.innerHTML = missionList;
+    }
+
+    setHeader();
+
     // storage에 데이터 있는지 확인
     if ( sessionStorage.getItem("clickData") ) {
         clickData = JSON.parse(sessionStorage.getItem("clickData"));
@@ -61,6 +81,7 @@ window.addEventListener('DOMContentLoaded', function(){
     option_btns.forEach((item) => {
         item.addEventListener('click', addOption);
     })
+
     // close modal 
     document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
     document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
@@ -316,6 +337,8 @@ const addOption = (e) => {
         optionName = e.target.innerHTML;
         optionPrice = e.target.parentNode.nextElementSibling.innerHTML;
     }
+
+    getClickData('option 추가 ' + optionName);
 
     flag = false; // 이미 존재하는 옵션인지 확인 
 
