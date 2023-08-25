@@ -131,10 +131,10 @@
 }
 
 .menu_list li img {
-  width: 15rem;
-  height: 15rem;
+  width: 13rem;
+  height: 13rem;
   border-radius: 1rem;
-  margin: 1rem 0;
+  margin: 1rem;
   padding: 0;
 }
 
