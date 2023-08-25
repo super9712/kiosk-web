@@ -56,6 +56,26 @@ class CompleteTemplateView(TemplateView):
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
+    menu_name_list = [
+        "더블치즈버거세트", "치즈버거세트", "불고기 버거세트", "슈비버거세트", "슈슈버거세트", "베이컨토마토디럭스세트", "쿼터파운더치즈세트", "에그불고기세트", "더블불고기세트",
+        "더블치즈버거", "불고기버거", "슈비버거", "슈슈버거", "베이컨토마토디럭스버거", "쿼터파운더치즈버거", "에그불고기버거", "더블불고기버거",
+        "애플파이", "타로파이", "맥스파이시 치킨 텐더 2조각", "상하이 치킨 스낵랩", "골든 모짜렐라 치즈 스틱 2조각", "맥너겟 4조각", "후렌치 후라이", "해시 브라운", "스트링 치즈",
+        "오레오 맥플러리", "초코 오레오 맥플러리", "스트로베리 오레오 맥플러리", "아이스크림콘", "초코콘", "초코 선데이 아이스크림", "스트로베리 선데이 아이스크림", "오레오 아포카토",
+        "바닐라 쉐이크", "딸기 쉐이크", "초코 쉐이크", "오렌지 주스", "코카 콜라", "코카 콜라 제로", "스프라이트", "환타", "우유"
+    ]
+
+    quantity = [1, 2, 3]
+
+    def get(self, request):
+        menus = random.sample(self.menu_name_list, random.randint(1, 3))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
+        quantities = random.sample(self.quantity, len(menus))                               # 선택한 메뉴 수량과 동일한 수량 선택
+
+        result = dict(zip(menus, quantities))
+
+        context = {'order': result}
+        return render(request, self.template_name, context)
+
+
 
 class SurveyView(View):
     template_name = 'introapp/survey.html'
