@@ -2,21 +2,45 @@
 {% block content %}
 {% load static %}
 
-<form method = "post" action="{% url 'introapp:survey' %}">
+<form method = "post" action="{% url 'introapp:survey' %}" name="survey_form">
     {% csrf_token %}
     {% for question, answers in questions.items %}
     <fieldset class = "survey">
       <legend class = "font-bold fs-1">{{ question }}</legend>
       {% for answer in answers %}
         <label>
+<<<<<<< HEAD
           <input class = "my-5" type="checkbox" name="answer_list_" value="{{ answer }}">
+=======
+          <input class = "my-5" type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
+>>>>>>> upstream/main
           {{ answer }}
         </label><br>
       {% endfor %}
     </fieldset>
   {% endfor %}
-  <button type="submit" class = "btn">제출</button>
+  <button type="button" class="btn btn-sumbit-survey">제출</button>
 </form>
+
+<script>
+  document.querySelector('.btn-sumbit-survey').addEventListener('click', () => {
+    const checkboxs = document.querySelectorAll('input');
+    let answers = [];
+    for ( let i=0 ; i < checkboxs.length ; i++ ) {
+      if ( checkboxs[i].checked === true ) {
+        answers.push(checkboxs[i].value);
+      }
+    }
+
+    const numQuestions = document.querySelectorAll('.survey').length;
+    if ( answers.length < numQuestions ) {
+      alert('모든 항목에 답해주세요.');
+      return;
+    }
+
+    document.forms[0].submit();
+  })
+</script>
 
 
 {% endblock content %}

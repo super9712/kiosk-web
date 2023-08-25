@@ -97,10 +97,8 @@ class SurveyView(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        list_item = request.POST.getlist('answer_list')
-
         for index in range(6):
-            response = Response.objects.create(question=list(self.question_list.keys())[index], answer=list_item[index], brand='megacoffee')
+            response = Response.objects.create(question=list(self.question_list.keys())[index], answer=request.POST.get('answer_list_' + str(index)), brand='megacoffee')
             response.save()
 
         return redirect('introapp:brand')

@@ -36,12 +36,12 @@
 <body>
     {% include 'header.html' %}
     <header class="header">
-    <div class="header-container">
-        <button class="btn-home trans">
-            <i class="fas fa-home"></i>
-        </button>
-        <h1 class="home"><span>Senisk</span> <span>Kiosk</span></h1>
-    </div>
+        <div class="header-container">
+            <a class="btn-home trans ml-20" href="{% url 'megacoffeeapp:start_2' %}">
+                <i class="fas fa-home"></i>
+            </a>
+            <a class="home" href="{% url 'megacoffeeapp:start_2' %}"><span>Senisk</span> <span>Kiosk</span></a>
+        </div>
     <nav class="main-nav">
         <ul class="menu-tab list">
             <li id="seasonmenu" class="tab-list trans btn-active"><span href="{% url 'megacoffeeapp:start_2' %}"></span>시즌 메뉴</li>
@@ -174,7 +174,7 @@
                 </li>
                 <li class="modal-item">
                     <button class="btn-order">주문 담기</button>
-                    <button class="btn-close">취소</button>
+                    <button class="btn btn-close">취소</button>
                 </li>
             </ul>
         </div>

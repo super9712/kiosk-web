@@ -76,9 +76,9 @@
 }
 
 .tab-list {
-    height: 50px;
+    height: 55px;
     width: 30%;
-    padding: 20px 35px;
+    padding: 10px 35px;
     border: 0;
     border-radius: 15px 15px 0 0;
 }
@@ -217,5 +217,6 @@
 /* 메뉴선택화면 반응형 웹, 아직 못함 */
 @media screen and (max-width: 768px) {
 
+    
 
 }
