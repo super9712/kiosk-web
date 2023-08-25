@@ -1,8 +1,11 @@
+from datetime import datetime
+import django
 from django.db import models
 
 # Create your models here.
 
 from django.db import models
+
 
 class Menu(models.Model):
     name = models.CharField(max_length=50)
@@ -13,3 +16,4 @@ class Payment(models.Model):
     method = models.CharField(max_length=100)
     packing = models.CharField(max_length=50)
     menu = models.ManyToManyField(Menu)
+

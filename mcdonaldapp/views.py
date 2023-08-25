@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from mcdonaldapp.models import Payment, Menu
 
+from mcdonaldapp.models import Menu, Payment
+
 
 # Create your views here.
 class StartTemplateView(TemplateView):
@@ -39,6 +41,7 @@ class MenuTemplateView(TemplateView):
         packing = request.GET.get('packing', '')
         context = {'packing': packing, 'sets': set_list, 'singles': single_list, 'sides': side_list, 'desserts': dessert_list, 'drinks': drink_list}
         return render(request, 'mcdonaldapp/menu.html', context)
+
 
 class HowmanyTemplateView(TemplateView):
     template_name = 'mcdonaldapp/quantity.html'
