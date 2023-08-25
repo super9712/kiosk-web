@@ -54,7 +54,7 @@
             'csrfmiddlewaretoken': '{{ csrf_token }}'
           },
           success: function(response) {
-            location.reload();  // 페이지 리로드
+            location.href = '{% url "mcdonaldapp:basket" %}';
           }
         });
       }

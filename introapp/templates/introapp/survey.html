@@ -4,13 +4,13 @@
 
 <form method = "post" action="{% url 'introapp:survey' %}">
     {% csrf_token %}
-    {% for question in questions %}
+    {% for question, answers in questions.items %}
     <fieldset class = "survey">
-      <legend class = "font-bold fs-1">{{ question.text }}</legend>
-      {% for answer in question.answer_set.all %}
+      <legend class = "font-bold fs-1">{{ question }}</legend>
+      {% for answer in answers %}
         <label>
-          <input class = "my-5" type="checkbox" name="question_{{ question.id }}" value="{{ answer.id }}">
-          {{ answer.text }}
+          <input class = "my-5" type="checkbox" name="answer_list" value="{{ answer }}">
+          {{ answer }}
         </label><br>
       {% endfor %}
     </fieldset>

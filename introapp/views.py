@@ -5,7 +5,7 @@ from django.views.generic import View, TemplateView
 
 import random
 
-from introapp.models import Question, Answer, Response
+from introapp.models import Response
 from megacoffeeapp.models import Menu, Quantity, Option, Order, Payment
 
 
@@ -60,20 +60,29 @@ class Mission_McTemplateView(TemplateView):
 class SurveyView(View):
     template_name = 'introapp/survey.html'
 
+    question_list = {
+        '키오스크 사용하는 과정에서 어려웠던 부분을 골라주세요': ['메뉴선택', '추가옵션', '결제하기'],
+        '시니스크를 사용하면서 불편한 점이 있었나요?': ['글씨가 작다', '버튼이 작다', '화면의 어디를 눌러야 할 지 모르겠다', '선택할게 많다', '그냥 모르겠다'],
+        '시니스크가 도움이 되었나요?': ['자신감 상승', '뒷사람에 대한 부담감이 없다', '간편하게 키오스크를 경험할 수 있어 좋았다', '익숙해졌다', '반복 연습할 수 있어서 적응이 쉬웠다',
+                            '전혀 도움이 안된다'],
+        '해당 기업에서 키오스크를 사용하는 것에 불편한 점은 무엇인가요?': ['메뉴가 너무 다양해서 찾기 힘들다', '추가 옵션이 많아 설정이 어렵다', '메뉴 이름이 어렵고 직관적이지 않다',
+                                                '여러 메뉴를 주문하기 까다롭다'],
+        '연습한 기업의 키오스크가 반영했으면 하는 부분은 무엇인가요?': ['명확한 단계 표시', '메뉴 단순화', '버튼 크기 키우기', '글씨 크기 키우기', '요구를 간단하게',
+                                              '뒤로가기 버튼 찾기 쉽게 표시'],
+        '새로 추가되었으면 하는 브랜드는 어디인가요?': ['롯데리아', '버거킹', '이디야', '베스킨라빈스']
+    }
+
     def get(self, request):
-        questions = Question.objects.all()
-        context = {'questions': questions}
+        context = {'questions': self.question_list}
         return render(request, self.template_name, context)
 
     def post(self, request):
-        for question_id, answer_ids in request.POST.items():
-            if question_id.startswith('question_'):
-                question_id = question_id.replace('question_', '')
-                question = Question.objects.get(id=question_id)
-                selected_answers = Answer.objects.filter(id__in=answer_ids.split(','))
-                response = Response(question=question)
-                response.brand = 'megacoffee'
-                response.save()
-                response.answer.set(selected_answers)
+        list_item = request.POST.getlist('answer_list')
+
+        for index in range(6):
+            response = Response.objects.create(question=list(self.question_list.keys())[index], answer=list_item[index], brand='megacoffee')
+            response.save()
+
         return redirect('introapp:brand')
+
 
