@@ -282,9 +282,7 @@
   color: white;
 }
 
-button p {
-  transform: translate(0, -10% );
-}
+
 
 .pay {
   text-align: center;
@@ -385,13 +383,12 @@ td,th {
 }
 
 .goshopping, .charge {
-  background-color: #EEBF53;
+  background-color: var(--primary)!important;
   border-radius: 1rem;
   width: 12rem;
   height: 3.5rem;
   font-size: 1.5rem;
   border: none;
-  transform: translate(550%, -70%);
 }
 
 .goshopping a, .charge a {
