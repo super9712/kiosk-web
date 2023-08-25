@@ -60,8 +60,9 @@ class BasketTemplateView(TemplateView):
         name = request.GET.get('name')
         price = request.GET.get('price')
         # quantity = request.GET.get('quantity')
-        menu = Menu.objects.create(name=name, price=price)
-        menu.save()
+        if name and price:
+            menu = Menu.objects.create(name=name, price=price)
+            menu.save()
         menu_list = Menu.objects.all()
         total_price = 0
         for menu in menu_list:
@@ -69,6 +70,13 @@ class BasketTemplateView(TemplateView):
         packing = request.GET.get('packing')
         context = {'packing': packing, 'menus': menu_list, 'total_price': total_price}
         return render(request, 'mcdonaldapp/basket.html', context)
+
+    def post(self, request):
+        menu_id = request.POST.get('menu_id')
+        menu = Menu.objects.get(id=menu_id)
+        print(menu_id)
+        menu.delete()
+        return JsonResponse({'status': 'success'})
 
 
 
