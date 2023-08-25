@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 from django.views.generic import TemplateView
 from mcdonaldapp.models import Payment, Menu
+
+from mcdonaldapp.models import Menu, Payment
 
 
 # Create your views here.
@@ -40,6 +42,7 @@ class MenuTemplateView(TemplateView):
         context = {'packing': packing, 'sets': set_list, 'singles': single_list, 'sides': side_list, 'desserts': dessert_list, 'drinks': drink_list}
         return render(request, 'mcdonaldapp/menu.html', context)
 
+
 class HowmanyTemplateView(TemplateView):
     template_name = 'mcdonaldapp/quantity.html'
 
@@ -55,20 +58,29 @@ class HowmanyTemplateView(TemplateView):
 class BasketTemplateView(TemplateView):
     model = Menu
     template_name = 'mcdonaldapp/basket.html'
+    menu_list = {}
 
     def get(self, request):
+        packing = request.GET.get('packing')
         name = request.GET.get('name')
         price = request.GET.get('price')
         # quantity = request.GET.get('quantity')
-        menu = Menu.objects.create(name=name, price=price)
-        menu.save()
-        menu_list = Menu.objects.all()
-        total_price = 0
-        for menu in menu_list:
-            total_price += menu.price
-        packing = request.GET.get('packing')
-        context = {'packing': packing, 'menus': menu_list, 'total_price': total_price}
+        if name and price:
+            price = int(price)
+            self.menu_list[name] = price
+            total_price = 0
+            for price in self.menu_list.values():
+                total_price += price
+            context = {'packing': packing, 'menus': self.menu_list, 'total_price': total_price}
+            return render(request, 'mcdonaldapp/basket.html', context)
+        context = {'packing': packing, 'menus': self.menu_list}
         return render(request, 'mcdonaldapp/basket.html', context)
+
+    def post(self, request):
+        name = request.POST.get('name')
+        print(name)
+        del self.menu_list[name]
+        return JsonResponse({'status': 'success'})
 
 
 

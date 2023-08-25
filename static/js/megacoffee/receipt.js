@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', function() {
         const missions = JSON.parse(sessionStorage.getItem('mission'));
         const headerMissionList = document.querySelector('.mission-list');
 
+
         let missionList = '';
         missionList += `<h3>미션</h3>`
         missionList += `<div>결제 방식 : ${missions.method}</div>`;
@@ -35,6 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
                     ${e.menu} / ${e.option} / ${e.quantity}
                 </div>
             `;
+
         })
         console.log(headerMissionList)
         headerMissionList.innerHTML = missionList;

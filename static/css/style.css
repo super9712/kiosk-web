@@ -78,7 +78,7 @@
 .photo a img, .photo img {
   width: 25rem;
   height: 20rem;
-  padding: 2rem 0;
+  padding: 0 0;
 }
 
 
@@ -88,6 +88,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom : 120px;
 }
 
 .category {
@@ -140,6 +141,7 @@
 
 .menu {
   display: None;
+  margin-bottom : 120px;
 }
 
 .menu.current {
@@ -154,11 +156,13 @@
   right: 0;
 }
 
-.basket p{
+.basket p {
   float: left;
+  height : 100px;
+  width : 400px;
 }
 
-.reset , .cart{
+.reset , .cart, .charge_btn{
   margin: 2rem;
   float: right;
   width:  10rem;
@@ -177,8 +181,14 @@
   text-align: center;
 }
 
-.cart a, .reset a {
+.cart a, .reset a ,.charge_btn a{
   color: white;
+}
+
+.charge_btn {
+    flex : 0.2;
+    background : var(--primary);
+    border : 0;
 }
 
 .reset{

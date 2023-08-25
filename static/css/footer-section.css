@@ -85,6 +85,17 @@
     font-size: 1.6rem;
     font-weight: bold;
     color: #fff;
+    transition: 1s;
+}
+
+.delete-all-items:hover {
+    color: #FFB800;
+    background: white;
+}
+
+.order-btn:hover {
+    color: #FFB800;
+    background: white;
 }
 
 .selected-item-container {
@@ -112,6 +123,7 @@
     font-size: 1.6rem;
     font-weight: bold;
     color: #fff;
+    transition: 1s;
 }
 
 .order-btn-valid {
@@ -210,8 +222,8 @@
     display: flex;
     justify-content: space-around;
     align-content: center;
-    height: 30px;
-    padding: 10px 0;
+    height: 40px;   
+    padding: 5px 0;
     background-color: #fff;
     border: 1px solid #e7ecee;
     list-style: none;
