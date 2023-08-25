@@ -121,7 +121,8 @@ layout
 
 form {
     padding : 2rem 2rem;
-    margin : 30vh;
+    margin-left : 30vh;
+    margin-right : 30vh;
     background-color : var(--primary);
 }
 
