@@ -13,7 +13,9 @@
 
         <div class="mission">
             <p class="mission_text">
-                맥도날드 미션
+                {% for name, quantity in order.items %}
+                    {{ name }} {{ quantity }}개 <br>
+                {% endfor %}
             </p>
 
         </div>

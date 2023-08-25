@@ -6,6 +6,7 @@
   align-items: center;
   height : 100vh;
   margin : 0 20vw;
+  width : 60vw;
   padding : 0;
 }
 
@@ -39,7 +40,9 @@
 /* index2.html */
 
 .text {
-  margin: 5rem 0;
+  margin-top: 2rem;
+  margin-bottom : 3rem;
+
 }
 
 .font-bold {
@@ -61,10 +64,10 @@
 
 .place_select ul li, .menu_list ul li {
   background-color: white;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   border-radius: 1rem;
   width: 85%;
-  height: 30rem;
+  height: 400px;
 }
 
 .place {
@@ -94,11 +97,12 @@
 .category {
   display: flex;
   flex-direction: column;
-  width: 5rem;
+  width: 180px;
+  margin-top : 0.5rem;
 }
 
 .category li{
-  padding: 0 1.5rem;
+  padding: 1rem 1rem;
   margin-bottom: 0.5rem;
   color: white; 
   background-color: #EEBF53;
@@ -106,6 +110,8 @@
   cursor: pointer;
   font-size: 1.8rem;
   line-height: 3.3rem;
+  width : 150px;
+  border-radius : 1rem;
 }
 
 .category li.current{
@@ -152,14 +158,14 @@
   background-color: rgba(255,255,255, 0.8);
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width : 60vw;
+  border : 2px solid var(--dark);
+  border-radius : 1rem;
 }
 
 .basket p {
   float: left;
-  height : 100px;
-  width : 400px;
+
 }
 
 .reset , .cart, .charge_btn{
@@ -175,7 +181,7 @@
 .cart {
   border: none;
   flex: 0.2;
-  background: rgb(233, 51, 36);
+  background: var(--secondary);
   border-radius: 0.5rem;
   cursor: pointer;
   text-align: center;
@@ -183,18 +189,23 @@
 
 .cart a, .reset a ,.charge_btn a{
   color: white;
+
 }
 
 .charge_btn {
     flex : 0.2;
     background : var(--primary);
     border : 0;
+    border-radius: 0.5rem;
+
 }
 
 .reset{
   flex: 0.2;
-  background: #11410f;
+  background: var(--danger);
   border: 0;
+  border-radius: 0.5rem;
+
 } 
 
 /* howmany(example).html */

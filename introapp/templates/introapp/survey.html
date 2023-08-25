@@ -9,7 +9,11 @@
       <legend class = "font-bold fs-1">{{ question }}</legend>
       {% for answer in answers %}
         <label>
+<<<<<<< HEAD
+          <input class = "my-5" type="checkbox" name="answer_list_" value="{{ answer }}">
+=======
           <input class = "my-5" type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
+>>>>>>> upstream/main
           {{ answer }}
         </label><br>
       {% endfor %}

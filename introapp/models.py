@@ -11,3 +11,10 @@ class Complete(models.Model):
     accuracy = models.DecimalField(max_digits=4, decimal_places=1)
     totalTime = models.IntegerField()
 
+class Mission_mc(models.Model):
+    mission = models.CharField(max_length=100)
+class Menu(models.Model):
+    menu_name = models.CharField(max_length=50)
+    quantity = models.IntegerField()
+    mission = models.ForeignKey('Mission_mc', on_delete=models.CASCADE)
+
