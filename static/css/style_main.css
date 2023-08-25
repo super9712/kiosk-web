@@ -145,6 +145,7 @@ components
 
 .btn-big, .btn {
     border-radius: 0.5rem;
+    padding : 1rem 2rem;
     background-color: var(--secondary);
     align-items: center;
     justify-content: center;
@@ -168,7 +169,6 @@ components
 
 .btn {
     display: flex;
-    padding: 1rem 2rem;
     font-weight: 700;
     margin : auto;
 }
