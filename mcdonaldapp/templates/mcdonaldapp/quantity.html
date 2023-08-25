@@ -20,7 +20,7 @@
         var price = parseInt(stat2,10);
 
         num--;
-        price = price - ProductPrice
+        price = price - (ProductPrice * num);
         $('#numberUpDown').val(num);
         $('#total_price').text(price);
         });
@@ -34,7 +34,7 @@
         var price = parseInt(stat2,10);
 
         num++;
-        price = price + ProductPrice
+        price = price + (ProductPrice * num);
         $('#numberUpDown').val(num);
         $('#total_price').text(price);
         });
@@ -86,9 +86,8 @@
     <div class="select">
         <div class="priceWrap font-bold">
             <div class="textCenter">
-                <div class="total">Total:  </div>
-                <p id="total_price">{{ price }}</p>
-                <div class="won"> 원</div>
+                <div class="total">Total: {{ price }}원 </div>
+
             </div>
         </div>
     </div>
