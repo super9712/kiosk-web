@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let result1 = '';
     orderMenu.map((e) => {
         result1 += `
-        <div class = "m-5">
+        <div class = "m-5 complete_menu">
             <div>${e.menu_name.split('/')[0]} ${e.quantity}개</div>
             <div>${e.menu_name.split('/')[1] ? e.menu_name.split('/')[1] : '추가 옵션 없음'}</div>
         </div>`;
@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let result2 = '';
     order.missions.map((e) => {
         result2 += `
-        <div class = "m-5">
+        <div class = "m-5 complete_menu">
             <div>${e.menu} ${e.quantity}개</div>
             <div>${e.option}</div>
         </div>`;
@@ -35,6 +35,6 @@ window.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.method-mission').innerHTML = '결제 수단 : ' + order.method;
 
     // 정확도 및 시간 출력
-    document.querySelector('.accuracy').innerHTML = '정확도 : ' + accuracy + '%';
+    document.querySelector('.accuracy').innerHTML = '정확도 : ' + Math.round(accuracy) + '%';
     document.querySelector('.using-time').innerHTML = '걸린 시간 : ' + (60 - remain_time) + '초';
 });

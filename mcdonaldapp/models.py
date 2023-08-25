@@ -2,15 +2,18 @@ from datetime import datetime
 import django
 from django.db import models
 
-class Menus(models.Model):
-    MenuName = models.CharField(max_length=50)
-    MenuPrice = models.IntegerField()
-    category = models.CharField(max_length=30, default='single')
+# Create your models here.
 
-class Cart(models.Model):
-    CartMenu = models.CharField(max_length=50)
-    CartQty = models.IntegerField()
-    CartPrice = models.IntegerField()
+from django.db import models
 
-class CallCustomer(models.Model):
-    orderNum = models.IntegerField()
+
+class Menu(models.Model):
+    name = models.CharField(max_length=50)
+    price = models.IntegerField()
+    quantity = models.IntegerField(default=1)
+
+class Payment(models.Model):
+    method = models.CharField(max_length=100)
+    packing = models.CharField(max_length=50)
+    menu = models.ManyToManyField(Menu)
+

@@ -5,6 +5,8 @@
   justify-items: center;
   align-items: center;
   height : 100vh;
+  margin : 0 20vw;
+  padding : 0;
 }
 
 .wrap {
