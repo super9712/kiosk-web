@@ -22,7 +22,7 @@
         <br>
         삽입해 주세요.
     </div>
-    <a href="{% url 'mcdonaldapp:complete' %}">
+    <a href="{% url 'mcdonaldapp:complete' %}?packing={{ packing }}&method=현금">
         <img src="{% static 'img/cash-payment.png' %}" class="pay_img" />
     </a>
 </div>

@@ -26,7 +26,9 @@
       <div class="header">
         <div class="banner">
           <p>
-            <img src="{% static 'img/MacLogo.png' %}" alt="">
+            <a href="{% url 'mcdonaldapp:menu' %}">
+              <img src="{% static 'img/MacLogo.png' %}" alt="">
+            </a>
           </p>
         </div>
       </div>
@@ -115,10 +117,7 @@
         </div>
       </div>
       <div class="basket">
-        <p id="total_price">{{ total_price }}</p>
-        <button class="reset">
-          <a href="">초기화</a>
-        </button>
+        <p>총 결제 금액 : {{ total_price }}원</p>
         <button class="cart">
           <a href="{% url 'mcdonaldapp:basket' %}">장바구니</a>
         </button>

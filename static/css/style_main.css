@@ -79,7 +79,7 @@ layout
 
 .brand_list ul li{
     margin: 1rem;
-        width : 400px;
+    width : 400px;
     background : var(--primary);
     border-radius: 1rem;
 }
@@ -137,6 +137,10 @@ form legend {
     padding : 2rem 2rem;
     margin : 5vh;
 }
+
+.sv_font {
+    font-size : 30px;
+}
 /*
 
 components
@@ -146,26 +150,107 @@ components
 .btn-big, .btn {
     border-radius: 0.5rem;
     padding : 1rem 2rem;
+    width: 20rem;
     background-color: var(--secondary);
     align-items: center;
     justify-content: center;
     color: white;
 }
 
-.btn-big:hover, .btn:hover {
+.btn:hover {
     background-color: #fdfdfd;
     color: var(--secondary);
     transition: 1s;
 }
 
 .btn-big {
-    display: inline-flex;
-    padding: 1.5rem 3rem;
-    width : 30rem;
+    position: relative;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    font-size: 24px;
+    text-align: center;
     font-weight: bold;
-    font-size: 1.8rem;
-    box-shadow: 1px 1px 5px #cccccc;
-}
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--secondary);
+    transition: all 0.2s ease;
+  }
+
+  .btn-big:active, .btn-big:hover {
+    transform: scale(0.96);
+    color: var(--secondary);
+    background-color: white;
+  }
+
+  .btn-big:before,
+  .btn-big:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+  }
+  .btn-big.animate::before {
+    top: -70%;
+    background-image: radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, white 20%, transparent 30%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, white 15%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+      10% 10%, 18% 18%;
+    animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+  }
+  @keyframes greentopBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  .btn-big.animate::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, white 15%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%),
+      radial-gradient(circle, white 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+  }
+  @keyframes greenbottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
 
 .btn {
     display: flex;
