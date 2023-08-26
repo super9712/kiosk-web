@@ -59,7 +59,8 @@ class HowmanyTemplateView(TemplateView):
         image = request.GET.get('image')
         price = request.GET.get('price')
         packing = request.GET.get('packing')
-        context = {'packing': packing, 'name': name, 'image': image, 'price': price}
+        quantity = request.GET.get('quantityParam')
+        context = {'packing': packing, 'name': name, 'image': image, 'price': price, 'quantity': quantity}
         return render(request, 'mcdonaldapp/quantity.html', context)
 
 
@@ -72,16 +73,16 @@ class BasketTemplateView(TemplateView):
         name = request.GET.get('name')
         price = request.GET.get('price')
         quantity = request.GET.get('quantity')
-        print(quantity)
         if name and price and quantity:
             price = int(price)
-            menu_list[name] = price, quantity
+            menu_list[name] = int(price) * int(quantity), int(quantity)
             total_price = 0
             for name, value in menu_list.items():
                 total_price += value[0]
             context = {'packing': packing, 'menus': menu_list, 'total_price': total_price}
             return render(request, 'mcdonaldapp/basket.html', context)
-        context = {'packing': packing, 'menus': menu_list}
+        else:
+            context = {'packing': packing, 'menus': menu_list}
         return render(request, 'mcdonaldapp/basket.html', context)
 
     def post(self, request):

@@ -18,7 +18,7 @@ class Order(models.Model):
 
 class Payment(models.Model):
     method = models.CharField(max_length=100)
-    packaging = models.CharField(max_length=50)
+    packing = models.CharField(max_length=50)
     orders = models.ManyToManyField(Order)
 
 

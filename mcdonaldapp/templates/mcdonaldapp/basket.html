@@ -57,7 +57,7 @@
             'csrfmiddlewaretoken': '{{ csrf_token }}'
           },
           success: function(response) {
-            location.href = '{% url "mcdonaldapp:basket" %}';
+            location.href = '{% url "mcdonaldapp:basket" %}?packing={{ packing }}';
           }
         });
       }

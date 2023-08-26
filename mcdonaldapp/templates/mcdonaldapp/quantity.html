@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     <script>
+
+    const getClickData = (button_name) => {
+        let clickData = [];
+        if ( sessionStorage.getItem('clickData') ) {
+            clickData = JSON.parse(sessionStorage.getItem('clickData'));
+        }
+        const date = new Date();
+        clickData.push({
+            button_name: button_name,
+            datetime: date.toString()
+        });
+
+        console.log("click data: ", clickData);
+        sessionStorage.setItem('clickData', JSON.stringify(clickData));
+    }
+
     $(function(){
         var num = 0;
         var stat3 = $('#increasePrice').text();
@@ -14,6 +30,7 @@
 
     $('#decreaseQuantity').click(function(e){
         e.preventDefault();
+        getClickData('decreaseQuantity');
         var stat = $('#numberUpDown').val();
         var stat2 = $('#total_price').text();
 
@@ -31,6 +48,7 @@
 
     $('#increaseQuantity').click(function(e){
         e.preventDefault();
+        getClickData('increaseQuantity')
         var stat = $('#numberUpDown').val();
         var stat2 = $('#total_price').text();
 
@@ -42,7 +60,7 @@
         price = ProductPrice * num;
         total_price = ProductPrice * num;
         $('#numberUpDown').val(num);
-        $('#total_price').text(price);
+        $('#total_price').text(price + "원");
         updateURLAndHref(num);
         });
 
@@ -56,7 +74,6 @@
 
             $('#addToBasketLink').attr('href', newHref); // a 태그의 href 속성 업데이트
         }
-
     });
     </script>
 {% endblock %}
@@ -90,7 +107,7 @@
             </div>
             <li class="arrows">
                 <img class="triangle" src="{% static 'img/triangle-up.png' %}" id="increaseQuantity">
-                <input class="count" id="numberUpDown" name="MenuQty" value="0">
+                <input class="count" id="numberUpDown" name="MenuQty" value="1">
                 <img class="triangle" src="{% static 'img/triangle-down.png' %}" id="decreaseQuantity">
             </li>
             <li class="button_1">
@@ -106,7 +123,7 @@
     <div class="select">
         <div class="priceWrap font-bold">
             <div class="textCenter">
-                <div class="total">Total: <span id="total_price">{{ total_price }}원</span> </div>
+                <div class="total">Total: <span id="total_price">{{ price }}원</span> </div>
 
             </div>
         </div>

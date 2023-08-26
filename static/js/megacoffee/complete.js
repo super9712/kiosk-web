@@ -58,6 +58,6 @@ window.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('accuracy', correct/total*100);
 
         // redirecting
-        location.href = '/complete/';
+        location.href = '/complete/?brand=megacoffee';
     });
 });
