@@ -19,8 +19,6 @@ class BrandTemplateView(TemplateView):
     template_name = 'introapp/brand.html'
 
 class Mission_MegaTemplateView(TemplateView):
-    model = MegacoffeePayment
-
     template_name = 'introapp/mission_mega.html'
 
     def get(self, request):
@@ -64,6 +62,25 @@ class Mission_MegaTemplateView(TemplateView):
         mega_mission['order'] = order
         mega_mission['payment'] = payment
 
+        mission_menu = ""
+        mission_option = ""
+        mission_quantity = ""
+        mission_payment = method
+        mission_packing = packing
+
+        for index in range(0, len(menus)):
+            mission_menu = mission_menu + menus[index] + ","
+            mission_option = mission_option + options[index] + ","
+            mission_quantity = mission_quantity + str(quantities[index]) + ","
+
+        request.session['mega_menu'] = mission_menu
+        request.session['mega_option'] = mission_option
+        request.session['mega_quantity'] = mission_quantity
+        request.session['mega_payment'] = mission_payment
+        request.session['mega_packing'] = mission_packing
+
+        request.session.modified = True
+
         return render(request, 'introapp/mission_mega.html', context)
 
 class Mission_McTemplateView(TemplateView):
@@ -79,7 +96,7 @@ class Mission_McTemplateView(TemplateView):
     quantity = [1, 2, 3]
 
     def get(self, request):
-        payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이']
+        payments = ['카드', '현금']
         packing = ['포장', '매장']
 
         method = random.choice(payments)
@@ -100,6 +117,22 @@ class Mission_McTemplateView(TemplateView):
         mc_mission.clear()
         mc_mission['order'] = result
         mc_mission['payment'] = payment
+
+        mission_menu = ""
+        mission_quantity = ""
+        mission_payment = method
+        mission_packing = packing
+
+        for index in range(0, len(menus)):
+            mission_menu = mission_menu + menus[index] + ","
+            mission_quantity = mission_quantity + str(quantities[index]) + ","
+
+        request.session['mega_menu'] = mission_menu
+        request.session['mega_quantity'] = mission_quantity
+        request.session['mega_payment'] = mission_payment
+        request.session['mega_packing'] = mission_packing
+
+        request.session.modified = True
 
         return render(request, self.template_name, context)
 
