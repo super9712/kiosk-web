@@ -96,7 +96,7 @@ class Mission_McTemplateView(TemplateView):
     quantity = [1, 2, 3]
 
     def get(self, request):
-        payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이']
+        payments = ['카드', '현금']
         packing = ['포장', '매장']
 
         method = random.choice(payments)
