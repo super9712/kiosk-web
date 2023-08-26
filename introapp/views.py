@@ -51,7 +51,9 @@ class Mission_MegaTemplateView(TemplateView):
         options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
         quantities = random.sample(quantity, len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
 
-        order = dict(zip(menus, [options, quantities]))
+        order = {}
+        for index in range(0, len(menus)):
+            order[menus[index]] = [options[index], quantities[index]]
 
         context = {
             'order': order,
@@ -114,17 +116,31 @@ class CompleteTemplateView(TemplateView):
             payment = McdonaldPayment.objects.get(id=payment_pk)
             menus = McdonaldMenu.objects.filter(payment_id=payment_pk)
 
+            # 맥도날드 정확도 측정
+            total = 2
+            correct = 0
+            if payment.method == mc_mission['payment']['payments']:
+                correct += 1
+            if payment.packing == mc_mission['payment']['packing']:
+                correct += 1
+            for menu in menus:
+                total += 2
+                for mission_menu, mission_quantity in mc_mission['order'].items():
+                    if menu == mission_menu:
+                        correct += 1
+                    if menu.quantity == mission_quantity:
+                        correct += 1
 
+            accuracy = correct/total*100
 
-            context = {'brand': brand, 'payment': payment, 'menus': menus, 'mission_order': mc_mission['order'], 'mission_payment': mc_mission['payment']}
+            context = {'brand': brand, 'payment': payment, 'menus': menus,
+                       'mission_order': mc_mission['order'], 'mission_payment': mc_mission['payment'],
+                       'accuracy': accuracy}
 
             return render(request, 'introapp/complete.html', context)
 
-        # elif brand == 'megacoffee':
-        #     payment = MegacoffeePayment.objects.get(id=payment_pk)
-        #     context = {'brand': brand, 'payment': payment}
-
-        context = {'brand': brand}
+        elif brand == 'megacoffee':
+            context = {'brand': brand, 'mission_order': mega_mission['order'], 'mission_payment': mega_mission['payment']}
         return render(request, 'introapp/complete.html', context)
 
 

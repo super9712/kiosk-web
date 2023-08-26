@@ -12,8 +12,8 @@
             {% if brand == 'mcdonald' %}
                 <div class="flex column">
                     <div class ="title font-bold fs-3">주문한 내역</div>
-                    <div class="title font-bold method-order ">결제 방법 : {{ payment.method }}</div>
-                    <div class="title font-bold method-order ">포장 방법 : {{ payment.packing }}</div>
+                    <div class="title font-bold method-order ">결제 수단 : {{ payment.method }}</div>
+                    <div class="title font-bold method-order ">포장 여부 : {{ payment.packing }}</div>
                 </div>
                 {% for menu in menus %}
                     <div>
@@ -34,20 +34,28 @@
         <div class = "flex answer missionWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="title font-bold method-mission ">결제 방법 : {{ mission_payment.payments }}</div>
-                <div class="title font-bold method-order ">포장 방법 : {{ mission_payment.packing }}</div>
+                <div class="title font-bold method-mission ">결제 수단 : {{ mission_payment.payments }}</div>
+                <div class="title font-bold method-order ">포장 여부 : {{ mission_payment.packing }}</div>
             </div>
-
-                {% for menu, quantity in mission_order.items %}
-                    <div>
-                        {{ menu }} {{ quantity }}개
-                    </div>
-                {% endfor %}
-
+                {% if brand == 'mcdonald' %}
+                    {% for menu, quantity in mission_order.items %}
+                        <div>
+                            {{ menu }} {{ quantity }}개
+                        </div>
+                    {% endfor %}
+                {% elif brand == 'megacoffee' %}
+                    {% for menu, value in mission_order.items %}
+                        <div>
+                            {{ menu }} {{ value.1 }}개
+                            <br>
+                            {{ value.0 }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
         </div>
         <div class = "answer justify-evenly correctWrap">
             <div>
-                <div class ="font-bold fs-3 accuracy">정확도 :  %</div>
+                <div class ="font-bold fs-3 accuracy">정확도 :  {{ accuracy }}%</div>
                 <div class ="font-bold fs-3 using-time">주문까지 걸린 시간 : 분 **초</div>
             </div>
 
