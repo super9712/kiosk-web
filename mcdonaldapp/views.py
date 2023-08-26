@@ -75,7 +75,7 @@ class BasketTemplateView(TemplateView):
         quantity = request.GET.get('quantity')
         if name and price and quantity:
             price = int(price)
-            menu_list[name] = price, quantity
+            menu_list[name] = int(price) * int(quantity), int(quantity)
             total_price = 0
             for name, value in menu_list.items():
                 total_price += value[0]
