@@ -105,7 +105,7 @@
     <div class="select">
       <div class="priceWrap font-bold">
         <div class="textCenter">
-          <div class="total">Total:  {{ total_price }}원</div>
+          <div class="total">Total:  <span class="total_price">{{ total_price }}원</span></div>
         </div>
       </div>
     </div>
@@ -124,5 +124,31 @@
       {% endif %}
     </div>
   </div>
-    
+  <script>
+      window.addEventListener('DOMContentLoaded', function(){
+      const setHeader = () => {
+          const missions = JSON.parse(sessionStorage.getItem('mission'));
+          const headerMissionList = document.querySelector('.mission-list');
+
+          let missionList = '';
+          missionList += `<h3>미션</h3>`
+          missionList += `<div>결제 방식 : ${missions[0].payment}</div>`;
+          missionList += `<div>포장 여부 : ${missions[0].packing}</div>`;
+          missions.map((e) => {
+              missionList += `
+                  <div>
+                      ${e.menu} / ${e.quantity}개
+                  </div>
+              `;
+          })
+
+          headerMissionList.innerHTML = missionList;
+      }
+
+      setHeader();
+
+      // add onclick
+      // const categories = document.querySelectorAll()
+  });
+  </script>
 {% endblock %}
