@@ -19,13 +19,14 @@
 
         var num = parseInt(stat,10);
         var price = parseInt(stat2,10);
-        console.log(num, price, stat2)
-        num--;
-        price = ProductPrice * num;
+        if (num > 0) {
+            num--;
+            price = ProductPrice * num;
 
-        console.log(num, price)
-        $('#numberUpDown').val(num);
-        $('#total_price').text(price);
+            $('#numberUpDown').val(num);
+            $('#total_price').text(price);
+        }
+        updateURLAndHref(num);
         });
 
     $('#increaseQuantity').click(function(e){
@@ -42,7 +43,19 @@
         total_price = ProductPrice * num;
         $('#numberUpDown').val(num);
         $('#total_price').text(price);
+        updateURLAndHref(num);
         });
+
+      function updateURLAndHref(num) {
+            var url = new URL(window.location.href);
+            url.searchParams.set('num', num);
+            history.replaceState(null, '', url.toString());
+
+            var quantityParam = `quantity=${num}`;
+            var newHref = `{% url 'mcdonaldapp:basket' %}?packing={{ packing }}&name={{ name }}&price={{ price }}&${quantityParam}`;
+
+            $('#addToBasketLink').attr('href', newHref); // a 태그의 href 속성 업데이트
+        }
 
     });
     </script>
@@ -52,7 +65,9 @@
 <div class="wrapper">
     <div class="banner">
         <p>
-            <img src="{% static 'img/MacLogo.png' %}" alt="">
+            <a href="{% url 'mcdonaldapp:menu' %}">
+              <img src="{% static 'img/MacLogo.png' %}" alt="">
+            </a>
         </p>
     </div>
     <form method="post" action="{% url 'mcdonaldapp:basket' %}">{% csrf_token %}
@@ -80,7 +95,7 @@
             </li>
             <li class="button_1">
                 <button type="submit" class="btn-yellow">
-                    <a href="{% url 'mcdonaldapp:basket' %}?packing={{ packing }}&name={{ name }}&price={{ price }}">장바구니 추가</a>
+                    <a id="addToBasketLink">장바구니 추가</a>
                 </button>
                 <button type="button">
                     <a href="{% url 'mcdonaldapp:menu' %}?packing={{ packing }}">취소</a>
@@ -92,10 +107,7 @@
         <div class="priceWrap font-bold">
             <div class="textCenter">
                 <div class="total">Total: <span id="total_price">{{ total_price }}원</span> </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 4e9183112a65de2e4a08c700f952d1a8836f4326
             </div>
         </div>
     </div>

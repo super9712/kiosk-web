@@ -6,20 +6,25 @@
     {% csrf_token %}
     {% for question, answers in questions.items %}
     <fieldset class = "survey">
-      <legend class = "font-bold fs-1">{{ question }}</legend>
+      <legend class = "sv_font font-bold">{{ question }}</legend>
       {% for answer in answers %}
-        <label>
-          <input class = "my-5" type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
+        <label class = "sv_font">
+          <input class = " my-5" type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
           {{ answer }}
         </label><br>
       {% endfor %}
     </fieldset>
   {% endfor %}
-  <button type="button" class="btn btn-sumbit-survey">제출</button>
+    <div class = "flex justify-between">
+        <button class="btn btn-sumbit-survey">제출하기</button>
+        <a href = "#" class = "btn">취소하기</a>
+    </div>
+
 </form>
 
 <script>
-  document.querySelector('.btn-sumbit-survey').addEventListener('click', () => {
+  document.querySelector('.btn-sumbit-survey').addEventListener('click', (e) => {
+  e.preventDefault();
     const checkboxs = document.querySelectorAll('input');
     let answers = [];
     for ( let i=0 ; i < checkboxs.length ; i++ ) {
