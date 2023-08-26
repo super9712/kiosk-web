@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Page',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('start_time', models.DateTimeField()),
                 ('using_page', models.IntegerField()),
             ],
@@ -59,7 +59,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('method', models.CharField(max_length=100)),
                 ('packaging', models.CharField(max_length=50)),
-                ('orders', models.ManyToManyField(to='megacoffeeapp.order')),
+                ('orders', models.ManyToManyField(to='megacoffeeapp.Order')),
             ],
         ),
         migrations.AddField(
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Button',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('button_name', models.CharField(max_length=50)),
                 ('click_time', models.DateTimeField()),
                 ('is_right', models.BooleanField()),

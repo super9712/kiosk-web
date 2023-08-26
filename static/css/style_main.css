@@ -79,7 +79,7 @@ layout
 
 .brand_list ul li{
     margin: 1rem;
-        width : 400px;
+    width : 400px;
     background : var(--primary);
     border-radius: 1rem;
 }
@@ -136,6 +136,10 @@ form legend {
     background-color : var(--light);
     padding : 2rem 2rem;
     margin : 5vh;
+}
+
+.sv_font {
+    font-size : 30px;
 }
 /*
 
