@@ -52,7 +52,7 @@
 }
 
 .background {
-  background-color: #11410f;
+  background-color: #006400;
 }
 
 .place_select ul, .menu_list ul {
@@ -165,10 +165,12 @@
 
 .basket p {
   float: left;
-
+  display : flex;
+  justify-content : center;
+  margin : 32px;
 }
 
-.reset , .cart, .charge_btn{
+.cart, .charge_btn{
   margin: 2rem;
   float: right;
   width:  10rem;
@@ -181,20 +183,20 @@
 .cart {
   border: none;
   flex: 0.2;
-  background: var(--secondary);
+  background: #009000;
   border-radius: 0.5rem;
   cursor: pointer;
   text-align: center;
 }
 
-.cart a, .reset a ,.charge_btn a{
+.cart a, .charge_btn a{
   color: white;
 
 }
 
 .charge_btn {
     flex : 0.2;
-    background : var(--primary);
+    background : #FF3232;
     border : 0;
     border-radius: 0.5rem;
 
