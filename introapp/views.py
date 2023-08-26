@@ -141,7 +141,7 @@ class CompleteTemplateView(TemplateView):
 
         elif brand == 'megacoffee':
             context = {'brand': brand, 'mission_order': mega_mission['order'], 'mission_payment': mega_mission['payment']}
-        return render(request, 'introapp/complete.html', context)
+            return render(request, 'introapp/complete.html', context)
 
 
 
