@@ -129,6 +129,7 @@ class CompletecashTemplateView(TemplateView):
             price, quantity = values
             menu = Menu.objects.create(payment=payment, name=menu, price=price, quantity=quantity)
             menu.save()
+        menu_list.clear()
         return render(request, 'mcdonaldapp/complete.html', {'payment_pk': payment.pk})
 
 
