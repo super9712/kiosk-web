@@ -9,20 +9,32 @@
             <span class = "font-bold fs-1">주문을 완료하셨습니다.</span>
         </div>
         <div class = "flex ordered orderWrap">
-            <div class="flex column">
-                <div class ="title font-bold fs-3">주문한 내역</div>
-                <div class="title font-bold method-order ">결제 방법 : ____</div>
-            </div>
+            {% if brand == 'mcdonald' %}
+                <div class="flex column">
+                    <div class ="title font-bold fs-3">주문한 내역</div>
+                    <div class="title font-bold method-order ">결제 방법 : {{ payment.method }}</div>
+                    <div class="title font-bold method-order ">포장 방법 : {{ payment.packing }}</div>
+                </div>
+                {% for menu in menus %}
+                    <div>
+                        {{ menu.name }} {{ menu.quantity }}개
+                    </div>
+                {% endfor %}
+            {% elif brand == 'megacoffee' %}
+                <div class="flex column">
+                    <div class ="title font-bold fs-3">주문한 내역</div>
+                    <div class="title font-bold method-order ">결제 방법 : ____</div>
+                </div>
+                <div class = "flex column align-center items-center order-list">
 
-            <div class = "flex column align-center items-center order-list">
 
-
-            </div>
+                </div>
+            {% endif %}
         </div>
         <div class = "flex answer missionWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="title font-bold method-mission ">결제 방법 : ____</div>
+                <div class="title font-bold method-mission ">결제 방법 : </div>
             </div>
 
             <div class = "flex column align-center items-center answer-list">

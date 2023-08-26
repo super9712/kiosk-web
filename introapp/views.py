@@ -6,9 +6,10 @@ from django.views.generic import View, TemplateView
 import random
 
 from introapp.models import Response
-from megacoffeeapp.models import Menu, Quantity, Option, Order, Payment
+from megacoffeeapp.models import Menu as MegacoffeeMenu, Quantity, Option, Order, Payment as MegacoffeePayment
+from mcdonaldapp.models import Menu as McdonaldMenu, Payment as McdonaldPayment
 
-
+mission = {}
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -17,7 +18,7 @@ class BrandTemplateView(TemplateView):
     template_name = 'introapp/brand.html'
 
 class Mission_MegaTemplateView(TemplateView):
-    model = Payment
+    model = MegacoffeePayment
 
     template_name = 'introapp/mission_mega.html'
 
@@ -56,10 +57,6 @@ class Mission_MegaTemplateView(TemplateView):
 
         return render(request, 'introapp/mission_mega.html', context)
 
-
-class CompleteTemplateView(TemplateView):
-    template_name = 'introapp/complete.html'
-
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
 
@@ -92,6 +89,24 @@ class Mission_McTemplateView(TemplateView):
         context = {'order': result, 'payment': payment}
 
         return render(request, self.template_name, context)
+
+
+
+class CompleteTemplateView(TemplateView):
+    template_name = 'introapp/complete.html'
+
+    def get(self, request):
+        brand = request.GET.get('brand')
+        payment_pk = request.GET.get('payment_pk')
+        if brand == 'mcdonald':
+            payment = McdonaldPayment.objects.get(id=payment_pk)
+            menus = McdonaldMenu.objects.filter(payment_id=payment_pk)
+            context = {'brand': brand, 'payment': payment, 'menus': menus}
+        elif brand == 'megacoffee':
+            payment = MegacoffeePayment.objects.get(id=payment_pk)
+            context = {'brand': brand, 'payment': payment}
+        return render(request, 'introapp/complete.html', context)
+
 
 
 

@@ -102,6 +102,7 @@ layout
     background : var(--light);
     margin-bottom : 2rem;
     border-radius : 0.5rem;
+    color : var(--dark);
 }
 
 .highlight {
