@@ -42,7 +42,12 @@ class MenuTemplateView(TemplateView):
                       '코카 콜라': ['CocaCola', 2000], '코카 콜라 제로': ['ColaZero', 2000], '스프라이트': ['Sprite', 2000], '환타': ['Fanta', 2000], '우유': ['milk', 1000]}
 
         packing = request.GET.get('packing', '')
-        context = {'packing': packing, 'sets': set_list, 'singles': single_list, 'sides': side_list, 'desserts': dessert_list, 'drinks': drink_list}
+
+        total_price = 0
+        for name, value in menu_list.items():
+            total_price += value[0]
+
+        context = {'packing': packing, 'total_price': total_price, 'sets': set_list, 'singles': single_list, 'sides': side_list, 'desserts': dessert_list, 'drinks': drink_list}
         return render(request, 'mcdonaldapp/menu.html', context)
 
 
