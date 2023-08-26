@@ -129,6 +129,14 @@
     font-weight: 700;
 }
 
+.menu-modal-container .modal .modal-item .btn:hover {
+    background-color: #FFB800;
+}
+
+.menu-modal-container .modal .modal-item .btn:hover span, .menu-modal-container .modal .modal-item .btn:hover i {
+    color: white;
+}
+
 .menu-modal-container .modal .modal-item .btn-cream {
     width: 120px;
 }
