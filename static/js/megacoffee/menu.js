@@ -161,16 +161,30 @@ const closeMenuModal = () => {
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
 
+
+const removeItem = (event) => {
+    console.log(event.target.nextElementSibling.innerHTML)
+    getClickData("메뉴 개별 삭제 " + event.target.nextElementSibling.innerHTML);
+    for (let i = 0; i < orderMenu.length; i++) {
+        if (orderMenu[i].menu_name.split(" / ")[0] === event.target.nextElementSibling.innerHTML.split(" / ")[0]) {
+            orderMenu.splice(i, 1);
+        }
+    }
+    // 렌더링
+    updateOrderList();
+    // window.location.reload();
+}
+
 const updateOrderList = () => {
     // 주문 목록 업데이트
     const order_list = document.querySelector('.order-list');
     let render_list = '';
-    console.log(orderMenu)
+    console.log('rerender ', orderMenu)
     orderMenu.map((e, id) => {
         render_list += `
             <li key="${id}" id="${id}" class="order-item">
-                <i class="remove-item far fa-times-circle"></i>
-                <span class="item-name">${e.menu_name} ${e.quantity}개</span>
+                <button class="remove-item far fa-times-circle" onclick='removeItem(event)'></button>
+                <span class="item-name">${e.menu_name} / ${e.quantity}개</span>
                 <span class="item-price">${e.menu_price}</span>
             </li>
         `
@@ -228,21 +242,6 @@ const setMenu = (e) => {
     
     // 렌더링
     updateOrderList();
-
-    // 삭제 버튼 onclick 추가
-    const remove_btns = document.querySelectorAll('.remove-item');
-    remove_btns.forEach((item) => {
-        item.addEventListener('click', (event) => {
-            getClickData('메뉴 개별 삭제 ' + event.target.nextElementSibling.innerHTML);
-            for (let i = 0; i < orderMenu.length; i++) {
-                if (orderMenu[i].menu_name === event.target.nextElementSibling.innerHTML) {
-                    orderMenu.splice(i, 1);
-                }
-            }
-            // 렌더링
-            updateOrderList();
-        });
-    })
 
     // 종료
     const modal = document.querySelector('.menu-modal-container');

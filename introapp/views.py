@@ -47,7 +47,7 @@ class Mission_MegaTemplateView(TemplateView):
 
         quantity = [1, 2, 3]
 
-        menus = random.sample(menu, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
+        menus = random.sample(menu, random.randint(1, 2))  # 랜덤하게 1~3개 메뉴 선택
         options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
         quantities = random.sample(quantity, len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
 
@@ -90,7 +90,7 @@ class Mission_McTemplateView(TemplateView):
             'packing': packing
         }
 
-        menus = random.sample(self.menu_name_list, random.randint(1, 3))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
+        menus = random.sample(self.menu_name_list, random.randint(1, 2))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
         quantities = random.sample(self.quantity, len(menus))                               # 선택한 메뉴 수량과 동일한 수량 선택
 
         result = dict(zip(menus, quantities))
