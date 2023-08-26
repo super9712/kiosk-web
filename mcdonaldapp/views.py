@@ -8,6 +8,9 @@ from mcdonaldapp.models import Menu, Payment
 
 
 # Create your views here.
+
+menu_list = {}
+
 class StartTemplateView(TemplateView):
     template_name = 'mcdonaldapp/start.html'
 
@@ -58,43 +61,74 @@ class HowmanyTemplateView(TemplateView):
 class BasketTemplateView(TemplateView):
     model = Menu
     template_name = 'mcdonaldapp/basket.html'
-    menu_list = {}
 
     def get(self, request):
         packing = request.GET.get('packing')
         name = request.GET.get('name')
         price = request.GET.get('price')
-        # quantity = request.GET.get('quantity')
-        if name and price:
+        quantity = request.GET.get('quantity')
+        print(quantity)
+        if name and price and quantity:
             price = int(price)
-            self.menu_list[name] = price
+            menu_list[name] = price, quantity
             total_price = 0
-            for price in self.menu_list.values():
-                total_price += price
-            context = {'packing': packing, 'menus': self.menu_list, 'total_price': total_price}
+            for name, value in menu_list.items():
+                total_price += value[0]
+            context = {'packing': packing, 'menus': menu_list, 'total_price': total_price}
             return render(request, 'mcdonaldapp/basket.html', context)
-        context = {'packing': packing, 'menus': self.menu_list}
+        context = {'packing': packing, 'menus': menu_list}
         return render(request, 'mcdonaldapp/basket.html', context)
 
     def post(self, request):
+        # if request.POST.get('empty_cart'):
+        #     self.menu_list.clear()
+        #     return render(request, 'mcdonaldapp/basket.html')
+
         name = request.POST.get('name')
-        print(name)
-        del self.menu_list[name]
-        return JsonResponse({'status': 'success'})
+        if name:
+            del menu_list[name]
+        return render(request, 'mcdonaldapp/basket.html')
 
 
 
 class PaymentTemplateView(TemplateView):
     template_name = 'mcdonaldapp/payment.html'
 
+    def get(self, request):
+        packing = request.GET.get('packing')
+        menus = request.GET.get('menus')
+        return render(request, 'mcdonaldapp/payment.html', {'packing': packing})
+
 
 class InputcardTemplateView(TemplateView):
     template_name = 'mcdonaldapp/insert_card.html'
+    def get(self, request):
+        packing = request.GET.get('packing')
+        menus = request.GET.get('menus')
+        return render(request, 'mcdonaldapp/insert_card.html', {'packing': packing})
 
 
 class InputcashTemplateView(TemplateView):
     template_name = 'mcdonaldapp/insert_cash.html'
+    def get(self, request):
+        packing = request.GET.get('packing')
+        menus = request.GET.get('menus')
+        return render(request, 'mcdonaldapp/insert_cash.html', {'packing': packing})
 
 
 class CompletecashTemplateView(TemplateView):
+    model = Payment
     template_name = 'mcdonaldapp/complete.html'
+
+    def get(self, request):
+        method = request.GET.get('method')
+        packing = request.GET.get('packing')
+        payment = Payment.objects.create(method=method, packing=packing)
+        payment.save()
+        for menu, values in menu_list.items():
+            price, quantity = values
+            menu = Menu.objects.create(payment=payment, name=menu, price=price, quantity=quantity)
+            menu.save()
+        return render(request, 'mcdonaldapp/complete.html', {'payment_pk': payment.pk})
+
+

@@ -23,22 +23,22 @@
       <ul class="pay_list">
         <li>
           <div class="payment">
-            <a href="{% url 'mcdonaldapp:insert_card' %}">
+            <a href="{% url 'mcdonaldapp:insert_card' %}?packing={{ packing }}">
               <img src="{% static 'img/credit.png' %}" />
+              <div class="pay_name">
+                카드 결제
+              </div>
             </a>
-            <div class="pay_name">
-              <a href="{% url 'mcdonaldapp:insert_card' %}">카드 결제</a>
-            </div>
           </div>
         </li>
         <li>
           <div class="payment">
-            <a href="{% url 'mcdonaldapp:insert_cash' %}">
+            <a href="{% url 'mcdonaldapp:insert_cash' %}?packing={{ packing }}">
               <img class="payment" src="{% static 'img/cash.png' %}" />
+              <div class="pay_name">
+                현금 결제
+              </div>
             </a>
-            <div class="pay_name">
-              <a href="{% url 'mcdonaldapp:insert_cash' %}">현금 결제</a>
-            </div>
           </div>
         </li>
       </ul>
