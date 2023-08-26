@@ -10,13 +10,12 @@
 
 {% block content %}
 
-  <div class="wrapper wrap">
+  <div class="mc_wrapper">
     <div class="banner">
       <p>
-        <button onClick="history.go(-1)">
-          <p>◀</p>
-        </button>
-        <img src="{% static 'img/MacLogo.png' %}" alt="">
+            <a href="{% url 'mcdonaldapp:menu' %}">
+              <img src="{% static 'img/MacLogo.png' %}" alt="">
+            </a>
       </p>
     </div>
     <div class="pay">

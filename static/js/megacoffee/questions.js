@@ -16,16 +16,16 @@ window.addEventListener('DOMContentLoaded', function(){
 
         let missionList = '';
         missionList += `<h3>미션</h3>`
-        missionList += `<div>결제 방식 : ${missions.method}</div>`;
-        missionList += `<div>포장 여부 : ${missions.packaging}</div>`;
-        missions.missions.map((e) => {
+        missionList += `<div>결제 방식 : ${missions[0].payment}</div>`;
+        missionList += `<div>포장 여부 : ${missions[0].packing}</div>`;
+        missions.map((e) => {
             missionList += `
                 <div>
-                    ${e.menu} / ${e.option} / ${e.quantity}
+                    ${e.menu} / ${e.quantity}개
                 </div>
             `;
         })
-        console.log(headerMissionList)
+
         headerMissionList.innerHTML = missionList;
     }
 

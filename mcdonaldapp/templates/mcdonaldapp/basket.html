@@ -3,9 +3,6 @@
 
 {% block extra-style %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     <script type="text/javascript">
     $(document).ready(function(){
@@ -62,6 +59,7 @@
         });
       }
     </script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?ver=3" />
 {% endblock %}
 
 {% block content %}
@@ -74,16 +72,16 @@
           </a>
       </p>
     </div>
-    <div class="title title_cart">
+    <div class="title_cart font-black">
       장바구니
     </div>
 
     <div class="table">
       <table id = 'orderedmenu'>
-        <th>메뉴명</th>
-        <th>수량</th>
-        <th>가격</th>
-        <th>취소</th>
+        <th  class = "fs-2 t_menu">메뉴명</th>
+        <th  class = "fs-2 t_amount">수량</th>
+        <th  class = "fs-2 ">가격</th>
+        <th  class = "fs-2 t_amount">취소</th>
         <tbody></tbody>
         {% for name, value in menus.items %}
         <tbody class="allDelete">
@@ -103,26 +101,22 @@
       </table>
     </div>
     <div class="select">
-      <div class="priceWrap font-bold">
-        <div class="textCenter">
-          <div class="total">Total:  <span class="total_price">{{ total_price }}원</span></div>
+        <div class="priceWrap font-black">
+          Total:  {{ total_price }}원
+
         </div>
-      </div>
     </div>
-    <div>
-          <button class="goshopping" type="button">
-          <a href="{% url 'mcdonaldapp:menu' %}">
-            계속 쇼핑하기
-          </a>
-        </button>
-      {% if menus %}
-        <button class="charge" type="button">
-          <a href="{% url 'mcdonaldapp:payment' %}?packing={{ packing }}">
-            결제하기
-          </a>
-        </button>
-      {% endif %}
-    </div>
+       <div>
+              <a class="goshopping padding" href="{% url 'mcdonaldapp:menu' %}">
+                 계속 쇼핑하기
+              </a>
+              {% if menus %}
+                <a  class="charge padding" href="{% url 'mcdonaldapp:payment' %}?packing={{ packing }}">
+                     결제하기
+                </a>
+             {% endif %}
+        </div>
+
   </div>
   <script>
       window.addEventListener('DOMContentLoaded', function(){
