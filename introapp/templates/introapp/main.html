@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra-style %}
+    <link rel="stylesheet" href="{% static 'css/wave.css' %}" />
+{% endblock %}
+
 {% block content %}
 
-<div class="background">
-    <div class = "center container">
+
+<div class="header">
+    <div class="inner-header flex">
         <div class = "flex justify-center align-center items-center my-5 ">
             <span class = "font-bold fs-1">시니스크에 오신 것을 환영합니다</span>
         </div>
@@ -12,6 +17,44 @@
             <a class = "btn" href="{% url 'introapp:brand' %}">시작하기</a>
         </div>
     </div>
+
+    <!--Waves Container-->
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
 </div>
+<div class="content flex">
+    <div class="mt-20">
+        시니스크는 <u>고령층의 쉽고 편안한 키오스크 사용을 장려</u>하기 위해 <b>연습 기능</b>을 제공하는 플랫폼입니다.
+        <br>
+        이 사이트에서 수집되는 모든 정보는 더 나은 키오스크를 만들기 위해서 사용됩니다.
+    </div>
+    <br>
+    <p>2023 | Team Senisk | KUS Underdog Revolution</p>
+</div>
+
+
+
+<script>
+    let root = document.documentElement;
+    const section1 = document.querySelector('.header')
+
+    window.addEventListener('scroll', () => {
+    const y = 1 + (window.scrollY || window.pageYOffset); 
+    root.style.setProperty('--gradient-percent', y * 4 + "px");
+    console.log(y)
+    })
+</script>
 
 {% endblock%}

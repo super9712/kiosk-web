@@ -1,4 +1,5 @@
 
+
 from django.db import migrations, models
 import django.db.models.deletion
 
@@ -14,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Menu',
             fields=[
+
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
             ],
@@ -21,6 +23,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Option',
             fields=[
+
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
             ],
@@ -44,6 +47,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Quantity',
             fields=[
+
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('value', models.IntegerField()),
             ],
@@ -51,6 +55,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Payment',
             fields=[
+
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('method', models.CharField(max_length=100)),
                 ('packaging', models.CharField(max_length=50)),
