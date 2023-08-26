@@ -90,6 +90,7 @@ class Mission_McTemplateView(TemplateView):
         result = dict(zip(menus, quantities))
 
         context = {'order': result, 'payment': payment}
+
         return render(request, self.template_name, context)
 
 

@@ -13,6 +13,8 @@ class Complete(models.Model):
 
 class Mission_mc(models.Model):
     mission = models.CharField(max_length=100)
+
+
 class Menu(models.Model):
     menu_name = models.CharField(max_length=50)
     quantity = models.IntegerField()
