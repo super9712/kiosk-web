@@ -51,6 +51,12 @@
   font-weight: 900;
 }
 
+.font-black{
+    color : black;
+    font-size : 3rem;
+    font-weight : 900;
+}
+
 .background {
   background-color: #006400;
 }
@@ -279,19 +285,19 @@
   width: 100%;
 }
 
-.priceWrap {
-  height: 5rem;
-  background-color: #11410f;
-}
 
 .textCenter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border : 4px solid #11410f;
+  border-radius : 0.5rem;
 }
 
-.priceWrap .total, .priceWrap p, .priceWrap .won {
+.total_mc {
   float: left;
+  padding : 1rem;
+  width : 400px;
 }
 
 /* indexx3.html */
