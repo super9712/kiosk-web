@@ -65,7 +65,9 @@
 <div class="wrapper">
     <div class="banner">
         <p>
-            <img src="{% static 'img/MacLogo.png' %}" alt="">
+            <a href="{% url 'mcdonaldapp:menu' %}">
+              <img src="{% static 'img/MacLogo.png' %}" alt="">
+            </a>
         </p>
     </div>
     <form method="post" action="{% url 'mcdonaldapp:basket' %}">{% csrf_token %}
