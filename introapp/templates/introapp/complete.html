@@ -9,29 +9,53 @@
             <span class = "font-bold fs-1">주문을 완료하셨습니다.</span>
         </div>
         <div class = "flex ordered orderWrap">
-            <div class="flex column">
-                <div class ="title font-bold fs-3">주문한 내역</div>
-                <div class="title font-bold method-order ">결제 방법 : ____</div>
-            </div>
+            {% if brand == 'mcdonald' %}
+                <div class="flex column">
+                    <div class ="title font-bold fs-3">주문한 내역</div>
+                    <div class="title font-bold method-order ">결제 수단 : {{ payment.method }}</div>
+                    <div class="title font-bold method-order ">포장 여부 : {{ payment.packing }}</div>
+                </div>
+                {% for menu in menus %}
+                    <div>
+                        {{ menu.name }} {{ menu.quantity }}개
+                    </div>
+                {% endfor %}
+            {% elif brand == 'megacoffee' %}
+                <div class="flex column">
+                    <div class ="title font-bold fs-3">주문한 내역</div>
+                    <div class="title font-bold method-order ">결제 방법 : ____</div>
+                </div>
+                <div class = "flex column align-center items-center order-list">
 
-            <div class = "flex column align-center items-center order-list">
 
-
-            </div>
+                </div>
+            {% endif %}
         </div>
         <div class = "flex answer missionWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="title font-bold method-mission ">결제 방법 : ____</div>
+                <div class="title font-bold method-mission ">결제 수단 : {{ mission_payment.payments }}</div>
+                <div class="title font-bold method-order ">포장 여부 : {{ mission_payment.packing }}</div>
             </div>
-
-            <div class = "flex column align-center items-center answer-list">
-
-            </div>
+                {% if brand == 'mcdonald' %}
+                    {% for menu, quantity in mission_order.items %}
+                        <div>
+                            {{ menu }} {{ quantity }}개
+                        </div>
+                    {% endfor %}
+                {% elif brand == 'megacoffee' %}
+                    {% for menu, value in mission_order.items %}
+                        <div>
+                            {{ menu }} {{ value.1 }}개
+                            <br>
+                            {{ value.0 }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
         </div>
         <div class = "answer justify-evenly correctWrap">
             <div>
-                <div class ="font-bold fs-3 accuracy">정확도 :  %</div>
+                <div class ="font-bold fs-3 accuracy">정확도 :  {{ accuracy }}%</div>
                 <div class ="font-bold fs-3 using-time">주문까지 걸린 시간 : 분 **초</div>
             </div>
 

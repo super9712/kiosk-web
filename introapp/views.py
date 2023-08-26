@@ -6,9 +6,11 @@ from django.views.generic import View, TemplateView
 import random
 
 from introapp.models import Response
-from megacoffeeapp.models import Menu, Quantity, Option, Order, Payment
+from megacoffeeapp.models import Menu as MegacoffeeMenu, Quantity, Option, Order, Payment as MegacoffeePayment
+from mcdonaldapp.models import Menu as McdonaldMenu, Payment as McdonaldPayment
 
-
+mega_mission = {}
+mc_mission = {}
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -17,48 +19,52 @@ class BrandTemplateView(TemplateView):
     template_name = 'introapp/brand.html'
 
 class Mission_MegaTemplateView(TemplateView):
-    model = Payment
+    model = MegacoffeePayment
 
     template_name = 'introapp/mission_mega.html'
 
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이', ]
-        packaging = ['포장', '매장']
+        packing = ['포장', '매장']
 
         method = random.choice(payments)
-        packaging = random.choice(packaging)
+        packing = random.choice(packing)
 
         payment = {
             'payments': method,
-            'packaging': packaging
+            'packing': packing
         }
 
-        # 딕셔너리는 1:1 맵핑밖에안돼서 그냥 메뉴랑 옵션 합쳐서 리스트 하나로 만들어야할듯
-        menu_option = [
-            '고흥 유자망고 스무디', '고흥 유자망고 스무디 사이즈업 해서',
-            '고흥 유자 하이볼 에이드', '고흥 유자 하이볼 에이드 사이즈업 해서',
-            '나주 플럼코트 스무디', '나주 플럼코트 스무디 사이즈업 해서',
-            '아메리카노', '아메리카노 샷추가 해서',
+        menu = [
+            '고흥 유자 망고 스무디', '고흥 유자 하이볼 에이드', '나주 플럼코트 스무디', '보성 녹차 레몬 콤부차', '코코넛 커피 스무디', '수박 화채 스무디', '수박 주스', '레드 오렌지 자몽 주스',
+            '아메리카노(HOT)', '카페 라떼(HOT)', '카라멜 마끼아또(HOT)', '바닐라 라떼(HOT)', '카페 모카(HOT)', '콜드브루 오리지널(HOT)', '헤이즐넛 라떼(HOT)', '헤이즐넛 아메리카노(HOT)',
+             '아메리카노(ICE)', '카페 라떼(ICE)', '카라멜 마끼아또(ICE)', '바닐라 라떼(ICE)', '카페 모카(ICE)', '콜드브루 오리지널(ICE)', '헤이즐넛 라떼(ICE)', '헤이즐넛 아메리카노(ICE)',
+        ]
+
+        option = [
+            '사이즈 업', '샷 추가', '휘핑크림 추가', '휘핑크림 빼기', '추가 옵션 없음',
         ]
 
         quantity = [1, 2, 3]
 
-        menus = random.sample(menu_option, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
-        # options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
+        menus = random.sample(menu, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
+        options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
         quantities = random.sample(quantity, len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
 
-        order = dict(zip(menus, quantities))
+        order = {}
+        for index in range(0, len(menus)):
+            order[menus[index]] = [options[index], quantities[index]]
 
         context = {
             'order': order,
             'payment': payment
         }
 
+        mega_mission.clear()
+        mega_mission['order'] = order
+        mega_mission['payment'] = payment
+
         return render(request, 'introapp/mission_mega.html', context)
-
-
-class CompleteTemplateView(TemplateView):
-    template_name = 'introapp/complete.html'
 
 class Mission_McTemplateView(TemplateView):
     template_name = 'introapp/mission_mc.html'
@@ -74,14 +80,14 @@ class Mission_McTemplateView(TemplateView):
 
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이']
-        packaging = ['포장', '매장']
+        packing = ['포장', '매장']
 
         method = random.choice(payments)
-        packaging = random.choice(packaging)
+        packing = random.choice(packing)
 
         payment = {
             'payments': method,
-            'packaging': packaging
+            'packing': packing
         }
 
         menus = random.sample(self.menu_name_list, random.randint(1, 3))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
@@ -91,7 +97,52 @@ class Mission_McTemplateView(TemplateView):
 
         context = {'order': result, 'payment': payment}
 
+        mc_mission.clear()
+        mc_mission['order'] = result
+        mc_mission['payment'] = payment
+
         return render(request, self.template_name, context)
+
+
+
+class CompleteTemplateView(TemplateView):
+    template_name = 'introapp/complete.html'
+
+    def get(self, request):
+        brand = request.GET.get('brand')
+        payment_pk = request.GET.get('payment_pk')
+
+        if brand == 'mcdonald':
+            payment = McdonaldPayment.objects.get(id=payment_pk)
+            menus = McdonaldMenu.objects.filter(payment_id=payment_pk)
+
+            # 맥도날드 정확도 측정
+            total = 2
+            correct = 0
+            if payment.method == mc_mission['payment']['payments']:
+                correct += 1
+            if payment.packing == mc_mission['payment']['packing']:
+                correct += 1
+            for menu in menus:
+                total += 2
+                for mission_menu, mission_quantity in mc_mission['order'].items():
+                    if menu == mission_menu:
+                        correct += 1
+                    if menu.quantity == mission_quantity:
+                        correct += 1
+
+            accuracy = correct/total*100
+
+            context = {'brand': brand, 'payment': payment, 'menus': menus,
+                       'mission_order': mc_mission['order'], 'mission_payment': mc_mission['payment'],
+                       'accuracy': accuracy}
+
+            return render(request, 'introapp/complete.html', context)
+
+        elif brand == 'megacoffee':
+            context = {'brand': brand, 'mission_order': mega_mission['order'], 'mission_payment': mega_mission['payment']}
+        return render(request, 'introapp/complete.html', context)
+
 
 
 
