@@ -8,19 +8,6 @@
 {% endblock %}
 
 {% block content %}
-
-    <script>
-      $(document).ready(function(){
-        $('ul.category li').click(function(){
-          var tab_id = $(this).attr('data-tab');
-          $('ul.category li').removeClass('current');
-          $('.menu').removeClass('current');
-          $(this).addClass('current');
-          $("#"+tab_id).addClass('current');
-        })
-      })
-    </script>
-  </head>
   <body>
     <div class="wrapper">
       <div class="header">
@@ -126,8 +113,21 @@
         </button>
       </div>
     </div>
-  </body>
-</html>
+
+  <script>
+    $(document).ready(function(){
+      $('ul.category li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+        $('ul.category li').removeClass('current');
+        $('.menu').removeClass('current');
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+      })
+    })
+  </script>
+
+  <script type="text/javascript" src="{% static 'js/mcdonald/menu.js' %}"></script> 
+</body>
 
 
 {% endblock %}

@@ -16,7 +16,40 @@
         <div class = "flex justify-center align-center items-center my-5">
             <a class = "btn" href="{% url 'mcdonaldapp:here_togo' %}">주문하기</a>
         </div>
+
+        <form class="mission_text" style="display: none;">
+            <div>
+                <input type="hidden" class="menu_names" value="{{ request.session.mega_menu }}" />
+                <input type="hidden" class="quantity" value="{{ request.session.mega_quantity }}" />
+                <input type="hidden" class="packing" value="{{ request.session.mega_packing }}" />
+                <input type="hidden" class="payment" value="{{ request.session.mega_payment }}" />
+            </div>
+        </form>
+        
     </div>
 </div>
 
+<script>
+    window.addEventListener('DOMContentLoaded', function(){
+        // mission setting
+        const menu_names = document.querySelector('.menu_names').value.split(',');
+        const quantities = document.querySelector('.quantity').value.split(',');
+        const packing = document.querySelector('.packing').value;
+        const payment = document.querySelector('.payment').value;
+        
+        let mission = [];
+
+        for ( let i=0 ; i < menu_names.length-1 ; i++ ) {
+            const newMenu = {
+                menu: menu_names[i],
+                quantity: quantities[i],
+                packing: packing,
+                payment: payment,
+            }
+            mission.push(newMenu);
+        }
+
+        sessionStorage.setItem('mission', JSON.stringify(mission));
+    });
+</script>
 {% endblock%}
