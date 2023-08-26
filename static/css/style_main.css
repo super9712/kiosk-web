@@ -532,7 +532,7 @@ complete.html
         margin-top: 10rem;
     }
     
-    .btn.btn-pay.btn-square-small{
+    .btn.btn-pay.btn-square-small,.btn.complete-btn.btn-square-small{
         flex-direction: column;
         align-items: center;
         width: 5rem;
