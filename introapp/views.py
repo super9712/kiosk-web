@@ -33,21 +33,23 @@ class Mission_MegaTemplateView(TemplateView):
             'packaging': packaging
         }
 
-        # 딕셔너리는 1:1 맵핑밖에안돼서 그냥 메뉴랑 옵션 합쳐서 리스트 하나로 만들어야할듯
-        menu_option = [
-            '고흥 유자망고 스무디', '고흥 유자망고 스무디 사이즈업 해서',
-            '고흥 유자 하이볼 에이드', '고흥 유자 하이볼 에이드 사이즈업 해서',
-            '나주 플럼코트 스무디', '나주 플럼코트 스무디 사이즈업 해서',
-            '아메리카노', '아메리카노 샷추가 해서',
+        menu = [
+            '고흥 유자 망고 스무디', '고흥 유자 하이볼 에이드', '나주 플럼코트 스무디', '보성 녹차 레몬 콤부차', '코코넛 커피 스무디', '수박 화채 스무디', '수박 주스', '레드 오렌지 자몽 주스',
+            '아메리카노(HOT)', '카페 라떼(HOT)', '카라멜 마끼아또(HOT)', '바닐라 라떼(HOT)', '카페 모카(HOT)', '콜드브루 오리지널(HOT)', '헤이즐넛 라떼(HOT)', '헤이즐넛 아메리카노(HOT)',
+             '아메리카노(ICE)', '카페 라떼(ICE)', '카라멜 마끼아또(ICE)', '바닐라 라떼(ICE)', '카페 모카(ICE)', '콜드브루 오리지널(ICE)', '헤이즐넛 라떼(ICE)', '헤이즐넛 아메리카노(ICE)',
+        ]
+
+        option = [
+            '사이즈 업', '샷 추가', '휘핑크림 추가', '휘핑크림 빼기', '추가 옵션 없음',
         ]
 
         quantity = [1, 2, 3]
 
-        menus = random.sample(menu_option, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
-        # options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
+        menus = random.sample(menu, random.randint(1, 3))  # 랜덤하게 1~3개 메뉴 선택
+        options = random.sample(option, len(menus))  # 선택한 메뉴 옵션과 동일한 옵션 선택
         quantities = random.sample(quantity, len(menus))  # 선택한 메뉴 수량과 동일한 수량 선택
 
-        order = dict(zip(menus, quantities))
+        order = dict(zip(menus, [options, quantities]))
 
         context = {
             'order': order,
