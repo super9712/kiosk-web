@@ -14,6 +14,18 @@
   flex-wrap: wrap;
 }
 
+.mc_wrapper{
+      display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height : 100vh;
+  margin : 0 20vw;
+  padding : 0;
+    flex-wrap: wrap;
+
+}
+
 .header {
   width: 100%;
 }
@@ -56,6 +68,7 @@
     font-size : 3rem;
     font-weight : 900;
 }
+
 
 .background {
   background-color: #006400;
@@ -208,6 +221,14 @@
 
 }
 
+.padding {
+    padding : 2rem 2rem;
+    width : content;
+    margin : 1rem;
+}
+
+
+
 .reset{
   flex: 0.2;
   background: var(--danger);
@@ -338,7 +359,7 @@
 .payment img {
   width: 20rem;
   height: 20rem;
-  margin: 3rem 0;
+  margin: 3rem 3rem;
 }
 
 .pay_name {
@@ -355,6 +376,13 @@
   text-align: center;
 }
 
+.cash_title{
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 2rem;
+  text-align: center;
+}
+
 .pay_img {
   width: 25rem;
   height: 25rem;
@@ -364,7 +392,7 @@
 /* complete.html */
 
 .back {
-  width: 20rem;
+  width: content;
   height: 8rem;
   margin: 2rem;
   border: none;
@@ -398,32 +426,61 @@
 }
 
 .table {
-  height: 50rem;
+  height: content;
   display: flex;
   margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
   border: 3.5px solid #EEBF53;
+  border-radius : 1rem;
+}
+
+.table #orderedmenu{
+    padding : 2rem;
+    margin : 2rem;
 }
 
 td,th {
   width: 22rem;
   padding: 0.5rem;
+
+}
+
+th{
+       color : black;
+    font-size : 2rem;
+    font-weight : 900;
+}
+
+.t_menu {
+    width : 200px;
+}
+.t_amount {
+    width : 100px;
+}
+
+.priceWrap {
+    margin : 2rem;
 }
 
 .goshopping, .charge {
-  background-color: var(--primary)!important;
-  border-radius: 1rem;
+  border-radius: 3rem;
   width: 12rem;
   height: 3.5rem;
   font-size: 1.5rem;
-  border: none;
 }
 
 .goshopping a, .charge a {
-  color: white;
+  color: black;
+
 }
 
 .goshopping {
-  background-color: #ead093;
+  border : 3px solid #FF3232;
 }
+
+.charge {
+    border : 3px solid #009000;
+}
+
+

@@ -17,18 +17,18 @@
                 </p>
             </div>
         </div>
-        <div class="title">
+        <div class="cash_title">
             결제가 완료되었습니다.
             <br>
             고객님의 주문 번호는
         </div>
-        <div class="number">
+        <div class="cash_title font-black">
             {{ payment_pk }}
         </div>
-        <div class="title">입니다.</div>
+        <div class="cash_title">번 입니다.</div>
         <button class="back">
-            <a class = "btn" href="{% url 'introapp:complete' %}?payment_pk={{ payment_pk }}">
-                키오스크 마스터로
+            <a class = "btn complete_btn" href="{% url 'introapp:complete' %}?payment_pk={{ payment_pk }}">
+                시니스크
                 <br>
                 돌아가서 확인하기
             </a>
