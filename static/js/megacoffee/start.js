@@ -7,32 +7,30 @@ window.addEventListener('DOMContentLoaded', function(){
     sessionStorage.removeItem("mission");
 
 
-    // 미션 가져오기
-    const form = this.document.querySelector('.mission_text');
-    const missions = [];
+    // mission setting
+    const menu_names = document.querySelector('.menu_names').value.split(',');
+    const quantities = document.querySelector('.quantity').value.split(',');
+    const packing = document.querySelector('.packing').value;
+    const payment = document.querySelector('.payment').value;
 
-    for ( let i = 0 ; i < form.children.length - 2 ; i++ ) {
-        // packaging, method 제외 나머지 확인
-        missions.push({
-            menu: form.children[i].querySelector('.menu_name').value,
-            option: form.children[i].querySelector('.option_name').value,
-            quantity: form.children[i].querySelector('.quantity').value,
-        })
+    let mission = [];
+
+    for ( let i=0 ; i < menu_names.length-1 ; i++ ) {
+        const newMenu = {
+            menu: menu_names[i],
+            quantity: quantities[i],
+            packing: packing,
+            payment: payment,
+        }
+        mission.push(newMenu);
     }
 
-    const order = {
-        missions: missions,
-        packaging: form.children[form.children.length - 2].value,
-        method: form.children[form.children.length - 1].value,
-    }
-
-    console.log(order);
+    sessionStorage.setItem('mission', JSON.stringify(mission));
 
     // 시작 버튼 누르면 미션 등록
     const start_btn = document.querySelector('.mission-start');
     start_btn.addEventListener('click', () => {
-        sessionStorage.setItem("mission", JSON.stringify(order));
-        console.log(JSON.stringify(order)); 
+        console.log(JSON.stringify(mission));
         location.href = '/megacoffee/question/';
     })
 });

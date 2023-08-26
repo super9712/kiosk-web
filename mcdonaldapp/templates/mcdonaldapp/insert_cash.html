@@ -11,18 +11,19 @@
 <div class="wrapper">
     <div class="banner">
         <p>
-            <button onClick="history.go(-1)">
-                <p>◀</p>
-            </button>
-            <img src="{% static 'img/MacLogo.png' %}" alt="">
+            <a href="{% url 'mcdonaldapp:menu' %}">
+                  <img src="{% static 'img/MacLogo.png' %}" alt="">
+            </a>
         </p>
+
     </div>
-    <div class="title">
-        현금을 아래의 투입구에
-        <br>
-        삽입해 주세요.
-    </div>
+
     <a href="{% url 'mcdonaldapp:complete' %}?packing={{ packing }}&method=현금">
+        <div class="cash_title">
+            현금을 아래의 투입구에
+                <br>
+            삽입해 주세요.
+        </div>
         <img src="{% static 'img/cash-payment.png' %}" class="pay_img" />
     </a>
 </div>

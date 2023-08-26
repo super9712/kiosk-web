@@ -19,7 +19,8 @@ window.addEventListener('DOMContentLoaded', function() {
     })
 
     document.querySelector('.order-list').innerHTML = result1;
-    document.querySelector('.method-order').innerHTML = '결제 수단 : ' + orderMenu[0].method;
+    document.querySelector('.ordered-method').innerHTML = '결제 수단 : ' + orderMenu[0].method;
+    document.querySelector('.ordered-packaging').innerHTML = '포장 : ' + orderMenu[0].packaging;
 
     // 정확도 및 시간 출력
     document.querySelector('.accuracy').innerHTML = '정확도 : ' + Math.round(accuracy) + '%';
