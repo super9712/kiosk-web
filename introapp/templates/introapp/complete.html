@@ -34,12 +34,16 @@
         <div class = "flex answer missionWrap">
             <div class="flex column">
                 <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="title font-bold method-mission ">결제 방법 : </div>
+                <div class="title font-bold method-mission ">결제 방법 : {{ mission_payment.payments }}</div>
+                <div class="title font-bold method-order ">포장 방법 : {{ mission_payment.packing }}</div>
             </div>
 
-            <div class = "flex column align-center items-center answer-list">
+                {% for menu, quantity in mission_order.items %}
+                    <div>
+                        {{ menu }} {{ quantity }}개
+                    </div>
+                {% endfor %}
 
-            </div>
         </div>
         <div class = "answer justify-evenly correctWrap">
             <div>

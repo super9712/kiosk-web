@@ -9,7 +9,8 @@ from introapp.models import Response
 from megacoffeeapp.models import Menu as MegacoffeeMenu, Quantity, Option, Order, Payment as MegacoffeePayment
 from mcdonaldapp.models import Menu as McdonaldMenu, Payment as McdonaldPayment
 
-mission = {}
+mega_mission = {}
+mc_mission = {}
 
 class IntroTemplateView(TemplateView):
     template_name = 'introapp/main.html'
@@ -24,14 +25,14 @@ class Mission_MegaTemplateView(TemplateView):
 
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이', ]
-        packaging = ['포장', '매장']
+        packing = ['포장', '매장']
 
         method = random.choice(payments)
-        packaging = random.choice(packaging)
+        packing = random.choice(packing)
 
         payment = {
             'payments': method,
-            'packaging': packaging
+            'packing': packing
         }
 
         menu = [
@@ -57,6 +58,10 @@ class Mission_MegaTemplateView(TemplateView):
             'payment': payment
         }
 
+        mega_mission.clear()
+        mega_mission['order'] = order
+        mega_mission['payment'] = payment
+
         return render(request, 'introapp/mission_mega.html', context)
 
 class Mission_McTemplateView(TemplateView):
@@ -73,14 +78,14 @@ class Mission_McTemplateView(TemplateView):
 
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이']
-        packaging = ['포장', '매장']
+        packing = ['포장', '매장']
 
         method = random.choice(payments)
-        packaging = random.choice(packaging)
+        packing = random.choice(packing)
 
         payment = {
             'payments': method,
-            'packaging': packaging
+            'packing': packing
         }
 
         menus = random.sample(self.menu_name_list, random.randint(1, 3))                    # 랜덤하게 1~3개 메뉴 선택 / 리스트로 반환됨
@@ -89,6 +94,10 @@ class Mission_McTemplateView(TemplateView):
         result = dict(zip(menus, quantities))
 
         context = {'order': result, 'payment': payment}
+
+        mc_mission.clear()
+        mc_mission['order'] = result
+        mc_mission['payment'] = payment
 
         return render(request, self.template_name, context)
 
@@ -100,13 +109,22 @@ class CompleteTemplateView(TemplateView):
     def get(self, request):
         brand = request.GET.get('brand')
         payment_pk = request.GET.get('payment_pk')
+
         if brand == 'mcdonald':
             payment = McdonaldPayment.objects.get(id=payment_pk)
             menus = McdonaldMenu.objects.filter(payment_id=payment_pk)
-            context = {'brand': brand, 'payment': payment, 'menus': menus}
-        elif brand == 'megacoffee':
-            payment = MegacoffeePayment.objects.get(id=payment_pk)
-            context = {'brand': brand, 'payment': payment}
+
+
+
+            context = {'brand': brand, 'payment': payment, 'menus': menus, 'mission_order': mc_mission['order'], 'mission_payment': mc_mission['payment']}
+
+            return render(request, 'introapp/complete.html', context)
+
+        # elif brand == 'megacoffee':
+        #     payment = MegacoffeePayment.objects.get(id=payment_pk)
+        #     context = {'brand': brand, 'payment': payment}
+
+        context = {'brand': brand}
         return render(request, 'introapp/complete.html', context)
 
 
