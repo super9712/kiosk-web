@@ -11,6 +11,14 @@
                 맥도날드에 오신 것을 환영합니다!
                 <br>
                 주문하시려면 아래의 버튼을 눌러주세요.
+                <br>
+                {{ request.session.mega_menu }}
+                <br>
+                {{ request.session.mega_quantity }}
+                <br>
+                {{ request.session.mega_payment }}
+                <br>
+                {{ request.session.mega_packing }}
             </span>
         </div>
         <div class = "flex justify-center align-center items-center my-5">
