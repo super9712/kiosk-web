@@ -11,29 +11,16 @@
                 메가커피에 오신 것을 환영합니다!
                 <br>
                 주문하시려면 아래의 버튼을 눌러주세요.
-                <br>
-                {{ request.session.mega_menu }}
-                <br>
-                {{ request.session.mega_option }}
-                <br>
-                {{ request.session.mega_quantity }}
-                <br>
-                {{ request.session.mega_payment }}
-                <br>
-                {{ request.session.mega_packing }}
             </span>
         </div>
 
         <form class="mission_text" style="display: none;">
-            {% for order in payment.orders.all %}
             <div>
-                <input type="hidden" class="menu_name" value="{{ order.menu.name }}" />
-                <input type="hidden" class="option_name" value="{{ order.option.name }}" />
-                <input type="hidden" class="quantity" value="{{ order.quantity.value }}" />
+                <input type="hidden" class="menu_names" value="{{ request.session.mega_menu }}" />
+                <input type="hidden" class="quantity" value="{{ request.session.mega_quantity }}" />
+                <input type="hidden" class="packing" value="{{ request.session.mega_packing }}" />
+                <input type="hidden" class="payment" value="{{ request.session.mega_payment }}" />
             </div>
-            {% endfor %}
-            <input type="hidden" class="packaging" value="{{ payment.packaging }}" />
-            <input type="hidden" class="method" value="{{ payment.method }}" />
         </form>
         
         <div class = "flex justify-center align-center items-center my-5">
