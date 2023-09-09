@@ -208,8 +208,8 @@ const setMenu = (e) => {
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
             console.log('option', element)
-            menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) >= 1 ? element.optionCount + '회' : '' }` 
-            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount ? element.optionCount : 1))) + "원";
+            menu_name += ` / ${element.optionName} ${ parseInt(element.quantity) >= 1 ? element.quantity + '회' : '' }` 
+            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.quantity ? element.quantity : 1))) + "원";
         })
     } 
 
@@ -238,7 +238,15 @@ const setMenu = (e) => {
     // 옵션 초기화
     currentOption = [];
 
+    // click data 
     getClickData('주문 담기 ' + menu_name);
+
+    // update item count
+    let menuCount = 0;
+    orderMenu.map((e) => {
+        menuCount += e.quantity;
+    })
+    document.querySelector('.selected-item-num').innerHTML = menuCount + '개';
     
     // 렌더링
     updateOrderList();
@@ -342,9 +350,11 @@ const addOption = (e) => {
     flag = false; // 이미 존재하는 옵션인지 확인 
 
     currentOption.map((item) => {
+        console.log(currentOption)
         if ( item.optionName === optionName ) {
+            console.log('중복')
             flag = true;
-            item.optionCount++;
+            item.quantity++;
         }
     });
     
@@ -356,5 +366,12 @@ const addOption = (e) => {
         });
     };
 
-    console.log(currentOption)
+    let optionString = '';
+    currentOption.map((e, i) => {
+        optionString += ( e.optionName + ' ' + e.quantity + '개' );
+        if ( i !== currentOption.length - 1 ) {
+            optionString += ', '; 
+        }
+    })
+    document.querySelector('.selected-options').innerHTML = optionString;
 }
