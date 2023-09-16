@@ -50,6 +50,13 @@
     align-items : center;
 }
 
+.receipt .column {
+    flex-direction: column;
+    flex-wrap : nowrap;
+    width : 100%;
+    align-items : center;
+}
+
 /*
 
 layout
@@ -282,16 +289,50 @@ components
 }
 
 /* receipt.html */
+.receipt-page>.center {
+    height: 100%;
+    background-color: #FFB800;
+}
 
 .btn-square-small {
     width: 13rem;
-    height: 13rem;
-    font-size: 1.8rem;
+    height: 8rem;
+    font-size: 1.3rem;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #cccccc;
 }
 
 .no-margin-right {
     margin-right: 0;
 }
+
+.flex.justify-center.align-center.items-center.my-5.pay {
+    text-align: center;
+    display: flex;
+    width: 80vw;
+    padding-left: 4rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex.justify-center.align-center.items-center.my-5.pay a {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-desc {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+.step-tag {
+    padding: 0.2rem 0.8rem;
+    background-color: #FFB800;
+    border-radius: 0.2rem;
+}
+
 
 /*
 
@@ -299,7 +340,6 @@ components
 
 */
 nav {
-    box-shadow: 1px 1px 5px #cccccc;
     padding: 1rem;
 }
 
@@ -312,8 +352,11 @@ mission page
 
 .wrap, .select, .receipt_list {
     display: flex;
+    background-color: white;
+    width: 100%;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem;
 }
 
 .wrap {
@@ -345,7 +388,7 @@ mission page
     height: 19rem;
 }
 
-.mission, .receipt {
+.mission {
     border: 0.5rem solid var(--primary);
     border-radius: 1rem;
     text-align: center;
@@ -375,11 +418,6 @@ receipt.html
 .list p{
     padding : 10px;
     font-size : 25px;
-}
-
-.receipt {
-    width: 30rem;
-    height: 34rem;
 }
 
 .total {
@@ -480,36 +518,17 @@ complete.html
         flex-direction: column;
         align-items: center;
         width: 100%;
-    }
-
-    .flex.my-5.pay{
-        flex-direction: column;
-        align-items: flex-start;
-        width: 92%;
-    }   
+    } 
 
     .flex.justify-center.align-center.items-center.my-5{
         flex-direction: row;
         align-items: center;   
         width: 100%;
     }
-    
-    .flex.justify-center.align-center.items-center.my-5.pay{
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
 
     svg{
         margin-left: 110px;
         margin-bottom: 30px;
-    }
-
-    .receipt.flex.align-center.my-5.column.pay {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin: 0;
     }
 
     .flex.column.pay{
@@ -521,6 +540,7 @@ complete.html
     .receipt_list{
         /* align-items: center;
         flex-direction: row; */
+        background-color: white;
         justify-content: center;
         width: 100%;
         margin-left: 20px;
