@@ -52,13 +52,12 @@
 /* index2.html */
 
 .text {
-  margin-top: 2rem;
-  margin-bottom : 3rem;
+  margin-top: 3rem;
 
 }
 
 .font-bold {
-  color: white;
+  color: #333;
   font-size: 3rem;
   font-weight: 900;
 }
@@ -71,7 +70,7 @@
 
 
 .background {
-  background-color: #006400;
+  background-color: #fff;
 }
 
 .place_select ul, .menu_list ul {
@@ -85,24 +84,25 @@
   background-color: white;
   margin: 1rem 1rem;
   border-radius: 1rem;
-  width: 85%;
-  height: 400px;
 }
 
 .place {
-  color: rgb(233, 51, 36);
   text-align: center;
   font-size: 2rem;
   font-weight: 500;
-  margin: 1rem;
+  margin-top: 1rem;
 }
 
 .photo a img, .photo img {
   width: 25rem;
-  height: 20rem;
+  object-fit: contain;
   padding: 0 0;
 }
 
+.place_select li {
+  border: 1.5px solid #999 ;
+  border-radius: 1rem;
+}
 
 /* index.html */
 
