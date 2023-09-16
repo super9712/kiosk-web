@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', function(){
     // close modal 
     document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
     document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
+    document.querySelector('.pay-result-cancel2').addEventListener('click', closeOrderModal);
 
     // order button
     document.querySelector('.btn-order').addEventListener('click', setMenu);
@@ -94,7 +95,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
     // order
     document.querySelector('.order-btn').addEventListener('click', checkOrder);
-    document.querySelector('.pay-result-check').addEventListener('click', submitOrder);
+    // 먹고가기
+    document.querySelectorAll('.pay-result-check')[0].addEventListener('click', () => submitOrder(true));
+    // 포장하기
+    document.querySelectorAll('.pay-result-check')[1].addEventListener('click', () => submitOrder(false));
 });
 
 
@@ -313,10 +317,13 @@ const closeOrderModal = () => {
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
 
-const submitOrder = () => {
+const submitOrder = (isHere) => {
     getClickData('submit order');
     const modal = document.querySelector('.pay-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
+
+    // 포장 여부 저장
+    sessionStorage.setItem('packaging', isHere ? '매장' : '포장');
 
     // 데이터 local storage에 저장 
     sessionStorage.setItem("clickData", JSON.stringify(clickData));
