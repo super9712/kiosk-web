@@ -141,6 +141,7 @@
                         <span class="modal-price">2000원</span>
                     </div>
                 </figure>
+                <div>선택한 옵션 <span class="selected-options"></span></div>
             </li>
             <li class="modal-item">
                 <button class="btn btn-size-up">
@@ -195,28 +196,33 @@
     <!-- 결제 내역 모달 영역 -->
     <div class="pay-modal-container modal-invisible">
         <div class="modal">
-        <h3 class="pay-modal-heading">주문리스트</h3>
-        <p class="pay-modal-text"><span>주문리스트</span>를 확인해 주세요.</p>
-        <div class="pay-list-container">
-            <div class="pay-list-head">
-            <span>메뉴</span>
-            <span>가격</span>
+            <div>
+                <div class="pay-result-header flex justify-between align-center">
+                    <h3 class="pay-modal-text"><span>주문 세부내역</span>을 다시 한번 확인하여 주세요</h3>
+                    <i class="far fa-times-circle pr-5 pt-5 pay-result-cancel2"></i>
+                </div>
+                
+                <div class="pay-list-container">
+                    <ul class="pay-list">
+                        <li id="${id}" class="pay-item">
+                            <span class="item-name"></span>
+                            <span class="item-price"></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="pay-list">
-                `<li id="${id}" class="pay-item">
-                    <span class="item-name">${item}</span>
-                    <span><span class="item-price">${price}</span>원</span>
-                </li>` 
-            </ul>
-        </div>
-        <div class="pay-result">
-            <span>총 수량 <span class="total-item-num"></span></span>
-            <span>총 결제금액 <span class="total-item-price"></span></span>
-        </div>
-        <div>
-            <button class="pay-result-check" onclick="">결제 하기</button>
-            <button class="pay-result-cancel">취소 하기</button>
-        </div>
+            
+            <div>
+                <div class="pay-result">
+                    <span>총 수량 <span class="total-item-num"></span></span>
+                    <span>총 결제금액 <span class="total-item-price"></span></span>
+                </div>
+                <div>
+                    <button class="pay-result-cancel">돌아가기</button>
+                    <button class="pay-result-check here" onclick="">먹고가기</button>
+                    <button class="pay-result-check togo" onclick="">포장하기</button>
+                </div>
+            </div>
         </div>
     </div>
     </footer>

@@ -109,9 +109,14 @@
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #eee;
+}
+
+.menu-modal-container .modal .modal-item span, .menu-modal-container .modal .modal-item .size-up-price {
+    min-width: 4rem;
+    text-align: right;
 }
 
 .menu-modal-container .modal .modal-item span, .menu-modal-container .modal .modal-item i {
@@ -131,6 +136,24 @@
 
 .menu-modal-container .modal .modal-item .btn:hover {
     background-color: #FFB800;
+}
+
+.menu-modal-container .modal .modal-item>div {
+    background-color: #FFB800;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.2rem;
+}
+
+.menu-modal-container .modal .modal-item>div span {
+    background-color: #fff;
+    display: block;
+    width: 80%;
+    min-height: 2rem;
+    padding: 0.3rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 5rem;
 }
 
 .menu-modal-container .modal .modal-item .btn:hover span, .menu-modal-container .modal .modal-item .btn:hover i {
@@ -193,7 +216,6 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
 }
 
 .menu-modal-container .modal .modal-item figure .modal-img {

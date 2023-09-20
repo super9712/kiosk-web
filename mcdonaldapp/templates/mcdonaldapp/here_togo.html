@@ -10,33 +10,35 @@
 {% block content %}
 <!-- <div class="btn"><button onClick="history.go(-1)">◀</button></div> -->
 <div class="wrapper background">
-  <div class="flex items-center text">
+  <div class="flex items-center flex-col text">
+    <img src="{% static 'img/mcdonalds.png' %}" style="width: 5rem; height: 5rem;"/>
+    <br>
     <span class="font-bold">
-      식사하실 장소를 <br>선택해주세요.
+      식사 장소를 <br>선택해주세요.
     </span>
   </div>
   <div class="place_select">
     <ul>
       <li>
+        <div class="place">
+          <a>매장</a>
+        </div>
         <div class="photo">
             <button id="menu-link">
                 <img src="{% static 'img/heremac.png' %}" />
             </button>
             <input type="hidden" id="packing-input" name="packing" value="매장" />
         </div>
-        <div class="place">
-          <a>매장에서 식사</a>
-        </div>
       </li>
       <li>
+        <div class="place">
+          <a>포장</a>
+        </div>
         <div class="photo">
             <button id="menu-link2">
               <img src="{% static 'img/takeout.jpeg' %}" />
             </button>
             <input type="hidden" id="packing-input2" name="packing" value="포장" />
-        </div>
-        <div class="place">
-          <a>테이크 아웃</a>
         </div>
       </li>
     </ul>
