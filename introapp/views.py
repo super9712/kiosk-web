@@ -9,6 +9,8 @@ from introapp.models import Response
 from megacoffeeapp.models import Menu as MegacoffeeMenu, Quantity, Option, Order, Payment as MegacoffeePayment
 from mcdonaldapp.models import Menu as McdonaldMenu, Payment as McdonaldPayment
 
+from .models import * #db 로직을 위한 import 작업
+
 mega_mission = {}
 mc_mission = {}
 
@@ -165,6 +167,11 @@ class CompleteTemplateView(TemplateView):
                         correct += 1
 
             accuracy = correct/total*100
+
+            #db로직 추가한 코드
+            new_accuracy = Complete(accuracy = round(accuracy,2), totalTime = 0) #round(accuracy,2): 소수점 둘째자리까지 반올림.
+            new_accuracy.save()
+            
 
             context = {'brand': brand, 'payment': payment, 'menus': menus,
                        'mission_order': mc_mission['order'], 'mission_payment': mc_mission['payment'],
