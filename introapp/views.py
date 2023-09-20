@@ -25,10 +25,10 @@ class Mission_MegaTemplateView(TemplateView):
 
     def get(self, request):
         payments = ['카드', '모바일쿠폰', '삼성페이/애플페이', '카카오페이/네이버페이', ]
-        packing = ['포장', '매장']
+        packing_list = ['포장', '매장']
 
         method = random.choice(payments)
-        packing = random.choice(packing)
+        packing = random.choice(packing_list)
 
         payment = {
             'payments': method,
