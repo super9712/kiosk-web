@@ -1,5 +1,18 @@
 {% load static %}
 
+<style>
+.mission-list:empty {
+    /* No styles applied */
+}
+
+.mission-list:not(:empty) {
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(35,0,77,.2);
+    border-radius: 0.5rem;
+    padding: 1rem;  
+}
+</style>
+
 <header>
   <nav
     class="-translate-x-60 "
@@ -11,6 +24,7 @@
       position: absolute;
       float: left;
       transition: 1s;
+      padding: 1rem;  
     "
   >
     <div class="flex justify-end">
@@ -23,7 +37,8 @@
     <div>
       <a href="/"><img src="{% static 'img/logo.png' %}" alt="senisk-logo" /></a>
     </div><br>
-    <div class="mission-list" style="background-color:white; box-shadow:0 8px 20px rgba(35,0,77,.2); border-radius:0.5rem; padding:1rem;"></div>
+    <div class="mission-list"></div>
+
   </nav>
   <div
     id="open-nav"
