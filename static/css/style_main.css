@@ -163,10 +163,12 @@ form legend {
     min-height: 100vh;
 }
 .survey-container{
-    padding:2rem 1rem;
-    border-radius:1rem;
+    width:45rem;
+    padding:2rem;
     padding-left: 2rem;
     padding-right: 2rem;
+    margin-bottom: 2rem;
+    border-radius:1rem;
     text-align:left;
     box-shadow:0 8px 20px rgba(35,0,77,.2);
     align-items: center;
@@ -192,7 +194,6 @@ form legend {
 }
 
 .button {
-
     padding:1rem;
     padding-left: 13%;
     padding-right: 13%;
@@ -213,6 +214,46 @@ form legend {
     font-size: 20px;
 
   }
+
+/*
+ *  complete
+ */
+
+.complete_conatiner {
+    justify-content: space-evenly;
+    display:flex;
+    padding:2rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.complete_contents {
+    width:550px;
+    padding:2rem;
+    border-radius:1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align:left;
+    box-shadow:0 8px 20px rgba(35,0,77,.2);
+    position:relative;
+}
+.complete_title{
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: x-large;
+}
+.complete_details{
+    padding:2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    font-size: x-large; 
+}
+.complete_button{
+    padding:2rem; 
+    padding-left:7rem; 
+    padding-right:7rem;
+}
+
 /*
 
 components

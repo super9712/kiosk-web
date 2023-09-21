@@ -13,21 +13,21 @@
       {% csrf_token %}
       {% for question, answers in questions.items %}
       <fieldset>
-        <div class = "survey-text" style="font-weight:bolder; text-align: center;">{{ question }}</div>
+        <div class = "survey survey-text" style="font-weight:bolder; text-align: center;">{{ question }}</div>
         {% for answer in answers %}
           <div class = "survey-text" style="padding-left:22%">
-            <input type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
+            <input type="radio"  name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
             {{ answer }}
           </div>
           </label>
         {% endfor %}
       </fieldset>
+      {% if not forloop.last%}<hr />{% endif %}
     {% endfor %}
-      <div class="flex justify-between" style="padding-left:5px; padding-right:5px;">
-          <button class="btn btn-success-survey">제출하기</button>
-          <a href="{% url 'introapp:main' %}" class = "btn">취소하기</a>
+      <div class="flex justify-between" >
+          <a href="{% url 'introapp:main' %}" class = "btn" style="width:15rem">취소하기</a>
+          <button class="btn btn-success-survey" style="width:15rem">제출하기</button>
       </div>
-
   </form>
 </div>
 
