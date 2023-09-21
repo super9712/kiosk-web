@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let result1 = '';
     orderMenu.map((e) => {
         result1 += `
-        <div class = "m-5 complete_menu">
+        <div>
             <div>${e.menu_name.split('/')[0]} ${e.quantity}개</div>
             <div>${e.menu_name.split('/')[1] ? e.menu_name.split('/')[1] : '추가 옵션 없음'}</div>
         </div>`;
