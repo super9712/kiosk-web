@@ -1,148 +1,140 @@
-{% extends 'mac_kiosk_base.html' %}
-{% load static %}
+{% extends 'mac_kiosk_base.html' %} {% load static %} {% block extra-style %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-{% block extra-style %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var rowCnt = 0;
+    var colIdx = 0;
+    var colSum = 0;
 
-    <script type="text/javascript">
-    $(document).ready(function(){
+    $("#orderedmenu tr").each(function () {
+      if (rowCnt != 0) {
+        var sell = $(this).children("td");
+        $(sell).each(function () {
+          var idx = $(this).index();
+          var val = $(this).text();
 
-      var rowCnt = 0;
-      var colIdx = 0;
-      var colSum = 0;
+          if (idx == colIdx) {
+            colSum += parseInt(val);
+          }
+        });
+      }
 
-      $("#orderedmenu tr").each(function(){
-        if( rowCnt != 0 ){
-          var sell = $(this).children("td");
-          $(sell).each(function(){
-            var idx = $(this).index();
-            var val = $(this).text();
-
-            if( idx == colIdx ){
-              colSum += parseInt(val);
-            }
-          });
-        }
-
-          rowCnt++;
-      });
-
-      $("#a_sum").text(colSum);
-
+      rowCnt++;
     });
 
-     function emptyOrder(empty) {
-        $.ajax({
-          url: '{% url "mcdonaldapp:basket" %}',
-          method: 'POST',
-          data: {
-            'empty': name,
-            'csrfmiddlewaretoken': '{{ csrf_token }}'
-          },
-          success: function(response) {
-            location.href = '{% url "mcdonaldapp:basket" %}';
-          }
-        });
-      }
-
-    function cancelOrder(name) {
-        $.ajax({
-          url: '{% url "mcdonaldapp:basket" %}',
-          method: 'POST',
-          data: {
-            'name': name,
-            'csrfmiddlewaretoken': '{{ csrf_token }}'
-          },
-          success: function(response) {
-            location.href = '{% url "mcdonaldapp:basket" %}?packing={{ packing }}';
-          }
-        });
-      }
-    </script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?ver=3" />
-{% endblock %}
-
-{% block content %}
-
-  <div class="wrapper">
-    <div class="banner">
-      <p>
-          <a href="{% url 'mcdonaldapp:menu' %}">
-            <img src="{% static 'img/MacLogo.png' %}" alt="">
-          </a>
-      </p>
-    </div>
-    <div class="title_cart font-black">
-      장바구니
-    </div>
-
-    <div class="table">
-      <table id = 'orderedmenu'>
-        <th  class = "fs-2 t_menu">메뉴명</th>
-        <th  class = "fs-2 t_amount">수량</th>
-        <th  class = "fs-2 ">가격</th>
-        <th  class = "fs-2 t_amount">취소</th>
-        <tbody></tbody>
-        {% for name, value in menus.items %}
-        <tbody class="allDelete">
-          <tr>
-            <td>{{ name }}</td>
-            <td>{{ value.1 }}개</td>
-            <td>{{ value.0 }}원</td>
-            <td>
-              <button onclick="cancelOrder('{{ name }}')">
-                취소
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        {% endfor %}
-        <tbody></tbody>
-      </table>
-    </div>
-    <div class="select">
-        <div class="priceWrap font-black">
-          Total:  {{ total_price }}원
-
-        </div>
-    </div>
-       <div>
-              <a class="goshopping padding" href="{% url 'mcdonaldapp:menu' %}">
-                 계속 쇼핑하기
-              </a>
-              {% if menus %}
-                <a  class="charge padding" href="{% url 'mcdonaldapp:payment' %}?packing={{ packing }}">
-                     결제하기
-                </a>
-             {% endif %}
-        </div>
-
-  </div>
-  <script>
-      window.addEventListener('DOMContentLoaded', function(){
-      const setHeader = () => {
-          const missions = JSON.parse(sessionStorage.getItem('mission'));
-          const headerMissionList = document.querySelector('.mission-list');
-
-          let missionList = '';
-          missionList += `<h3>미션</h3>`
-          missionList += `<div>결제 방식 : ${missions[0].payment}</div>`;
-          missionList += `<div>포장 여부 : ${missions[0].packing}</div>`;
-          missions.map((e) => {
-              missionList += `
-                  <div>
-                      ${e.menu} / ${e.quantity}개
-                  </div>
-              `;
-          })
-
-          headerMissionList.innerHTML = missionList;
-      }
-
-      setHeader();
-
-      // add onclick
-      // const categories = document.querySelectorAll()
+    $("#a_sum").text(colSum);
   });
-  </script>
+
+  function emptyOrder(empty) {
+    $.ajax({
+      url: '{% url "mcdonaldapp:basket" %}',
+      method: "POST",
+      data: {
+        empty: name,
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+      },
+      success: function (response) {
+        location.href = '{% url "mcdonaldapp:basket" %}';
+      },
+    });
+  }
+
+  function cancelOrder(name) {
+    $.ajax({
+      url: '{% url "mcdonaldapp:basket" %}',
+      method: "POST",
+      data: {
+        name: name,
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+      },
+      success: function (response) {
+        location.href = '{% url "mcdonaldapp:basket" %}?packing={{ packing }}';
+      },
+    });
+  }
+</script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}?ver=3" />
+{% endblock %} {% block content %}
+
+<div class="wrapper">
+  <div class="banner">
+    <p>
+      <a href="{% url 'mcdonaldapp:menu' %}">
+        <img src="{% static 'img/MacLogo.png' %}" alt="" />
+      </a>
+    </p>
+  </div>
+  <div class="title_cart font-black">주문</div>
+
+  <div class="table">
+    <table id="orderedmenu">
+      <th class="fs-2 t_cancel"></th>
+      <th class="fs-2 t_menu">메뉴명</th>
+      <th class="fs-2 t_amount">수량</th>
+      <th class="fs-2">가격</th>
+      <tbody></tbody>
+      {% for name, value in menus.items %}
+      <tbody class="allDelete">
+        <tr>
+          <td class="t_cancel">
+            <button onclick="cancelOrder('{{ name }}')">취소</button>
+          </td>
+          <td>{{ name }}</td>
+          <td>{{ value.1 }}개</td>
+          <td>₩{{ value.0 }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="basket-bottom">
+    <div class="select">
+      <div class="priceWrap font-black">Total: {{ total_price }}원</div>
+    </div>
+    <div>
+      <a class="goshopping" href="{% url 'mcdonaldapp:menu' %}">
+        계속 쇼핑하기
+      </a>
+      <a
+        class="charge"
+        href="{% url 'mcdonaldapp:payment' %}?packing={{ packing }}"
+      >
+        결제하기
+      </a>
+      {% if menus %}
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const setHeader = () => {
+      const missions = JSON.parse(sessionStorage.getItem("mission"));
+      const headerMissionList = document.querySelector(".mission-list");
+
+      let missionList = "";
+      missionList += `<h3>미션</h3>`;
+      missionList += `<div>결제 방식 : ${missions[0].payment}</div>`;
+      missionList += `<div>포장 여부 : ${missions[0].packing}</div>`;
+      missions.map((e) => {
+        missionList += `
+            <div>
+                ${e.menu} / ${e.quantity}개
+            </div>
+        `;
+      });
+
+      headerMissionList.innerHTML = missionList;
+    };
+
+    setHeader();
+
+    // add onclick
+    // const categories = document.querySelectorAll()
+  });
+</script>
 {% endblock %}

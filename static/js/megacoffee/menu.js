@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', function(){
     // close modal 
     document.querySelector('.btn-close').addEventListener('click', closeMenuModal);
     document.querySelector('.pay-result-cancel').addEventListener('click', closeOrderModal);
+    document.querySelector('.pay-result-cancel2').addEventListener('click', closeOrderModal);
 
     // order button
     document.querySelector('.btn-order').addEventListener('click', setMenu);
@@ -94,7 +95,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
     // order
     document.querySelector('.order-btn').addEventListener('click', checkOrder);
-    document.querySelector('.pay-result-check').addEventListener('click', submitOrder);
+    // 먹고가기
+    document.querySelectorAll('.pay-result-check')[0].addEventListener('click', () => submitOrder(true));
+    // 포장하기
+    document.querySelectorAll('.pay-result-check')[1].addEventListener('click', () => submitOrder(false));
 });
 
 // CSRF 토큰을 가져오는 함수
@@ -247,8 +251,8 @@ const setMenu = (e) => {
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
             console.log('option', element)
-            menu_name += ` / ${element.optionName} ${ parseInt(element.optionCount) >= 1 ? element.optionCount + '회' : '' }` 
-            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.optionCount ? element.optionCount : 1))) + "원";
+            menu_name += ` / ${element.optionName} ${ parseInt(element.quantity) >= 1 ? element.quantity + '회' : '' }` 
+            menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.quantity ? element.quantity : 1))) + "원";
         })
     } 
 
@@ -277,7 +281,15 @@ const setMenu = (e) => {
     // 옵션 초기화
     currentOption = [];
 
+    // click data 
     getClickData('주문 담기 ' + menu_name);
+
+    // update item count
+    let menuCount = 0;
+    orderMenu.map((e) => {
+        menuCount += e.quantity;
+    })
+    document.querySelector('.selected-item-num').innerHTML = menuCount + '개';
     
     // 렌더링
     updateOrderList();
@@ -344,10 +356,13 @@ const closeOrderModal = () => {
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 }
 
-const submitOrder = () => {
+const submitOrder = (isHere) => {
     getClickData('submit order');
     const modal = document.querySelector('.pay-modal-container');
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
+
+    // 포장 여부 저장
+    sessionStorage.setItem('packaging', isHere ? '매장' : '포장');
 
     // 데이터 local storage에 저장 
     sessionStorage.setItem("clickData", JSON.stringify(clickData));
@@ -381,9 +396,11 @@ const addOption = (e) => {
     flag = false; // 이미 존재하는 옵션인지 확인 
 
     currentOption.map((item) => {
+        console.log(currentOption)
         if ( item.optionName === optionName ) {
+            console.log('중복')
             flag = true;
-            item.optionCount++;
+            item.quantity++;
         }
     });
     
@@ -395,5 +412,12 @@ const addOption = (e) => {
         });
     };
 
-    console.log(currentOption)
+    let optionString = '';
+    currentOption.map((e, i) => {
+        optionString += ( e.optionName + ' ' + e.quantity + '개' );
+        if ( i !== currentOption.length - 1 ) {
+            optionString += ', '; 
+        }
+    })
+    document.querySelector('.selected-options').innerHTML = optionString;
 }
