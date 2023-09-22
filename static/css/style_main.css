@@ -268,14 +268,14 @@ components
 
 */
 
- .btn {
+ .btn{
     display: flex;
     font-weight: 700;
     margin : auto;
     border-radius: 0.5rem;
     padding : 1rem 2rem;
     width: 20rem;
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
     align-items: center;
     justify-content: center;
     color: white;
@@ -287,7 +287,7 @@ components
     transition: 1s;
 }
 
-    .btn.mission-start,.btn-big, .btn_mac, .result-btn, .btn_content,.btn-survey{
+    .btn.mission-start,.btn-big, .btn_mac, .result-btn, .btn_content,.btn-survey,.btn-last{
         position: relative;
         width: 400px;
         font-size: 16px;
@@ -304,7 +304,11 @@ components
         -o-transition: all .4s ease-in-out;
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out;
-        padding-top:15px;
+        padding-top:17px;
+    }
+
+    .btn-success-survey{
+        padding-bottom: 17px;
     }
 
     .btn.mission-start{
@@ -333,13 +337,13 @@ components
         box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
     }
 
-    .btn-survey{
+    .btn-survey,.btn-last{
         /* font-size:1.2rem; */
         background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
         box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
     }
 
-    .btn.mission-start:hover,.btn-big:hover,.btn_mac:hover,.result-btn:hover,.btn_content:hover ,.btn-survey:hover{
+    .btn.mission-start:hover,.btn-big:hover,.btn_mac:hover,.result-btn:hover,.btn_content:hover ,.btn-survey:hover, .btn-last:hover{
         background-position: 100% 0;
         /* moz-transition: all .4s ease-in-out; */
         -o-transition: all .4s ease-in-out;
@@ -347,8 +351,12 @@ components
         transition: all .4s ease-in-out;
     }
 
-    .btn.mission-start:focus,.btn-big:focus, .btn_mac:focus, .result-btn:focus, .btn_content:focus, .btn-survey:focus {
+    .btn.mission-start:focus,.btn-big:focus, .btn_mac:focus, .result-btn:focus, .btn_content:focus, .btn-survey:focus,.btn-last:focus {
         outline: none;
+    }
+
+    .justify-between{
+        justify-content: unset;
     }
 
 /* question.html */
