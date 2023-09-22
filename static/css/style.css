@@ -97,6 +97,8 @@
   width: 15rem;
   object-fit: contain;
   padding: 0 0;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .place_select li {
@@ -147,10 +149,9 @@
 
 .menu_list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   font-size: 1.2rem;
-  padding: 0 1rem;
   text-align: center;
   justify-content: center;
 }
@@ -259,8 +260,6 @@
 }
 
 .select_menu li {
-  border: 5px solid #EEBF53;
-  border-radius: 1rem;
   font-size: 2rem;
   padding: 1rem;
 }
@@ -268,14 +267,17 @@
 .arrows {
   width: 15rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.triangle {
-  width: 3.5rem;
-  height: 3.5rem;
+.arrows span {
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid #666;
+  border-radius: 0.2rem;
 }
 
 .count {
@@ -288,17 +290,24 @@
 
 .button_1 {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .button_1 button {
   background: transparent;
-  width: 12rem;
-  height: 5rem;
-  border: 3px solid #EEBF53;
-  margin: 1.5rem 0;
+  border: 1px solid #666;
+  padding: 0.2rem 4rem;
+  margin: 1rem 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.button_1 .add-basket {
+  background-color: #EEBF53;
+  border: none;
 }
 
 .button_1 a {
@@ -318,8 +327,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border : 4px solid #11410f;
+  border : 1px solid #666;
   border-radius : 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .total_mc {
@@ -349,29 +359,46 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .pay_list li {
   margin: 0 1rem;
-  border: 5px solid #EEBF53;
+  border: 1px solid #666;
   border-radius: 1.5rem;
 }
 
 .payment {
-  width: 25rem;
-  height: 30rem;
+  width: 70%;
+  height: 20rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .payment img {
-  width: 20rem;
-  height: 20rem;
-  margin: 3rem 3rem;
+  width: 100%;
+  height: auto;
+}
+
+.payment-desc {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .pay_name {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.payment-back {
+  border: 1px solid #666;
+  border-radius: 0.2rem;
+  font-size: 1.1rem;
+  padding: 0.2rem 1rem;
 }
 
 /* inputcard.html */
