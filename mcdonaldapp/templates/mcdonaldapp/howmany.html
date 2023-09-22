@@ -44,6 +44,13 @@
           $('#numberUpDown').text(num);
           $('#total_price').text(price);
         });
+
+        // timer
+        let time = parseInt(sessionStorage.getItem('time'));
+        setInterval(() => {
+            time += 1;
+            sessionStorage.setItem('time', time);
+        }, 1000);
       });
     </script>
   </head>

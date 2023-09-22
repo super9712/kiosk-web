@@ -36,6 +36,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
     setHeader();
 
+    // timer
+    let time = parseInt(sessionStorage.getItem('time'));
+    setInterval(() => {
+        time += 1;
+        sessionStorage.setItem('time', time);
+    }, 1000);
 
     // add onclick
     // const categories = document.querySelectorAll()
