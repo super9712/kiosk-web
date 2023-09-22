@@ -3,80 +3,60 @@
 {% load static %}
 
 {% block content %}
-<div class="background">
-    <div class = "long-height">
-        <div class = "font-big flex justify-center align-center items-center my-5 ">
-            <span class = "font-bold fs-1">주문을 완료하셨습니다.</span>
-        </div>
-        <div class = "flex ordered justify-center orderWrap">
+    <div class = "font-big flex justify-center align-center items-center" style="padding-top:5rem">
+        <span class = "font-bold fs-1">주문을 완료하셨습니다.</span>
+    </div>
+    <div class="complete_conatiner">
+        <div class = "complete_contents">
             {% if brand == 'mcdonald' %}
-                <div class="flex  column align-center">
-                    <div class ="title font-bold fs-3">주문한 내역</div>
-                    <div class="  method-order ">결제 수단 : {{ payment.method }}</div>
-                    <div class="  method-order ">포장 여부 : {{ payment.packing }}</div>
-                </div>
-                <div class = "flex column align-center items-center">
+                <div class ="complete_title" >주문한 내역</div><hr />
+                <div class="complete_details">
+                    <div class="" >결제 수단 : {{ payment.method }}</div>
+                    <div class="" >포장 여부 : {{ payment.packing }}</div><br>
                     {% for menu in menus %}
-                    <div class = "m-5 complete_menu">
                         {{ menu.name }} {{ menu.quantity }}개
-                    </div>
                     {% endfor %}
-
                 </div>
-
             {% elif brand == 'megacoffee' %}
-                <div class="flex  column">
-                    <div class ="title font-bold fs-3">주문한 내역</div>
-                    <div class="method-order ordered-method">결제 방법 : ____</div>
-                    <div class="method-order ordered-packaging">포장 여부 : ____</div>
-                </div>
-                <div class = "flex column align-center items-center order-list">
-
-
+                <div class="complete_title" >주문한 내역</div><hr />
+                <div class="complete_details">
+                    <div class="ordered-method">결제 방법 : ____</div>
+                    <div class="ordered-packaging">포장 여부 : ____</div><br>
+                    <div class="order-list"></div>
                 </div>
             {% endif %}
         </div>
-        <div class = "flex answer missionWrap">
-            <div class="flex column">
-                <div class ="title font-bold fs-3">주문했어야<br>하는 내역</div>
-                <div class="  method-mission ">결제 수단 : {{ mission_payment.payments }}</div>
-                <div class="  method-order ">포장 여부 : {{ mission_payment.packing }}</div>
-            </div>
+        <div class="complete_contents">
+            <div class="complete_title">주문했어야 하는 내역</div><hr />
+            <div class="complete_details">
+                <div>결제 수단 : {{ mission_payment.payments }}</div>
+                <div>포장 여부 : {{ mission_payment.packing }}</div><br>
                 {% if brand == 'mcdonald' %}
-                    <div class = "flex column align-center items-center">
-
                     {% for menu, quantity in mission_order.items %}
-                        <div class = "m-5  complete_menu">
                             {{ menu }} {{ quantity }}개
-                        </div>
-
                     {% endfor %}
                     </div>
                 {% elif brand == 'megacoffee' %}
-                    <div class = "flex column align-center items-center">
-
                     {% for menu, value in mission_order.items %}
-                        <div class = "m-5  complete_menu">
-                            {{ menu }} {{ value.1 }}개
-                            <br>
-                            {{ value.0 }}
-                        </div>
-
+                        {{ menu }} {{ value.1 }}개
+                        <br>
+                        {{ value.0 }}
                     {% endfor %}
                     </div>
-
                 {% endif %}
         </div>
+    </div><hr />
+        <div class = "complete_title" style="margin:1rem">
+                <div class="accuracy">정확도 :  {{ accuracy }}%</div>
+                <div class="using-time">주문까지 걸린 시간 : 분 **초</div>
+        </div><hr />
 
-        <div class = "flex answer justify-evenly correctWrap">
-                <div class ="font-bold fs-3 blank accuracy">정확도 :  {{ accuracy }}%</div>
-                <div class ="font-bold fs-3 blank using-time">주문까지 걸린 시간 : 분 **초</div>
-
-
-            <div class = "justify-evenly answer-list">
-            </div>
+        <div class = "flex justify-evenly complete_button">
+            <a class = "btn" href="{% url 'introapp:main' %}">설문조사 없이 종료하기</a>
+            <a class = "btn" href = "{% url 'introapp:survey' %}">설문조사 하러가기</a>
         </div>
 
+<<<<<<< HEAD
         <div class = "flex justify-evenly align-center items-center my-5">
             <a class = "btn-survey mx-5 height" href="{% url 'introapp:main' %}">설문조사 하지말기</a>
             <a class = "btn-survey mx-5 height" href = "{% url 'introapp:survey' %}">설문조사 하러가기</a>
@@ -84,5 +64,8 @@
     </div>
 </div>
 
+=======
+<script type="text/javascript" src="{% static 'js/intro/completeResult.js' %}"></script> 
+>>>>>>> upstream/main
 
 {% endblock%}
