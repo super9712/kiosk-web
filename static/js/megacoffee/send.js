@@ -6,6 +6,5 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // send data
     document.querySelector('.complete').addEventListener('click', {
-        
     });
 });

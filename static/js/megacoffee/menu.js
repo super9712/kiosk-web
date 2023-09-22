@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function(){
             window.alert('사용 시간이 초과되었습니다.');
             window.location.href = window.location.href;
         }
-    }, 1000); 
+    }, 1000);
 
     // tab buttons
     const tab_btns = document.querySelectorAll('.tab-list');
@@ -97,6 +97,24 @@ window.addEventListener('DOMContentLoaded', function(){
     document.querySelector('.pay-result-check').addEventListener('click', submitOrder);
 });
 
+// CSRF 토큰을 가져오는 함수
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// CSRF 토큰 가져오기
+const csrftoken = getCookie('csrftoken');
 
 const getClickData = (button_name) => {
     const date = new Date();
@@ -106,7 +124,28 @@ const getClickData = (button_name) => {
     });
 
     console.log("click data: ", clickData);
+
+    // MenuTemplateView로 click data 전송
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+         'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({ data: clickData }),
+    })
+
+    .then(response => response.json())
+    .then(data => {
+      // 서버에서 반환한 응답 처리
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('데이터 전송 오류:', error);
+    });
+
 }
+
 
 const clickTab = (e) => {
     getClickData('탭 변경' + e.target.innerHTML);
