@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const total_price = sessionStorage.getItem("total_price");
     const order = JSON.parse(sessionStorage.getItem("mission"));
     const accuracy = sessionStorage.getItem("accuracy");
+    const packaging = sessionStorage.getItem("packaging");
     
     // 주문한 내역 출력
     console.log(orderMenu, order);
@@ -20,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector('.order-list').innerHTML = result1;
     document.querySelector('.ordered-method').innerHTML = '결제 수단 : ' + orderMenu[0].method;
-    document.querySelector('.ordered-packaging').innerHTML = '포장 : ' + orderMenu[0].packaging;
+    document.querySelector('.ordered-packaging').innerHTML = '포장 : ' + packaging;
 
     // 정확도 및 시간 출력
     document.querySelector('.accuracy').innerHTML = '정확도 : ' + Math.round(accuracy) + '%';
