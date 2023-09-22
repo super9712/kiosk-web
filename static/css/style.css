@@ -384,7 +384,7 @@
 }
 
 .cash_title{
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 2rem;
   text-align: center;
@@ -398,25 +398,9 @@
 
 /* complete.html */
 
-.back {
-  width: content;
-  height: 8rem;
-  margin: 2rem;
-  border: none;
-  background-color: #EEBF53;
-  border-radius: 1rem;
-  text-align: center;
-}
-
-.back a {
-  color: white;
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.btn_content {
+ .btn_content {
     width : content;
-    border-radius: 0.5rem;
+    border-radius: 3px;
     padding : 1rem 2rem;
     background-color: var(--secondary);
     align-items: center;
@@ -424,6 +408,7 @@
     color: white;
     display: flex;
     font-weight: 700;
+    font-size: 1rem;
     margin : auto;
 }
 
@@ -431,7 +416,7 @@
     background-color: #fdfdfd;
     color: var(--secondary);
     transition: 1s;
-}
+} 
 
 /* basket.html */
 
