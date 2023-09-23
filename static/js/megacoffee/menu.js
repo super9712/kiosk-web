@@ -14,6 +14,7 @@ let times = sessionStorage.getItem('times') ? sessionStorage.getItem('times') : 
 window.addEventListener('DOMContentLoaded', function(){
     const setHeader = () => {
         const missions = JSON.parse(sessionStorage.getItem('mission'));
+        console.log(sessionStorage.getItem('mission'))
         const headerMissionList = document.querySelector('.mission-list');
 
         let missionList = '';
@@ -139,14 +140,14 @@ const getClickData = (button_name) => {
       body: JSON.stringify({ data: clickData }),
     })
 
-    .then(response => response.json())
-    .then(data => {
-      // 서버에서 반환한 응답 처리
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('데이터 전송 오류:', error);
-    });
+//    .then(response => response.json())
+//    .then(data => {
+//      // 서버에서 반환한 응답 처리
+//      console.log(data);
+//    })
+//    .catch(error => {
+//      console.error('데이터 전송 오류:', error);
+//    });
 
 }
 
@@ -362,7 +363,7 @@ const submitOrder = (isHere) => {
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 
     // 포장 여부 저장
-    sessionStorage.setItem('packaging', isHere ? '매장' : '포장');
+    sessionStorage.setItem('packaging', isHere===true ? '매장' : '포장');
 
     // 데이터 local storage에 저장 
     sessionStorage.setItem("clickData", JSON.stringify(clickData));
