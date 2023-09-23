@@ -45,11 +45,14 @@
                     </div>
                 {% endif %}
         </div>
+
     </div><hr />
-        <div class = "complete_title" style="margin:1rem">
-                <div class="accuracy">정확도 :  {{ accuracy }}%</div>
-                <div class="using-time">주문까지 걸린 시간 : 분 **초</div>
-        </div><hr />
+        {% if brand == 'mcdonald' %}
+            <div class = "complete_title" style="margin:1rem">
+                    <div class="accuracy">정확도 :  {{ accuracy }}%</div>
+                    <div class="using-time">주문까지 걸린 시간 : 분 **초</div>
+            </div><hr />
+        {% endif %}
 
         <!-- <div class = "flex justify-evenly complete_button">
             <a class = "btn" href="{% url 'introapp:main' %}">설문조사 없이 종료하기</a>
@@ -64,7 +67,6 @@
     </div>
 </div>
 
-
-
+<script type="text/javascript" src="{% static 'js/intro/completeResult.js' %}"></script> 
 
 {% endblock%}

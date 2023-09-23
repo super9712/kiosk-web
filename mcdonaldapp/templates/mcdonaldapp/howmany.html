@@ -17,6 +17,7 @@
       $(function () {
         var stat3 = $('#increasePrice').text();
         var ProductPrice = parseInt(stat3, 10);
+
         $('#decreaseQuantity').click(function (e) {
           e.preventDefault();
           var stat = $('#numberUpDown').text();
@@ -29,7 +30,9 @@
           price = price - ProductPrice
           $('#numberUpDown').text(num);
           $('#total_price').text(price);
+          getClickData('decreaseQuantity :' + num);
         });
+
         $('#increaseQuantity').click(function (e) {
           e.preventDefault();
           var stat = $('#numberUpDown').text();
@@ -43,6 +46,7 @@
           price = price + ProductPrice
           $('#numberUpDown').text(num);
           $('#total_price').text(price);
+          getClickData('increaseQuantity :' + num);
         });
 
         // timer
@@ -51,6 +55,22 @@
             time += 1;
             sessionStorage.setItem('time', time);
         }, 1000);
+
+        const getClickData = (button_name) => {
+          let clickData = sessionStorage.getItem('clickData');
+          const date = new Date();
+          clickData.push({
+              button_name: button_name,
+              datetime: date.toString()
+          });
+
+          console.log("click data: ", clickData);
+          sessionStorage.setItem('clickData', JSON.stringify(clickData));
+        }
+
+        // click event
+        document.querySelector('.button_1').children[0].addEventListener('click', getClickData('개수 선택 취소'));
+        document.querySelector('.button_1').children[1].addEventListener('click', getClickData('개수 선택 완료'));
       });
     </script>
   </head>

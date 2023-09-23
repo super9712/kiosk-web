@@ -13,7 +13,7 @@
         </p>
       </div>
     </div>
-    <div class="tab">
+    <div class="mc_tab">
       <ul class="category">
         <li data-tab="tab-1" class="tab-link current">
           <i class="material-symbols-outlined"> fastfood </i>
@@ -138,12 +138,19 @@
   <script>
     $(document).ready(function () {
       $("ul.category li").click(function () {
+        addEventListener('click', getClickData('category 변경'));
         var tab_id = $(this).attr("data-tab");
         $("ul.category li").removeClass("current");
         $(".menu").removeClass("current");
         $(this).addClass("current");
         $("#" + tab_id).addClass("current");
       });
+
+      $("#menuList li").click(function () {
+        addEventListener('click', getClickData('menu 선택 : ' + $("#menuList .menu_name").text()));
+      });
+
+      $('.charge_btn').click(function() {getClickData('주문 내역 확인 후 결제하기')})
     });
   </script>
 

@@ -12,11 +12,14 @@
         </div>
 
         <div class="mission">
-            <p class="mission_text">
+            <p class="mission_text"> <!-- 가독성 좋게 표기 -->
+                매장/포장: {{ payment.packing }} &nbsp; 결제: {{ payment.payments }} <br><br>
                 {% for name, value in order.items %}
-                        {{ name }} {{ value.0}}해서 {{ value.1 }}개<br>
+                        메뉴: {{ name }} ({{ value.1 }}개)<br>
+                        옵션: {{ value.0}}
+                        <br><br>
                 {% endfor %}
-                {{ payment.packaging }}으로 하고, 결제는 {{ payment.payments }}로(으로) 할게요.
+                {{ payment.packing }}으로 하고, 결제는 {{ payment.payments }}로(으로) 할게요.
             </p>
             
         </div>
