@@ -5,11 +5,11 @@ const setAccuracy = (orderMenu, mission) => {
     console.log('orderMenu', orderMenu)
     console.log('mission', mission)
 
-    if ( mission[0].method === orderMenu[0].method ) {
+    if ( mission[0].payment === orderMenu[0].method ) {
         console.log('same method')
         correct++; // 결제 방식
     }
-    if ( mission[0].packaging === orderMenu[0].packaging ) {
+    if ( mission[0].packaging === orderMenu[0].packaging) {
         console.log('same packaging')
         correct++; // 포장 여부
     }

@@ -3,18 +3,18 @@
 {% load static %}
 
 {% block content %}
-<div class="background">
+<div class="background_mac">
     <div class = "center">
+
+        <span class = "font-bold fs-1">
+            맥도날드를 연습해 보세요!
+        </span>
+
         <div class = "flex justify-center align-center items-center my-5">
-            <img src="{% static 'img/mcdonalds.png' %}" alt="맥도날드 이미지">
-            <span class = "font-bold fs-1">
-                맥도날드에 오신 것을 환영합니다!
-                <br>
-                주문하시려면 아래의 버튼을 눌러주세요.
-            </span>
+            <img class="mac" src="{% static 'img/mc_logo.png' %}" alt="맥도날드 이미지">
         </div>
         <div class = "flex justify-center align-center items-center my-5">
-            <a class = "btn" href="{% url 'mcdonaldapp:here_togo' %}">주문하기</a>
+            <a class = "btn_mac" href="{% url 'mcdonaldapp:here_togo' %}">ORDER</a>
         </div>
 
         <form class="mission_text" style="display: none;">
@@ -31,6 +31,16 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', function(){
+        sessionStorage.removeItem("clickData");
+        sessionStorage.removeItem("orderMenu");
+        sessionStorage.removeItem("remain_time");
+        sessionStorage.removeItem("total_price");
+        sessionStorage.removeItem("mission");
+        sessionStorage.removeItem("accuracy");
+        sessionStorage.removeItem("paying-time");
+        sessionStorage.removeItem("packaging");
+        sessionStorage.removeItem("time");
+        
         // mission setting
         const menu_names = document.querySelector('.menu_names').value.split(',');
         const quantities = document.querySelector('.quantity').value.split(',');
@@ -50,6 +60,7 @@
         }
 
         sessionStorage.setItem('mission', JSON.stringify(mission));
+        sessionStorage.setItem('time', 0);
     });
 </script>
 {% endblock%}

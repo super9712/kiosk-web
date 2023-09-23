@@ -18,14 +18,18 @@
             </a>
       </p>
     </div>
-    <div class="pay">
+    <div class="payment-desc mt-10">
+      결제 방법을 선택해주세요.
+    </div>
+    <div class="pay-container">
       <ul class="pay_list">
         <li>
           <div class="payment">
             <a href="{% url 'mcdonaldapp:insert_card' %}?packing={{ packing }}">
               <img src="{% static 'img/credit.png' %}" />
               <div class="pay_name">
-                카드 결제
+                카드 결제<br>
+                (CARD PAYMENT)
               </div>
             </a>
           </div>
@@ -35,12 +39,18 @@
             <a href="{% url 'mcdonaldapp:insert_cash' %}?packing={{ packing }}">
               <img class="payment" src="{% static 'img/cash.png' %}" />
               <div class="pay_name">
-                현금 결제
+                모바일 상품권<br>
+                (MOBILE GIFT CARD)
               </div>
             </a>
           </div>
         </li>
       </ul>
     </div>
+    <button class="payment-back mt-10">
+      이전 단계
+    </button>
   </div>
+  
+  <script type="text/javascript" src="{% static 'js/mcdonald/timer.js' %}"></script> 
 {% endblock %}
