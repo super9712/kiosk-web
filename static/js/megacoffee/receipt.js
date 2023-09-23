@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 // add payment
                 const orderMenuWithPayment = [];
                 orderMenu.map((element) => {
-                    orderMenuWithPayment.push(Object.assign(element, {method: e.dataset['pay']}));
+                    orderMenuWithPayment.push(Object.assign(element, {method: e.dataset['pay'], packaging: sessionStorage.getItem('packaging')}));
                 })
                 sessionStorage.setItem("orderMenu", JSON.stringify(orderMenuWithPayment));
                 

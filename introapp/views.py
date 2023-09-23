@@ -69,9 +69,14 @@ class Mission_MegaTemplateView(TemplateView):
         mission_packing = packing
 
         for index in range(0, len(menus)):
-            mission_menu = mission_menu + menus[index] + ","
-            mission_option = mission_option + options[index] + ","
-            mission_quantity = mission_quantity + str(quantities[index]) + ","
+            if ( index != len(menus)-1 ):
+                mission_menu = mission_menu + menus[index] + ","
+                mission_option = mission_option + options[index] + ","
+                mission_quantity = mission_quantity + str(quantities[index]) + ","
+            else:
+                mission_menu = mission_menu + menus[index]
+                mission_option = mission_option + options[index]
+                mission_quantity = mission_quantity + str(quantities[index])
 
         request.session['mega_menu'] = mission_menu
         request.session['mega_option'] = mission_option
