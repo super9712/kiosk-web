@@ -139,14 +139,14 @@ const getClickData = (button_name) => {
       body: JSON.stringify({ data: clickData }),
     })
 
-    .then(response => response.json())
-    .then(data => {
-      // 서버에서 반환한 응답 처리
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('데이터 전송 오류:', error);
-    });
+//    .then(response => response.json())
+//    .then(data => {
+//      // 서버에서 반환한 응답 처리
+//      console.log(data);
+//    })
+//    .catch(error => {
+//      console.error('데이터 전송 오류:', error);
+//    });
 
 }
 
