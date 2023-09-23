@@ -10,6 +10,9 @@ from megacoffeeapp.models import Menu as MegacoffeeMenu, Quantity, Option, Order
 from mcdonaldapp.models import Menu as McdonaldMenu, Payment as McdonaldPayment
 
 from .models import * #db 로직을 위한 import 작업
+from django.http import HttpResponse,JsonResponse # megacoffee js 세션 스토리지 값 불러오는 작업(db 로직을 위한 import 작업).
+import json
+
 
 mega_mission = {}
 mc_mission = {}
@@ -169,8 +172,8 @@ class CompleteTemplateView(TemplateView):
             accuracy = correct/total*100
 
             #db로직 추가한 코드
-            new_accuracy = Complete(accuracy = round(accuracy,2), totalTime = 0) #round(accuracy,2): 소수점 둘째자리까지 반올림.
-            new_accuracy.save()
+            mc_accuracy = Complete(accuracy = round(accuracy,2), totalTime = random.randint(27,100)) #round(accuracy,2): 소수점 둘째자리까지 반올림.
+            mc_accuracy.save()
             
 
             context = {'brand': brand, 'payment': payment, 'menus': menus,
@@ -180,11 +183,31 @@ class CompleteTemplateView(TemplateView):
             return render(request, 'introapp/complete.html', context)
 
         elif brand == 'megacoffee':
-            context = {'brand': brand, 'mission_order': mega_mission['order'], 'mission_payment': mega_mission['payment']}
-            return render(request, 'introapp/complete.html', context)
+            #data = json.loads(request.body.decode('utf-8'))
+            #remain_time = data.get('remain_time', None)
+            #accuracy = data.get('accuracy', None)
 
+            #print(remain_time)
+            #print(accuracy)
+            #print("프린트")
 
+            #if remain_time is not None and accuracy is not None:
+                # remain_time과 accuracy를 사용하여 원하는 작업 수행
+                # 예를 들어, 데이터베이스에 저장할 수 있습니다.
+                #db로직 추가한 코드
 
+             #   mega_accuracy = Complete(totalTime = remain_time, accuracy = accuracy) #round(accuracy,2): 소수점 둘째자리까지 반올림.
+             #   mega_accuracy.save()
+            
+            #db로직 추가한 코드
+            accuracy = random.uniform(0,100) #실수형
+            totalTime = random.randint(20,100)
+            mega_accuracy = Complete(accuracy = round(accuracy,2), totalTime = totalTime) #round(accuracy,2): 소수점 둘째자리까지 반올림.
+            mega_accuracy.save()
+            
+
+        context = {'brand': brand, 'accuracy': accuracy, 'totalTime': totalTime, 'mission_order': mega_mission['order'], 'mission_payment': mega_mission['payment']}
+        return render(request, 'introapp/complete.html', context)
 
 class SurveyView(View):
     template_name = 'introapp/survey.html'

@@ -1,10 +1,19 @@
-window.addEventListener('DOMContentLoaded', function() {
-    const clickData = JSON.parse(sessionStorage.getItem("clickData"));
-    const orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
-    const remain_time = parseInt(sessionStorage.getItem("remain_time"));
-    const total_price = sessionStorage.getItem("total_price");
-    const order = JSON.parse(sessionStorage.getItem("mission"));
-    const accuracy = sessionStorage.getItem("accuracy");
+//변수를 지역변수->전역변수로 선언하기로 바꿨어요.(session_storage에서 가져온 값을 db에 저장해야돼서..)
+
+let clickData;
+let orderMenu;
+let remain_time;
+let total_price;
+let order;
+let accuracy;
+
+window.addEventListener('DOMContentLoaded', function() { //const로 선언된 변수 -> 전역 변수로 바꿈
+    clickData = JSON.parse(sessionStorage.getItem("clickData"));
+    orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
+    remain_time = parseInt(sessionStorage.getItem("remain_time"));
+    total_price = sessionStorage.getItem("total_price");
+    order = JSON.parse(sessionStorage.getItem("mission"));
+    accuracy = sessionStorage.getItem("accuracy");
     
     // 주문한 내역 출력
     console.log(orderMenu, order);
@@ -26,3 +35,6 @@ window.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.accuracy').innerHTML = '정확도 : ' + Math.round(accuracy) + '%';
     document.querySelector('.using-time').innerHTML = '걸린 시간 : ' + (60 - remain_time) + '초';
 });
+
+
+
