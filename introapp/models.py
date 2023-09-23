@@ -8,7 +8,7 @@ class Response(models.Model):
     brand = models.CharField(max_length=50)
 
 class Complete(models.Model):
-    accuracy = models.DecimalField(max_digits=4, decimal_places=1)
+    accuracy = models.DecimalField(max_digits=4, decimal_places=2) ## 소수점 둘째자리까지 표현
     totalTime = models.IntegerField()
 
 class Mission_mc(models.Model):

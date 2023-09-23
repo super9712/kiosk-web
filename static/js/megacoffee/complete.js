@@ -47,12 +47,49 @@ window.addEventListener('DOMContentLoaded', function() {
     const orderMenu = JSON.parse(sessionStorage.getItem("orderMenu"));
     const total_price = sessionStorage.getItem("total_price");
     const mission = JSON.parse(sessionStorage.getItem("mission"));
+    const remain_time = parseInt(sessionStorage.getItem("remain_time")); // remain_time 가져옴.
 
     document.querySelector('.complete-btn').addEventListener('click', () => {
         // 정확도 계산
         const { correct, total } = setAccuracy(orderMenu, mission);
         console.log(correct, total, correct/total*100);
         sessionStorage.setItem('accuracy', correct/total*100);
+        //변수 저장 추가 작업
+
+        const accuracy = sessionStorage.getItem("accuracy");
+
+        const data = {
+            remain_time: remain_time,
+            accuracy: accuracy
+        };
+
+        // CSRF 토큰을 가져오는 함수
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        fetch('/complete/?brand=megacoffee', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken') // CSRF 토큰을 가져옴
+            },
+            body: JSON.stringify(data)
+        })
+        
+        console.log(data)
+        
 
         // redirecting
         // location.href = '/complete/?brand=megacoffee';
