@@ -42,7 +42,6 @@ window.addEventListener('DOMContentLoaded', function(){
     setInterval(() => {
         time += 1;
         sessionStorage.setItem('time', time);
-        console.log(time)
     }, 1000);
 
     
