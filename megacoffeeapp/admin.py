@@ -7,7 +7,7 @@ from .models import Menu, Quantity, Option
 class PostAdmin(admin.ModelAdmin):
     list_display = ['name']
 
-@admin.register(Option)
+@admin.register(Option) 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['name']
 

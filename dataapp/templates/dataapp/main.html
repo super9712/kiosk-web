@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% block content %} 
+{% load static %}
+
+
+<div class="container wrapper pt-40">
+  <div>
+    <span class="font-bold">Data</span>
+  </div>
+</div>
+<div class="brand_list">
+  <ul class="flex-row justify-between flex-wrap">
+    <li>
+      <a href="{% url 'dataapp:megacoffee' %}">
+        <img class="mx-5 my-5" src="{% static 'img/메가커피.png' %}" />
+
+        <div class="flex justify-center">메가커피 data</div>
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'dataapp:main' %}">
+        <img src="{% static 'img/mcdonalds.png' %}" />
+        <div class="flex justify-center">맥도날드 data</div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

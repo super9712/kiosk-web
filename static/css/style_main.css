@@ -268,11 +268,14 @@ components
 
 */
 
-.btn-big, .btn {
+ .btn{
+    display: flex;
+    font-weight: 700;
+    margin : auto;
     border-radius: 0.5rem;
     padding : 1rem 2rem;
     width: 20rem;
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
     align-items: center;
     justify-content: center;
     color: white;
@@ -284,47 +287,63 @@ components
     transition: 1s;
 }
 
-.btn.mission-start,.btn-big, .btn_mac{
-    position: relative;
-    width: 400px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-    border-radius: 3px;
-    /* moz-transition: all .4s ease-in-out; */
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-    padding-top:15px;
-  }
+    .btn.mission-start,.btn-big, .btn_mac, .result-btn, .btn_content,.btn-survey,.btn-last{
+        position: relative;
+        width: 400px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        margin: 20px;
+        height: 55px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 3px;
+        /* moz-transition: all .4s ease-in-out; */
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        padding-top:17px;
+    }
 
-  .btn.mission-start{
-    background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-  }
+    .btn-success-survey{
+        padding-bottom: 17px;
+    }
 
-  .btn_mac{
-    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-  }
+    .btn.mission-start{
+        background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+        box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    }
 
-  .btn-big{
-        /* background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
-        box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
-    background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-    /* background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
-    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75); */
-    
-}
+    .btn_mac{
+        background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+        box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    }
 
-    .btn.mission-start:hover,.btn-big:hover,.btn_mac:hover{
+    .btn-big{
+        padding-bottom: 20px;
+        background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
+        box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    }
+
+    .result-btn{
+        background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
+        box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    }
+
+    .btn_content{
+        background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
+        box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    }
+
+    .btn-survey,.btn-last{
+        /* font-size:1.2rem; */
+        background-image: linear-gradient(to right, #25aae1, #adc3e9, #04befe, #3f86ed);
+        box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    }
+
+    .btn.mission-start:hover,.btn-big:hover,.btn_mac:hover,.result-btn:hover,.btn_content:hover ,.btn-survey:hover, .btn-last:hover{
         background-position: 100% 0;
         /* moz-transition: all .4s ease-in-out; */
         -o-transition: all .4s ease-in-out;
@@ -332,15 +351,13 @@ components
         transition: all .4s ease-in-out;
     }
 
-    .btn.mission-start:focus,.btn-big:focus, .btn_mac:focus {
+    .btn.mission-start:focus,.btn-big:focus, .btn_mac:focus, .result-btn:focus, .btn_content:focus, .btn-survey:focus,.btn-last:focus {
         outline: none;
     }
 
-.btn {
-    display: flex;
-    font-weight: 700;
-    margin : auto;
-}
+    .justify-between{
+        justify-content: unset;
+    }
 
 /* question.html */
 
@@ -533,9 +550,9 @@ complete.html
     margin : 2rem ;
 }
 
-.height {
+/* .height {
     height : 125px;
-}
+} */
 .font-big {
     font-size: 2.5rem;
 }
