@@ -31,6 +31,16 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', function(){
+        sessionStorage.removeItem("clickData");
+        sessionStorage.removeItem("orderMenu");
+        sessionStorage.removeItem("remain_time");
+        sessionStorage.removeItem("total_price");
+        sessionStorage.removeItem("mission");
+        sessionStorage.removeItem("accuracy");
+        sessionStorage.removeItem("paying-time");
+        sessionStorage.removeItem("packaging");
+        sessionStorage.removeItem("time");
+        
         // mission setting
         const menu_names = document.querySelector('.menu_names').value.split(',');
         const quantities = document.querySelector('.quantity').value.split(',');
@@ -50,6 +60,8 @@
         }
 
         sessionStorage.setItem('mission', JSON.stringify(mission));
+        sessionStorage.setItem('time', 0);
+        sessionStorage.setItem('clickData', JSON.stringify([]));
     });
 </script>
 {% endblock%}

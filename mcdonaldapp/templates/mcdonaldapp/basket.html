@@ -7,6 +7,11 @@
     var colIdx = 0;
     var colSum = 0;
 
+        // add onclick
+    // const categories = document.querySelectorAll()
+    $('.goshopping').click(function () {getClickData('계속 쇼핑하기')});
+    $('.charge').click(function () {getClickData('결제하기')});
+
     $("#orderedmenu tr").each(function () {
       if (rowCnt != 0) {
         var sell = $(this).children("td");
@@ -41,6 +46,7 @@
   }
 
   function cancelOrder(name) {
+    getClickData('주문 취소 : ' + name);
     $.ajax({
       url: '{% url "mcdonaldapp:basket" %}',
       method: "POST",
@@ -111,6 +117,21 @@
 </div>
 
 <script>
+  const getClickData = (button_name) => {
+    let clickData = [];
+    if ( sessionStorage.getItem('clickData') ) {
+        clickData = JSON.parse(sessionStorage.getItem('clickData'));
+    }
+    const date = new Date();
+    clickData.push({
+        button_name: button_name,
+        datetime: date.toString()
+    });
+
+    console.log("click data: ", clickData);
+    sessionStorage.setItem('clickData', JSON.stringify(clickData));
+  }
+
   window.addEventListener("DOMContentLoaded", function () {
     const setHeader = () => {
       const missions = JSON.parse(sessionStorage.getItem("mission"));
@@ -133,8 +154,12 @@
 
     setHeader();
 
-    // add onclick
-    // const categories = document.querySelectorAll()
+    // timer
+    let time = parseInt(sessionStorage.getItem('time'));
+    setInterval(() => {
+        time += 1;
+        sessionStorage.setItem('time', time);
+    }, 1000);
   });
 </script>
 {% endblock %}

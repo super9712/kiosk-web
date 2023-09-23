@@ -1,4 +1,5 @@
 const getClickData = (button_name) => {
+    clickData = sessionStorage.getItem('clickData');
     const date = new Date();
     clickData.push({
         button_name: button_name,
