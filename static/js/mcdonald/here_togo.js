@@ -37,6 +37,14 @@ window.addEventListener('DOMContentLoaded', function(){
     setHeader();
 
 
+    // timer
+    let time = parseInt(sessionStorage.getItem('time'));
+    setInterval(() => {
+        time += 1;
+        sessionStorage.setItem('time', time);
+    }, 1000);
+
+    
     // add onclick
     document.getElementById('menu-link').addEventListener('click', function(event) {
         // 클릭 이벤트를 중지하고 해당 URL로 이동하는 것을 방지

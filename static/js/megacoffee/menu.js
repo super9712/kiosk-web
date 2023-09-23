@@ -251,7 +251,7 @@ const setMenu = (e) => {
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
             console.log('option', element)
-            menu_name += ` / ${element.optionName} ${ parseInt(element.quantity) >= 1 ? element.quantity + '회' : '' }` 
+            menu_name += ` / ${element.optionName}`;
             menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.quantity ? element.quantity : 1))) + "원";
         })
     } 

@@ -5,7 +5,10 @@ window.addEventListener('DOMContentLoaded', function(){
     sessionStorage.removeItem("remain_time");
     sessionStorage.removeItem("total_price");
     sessionStorage.removeItem("mission");
-
+    sessionStorage.removeItem("accuracy");
+    sessionStorage.removeItem("paying-time");
+    sessionStorage.removeItem("packaging");
+    sessionStorage.removeItem("time");
 
     // mission setting
     const menu_names = document.querySelector('.menu_names').value.split(',');
