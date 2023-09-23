@@ -110,7 +110,7 @@
           <li>
             <div class="photo">
               <a
-                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ drink_name }}&image={{ dink_info.0 }}&price={{ drink_info.1 }}"
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ drink_name }}&image={{ drink_info.0 }}&price={{ drink_info.1 }}"
               >
                 <img src="{% static 'img/'|add:drink_info.0|add:'.png' %}" />
               </a>

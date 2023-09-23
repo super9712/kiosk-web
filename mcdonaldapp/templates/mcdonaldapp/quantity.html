@@ -38,7 +38,7 @@
             var price = parseInt(stat2,10);
             if (num > 0) {
                 num--;
-                price = ProductPrice * num;
+                price = price * num;
 
                 $('#numberUpDown').val(num);
                 $('#total_price').text(price);
