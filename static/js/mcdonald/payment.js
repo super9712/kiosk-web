@@ -1,5 +1,8 @@
 const getClickData = (button_name) => {
-    let clickData = sessionStorage.getItem('clickData');
+    let clickData = [];
+    if ( sessionStorage.getItem('clickData') ) {
+        clickData = JSON.parse(sessionStorage.getItem('clickData'));
+    }
     const date = new Date();
     clickData.push({
         button_name: button_name,
@@ -21,5 +24,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }, 1000);
 
     // click data event listener
-
+    document.querySelectorAll('.payment')[0].addEventListener('click', getClickData('카드 결제'));
+    document.querySelectorAll('.payment')[1].addEventListener('click', getClickData('현금 결제'));
+    document.querySelector('.payment-back').addEventListener('click', getClickData('결제 이전 단계로'));
 });
