@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'introapp',
     'megacoffeeapp',
     'mcdonaldapp',
+    'dataapp',
 ]
 
 MIDDLEWARE = [

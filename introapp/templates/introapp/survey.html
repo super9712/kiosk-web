@@ -2,28 +2,37 @@
 {% block content %}
 {% load static %}
 
-<form method = "post" action="{% url 'introapp:survey' %}" name="survey_form">
-    {% csrf_token %}
-    {% for question, answers in questions.items %}
-    <fieldset class = "survey">
-      <legend class = "sv_font font-bold">{{ question }}</legend>
-      {% for answer in answers %}
-        <label class = "sv_font">
-          <input class = " my-5" type="radio" name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
-          {{ answer }}
-        </label><br>
-      {% endfor %}
-    </fieldset>
-  {% endfor %}
-    <div class = "flex justify-between">
-        <button class="btn btn-sumbit-survey">제출하기</button>
-        <a href = "{% url 'introapp:main' %}" class = "btn">취소하기</a>
-    </div>
-
-</form>
+<div class="survey-body">
+  <div class="login__img">
+    <img class="img" src="{% static 'img/logo.png' %}">
+  </div>
+  <a>
+    여러분의 의견은 SENISK가 더 나은 서비스를 제공하고, 어떤 방향으로 나아갈지 결정하는데 큰 도움이 됩니다.
+  </a>
+  <form class="survey-container" style="margin-top:5vh" method = "post" action="{% url 'introapp:survey' %}" name="survey_form">
+      {% csrf_token %}
+      {% for question, answers in questions.items %}
+      <fieldset>
+        <div class = "survey survey-text" style="font-weight:bolder; text-align: center;">{{ question }}</div>
+        {% for answer in answers %}
+          <div class = "survey-text" style="padding-left:22%">
+            <input type="radio"  name="answer_list_{{ forloop.parentloop.counter0 }}" value="{{ answer }}">
+            {{ answer }}
+          </div>
+          </label>
+        {% endfor %}
+      </fieldset>
+      {% if not forloop.last%}<hr />{% endif %}
+    {% endfor %}
+      <div class="flex justify-between" >
+          <a href="{% url 'introapp:main' %}" class = "btn-last" style="width:15rem">취소하기</a>
+          <button class="btn-last btn-success-survey" style="width:15rem">제출하기</button>
+      </div>
+  </form>
+</div>
 
 <script>
-  document.querySelector('.btn-sumbit-survey').addEventListener('click', (e) => {
+  document.querySelector('.btn-success-survey').addEventListener('click', (e) => {
   e.preventDefault();
     const checkboxs = document.querySelectorAll('input');
     let answers = [];

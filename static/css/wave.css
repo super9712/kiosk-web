@@ -17,16 +17,18 @@ p {
   font-size: 14px;
   color: #333333;
 }
+
 .header {
   position: relative;
   text-align: center;
-  background: linear-gradient(90deg,  rgba(255, 200, 95, 1), var(--gradient-percent), rgba(250, 223, 112, 1) 100%);
+  /* background: linear-gradient(90deg,  rgba(255, 200, 95, 1), var(--gradient-percent), rgba(250, 223, 112, 1) 100%); */
+  background-image: linear-gradient(to right, #25aae1, #719ae0, #04befe, #9fc2f7);
   color: white;
 }
 
 .font-bold {
     margin-top: 4rem;
-    color: #333333;
+    color: white;
     font-size: 36px;
 }
 

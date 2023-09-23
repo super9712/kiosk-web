@@ -14,6 +14,7 @@ let times = sessionStorage.getItem('times') ? sessionStorage.getItem('times') : 
 window.addEventListener('DOMContentLoaded', function(){
     const setHeader = () => {
         const missions = JSON.parse(sessionStorage.getItem('mission'));
+        console.log(sessionStorage.getItem('mission'))
         const headerMissionList = document.querySelector('.mission-list');
 
         let missionList = '';
@@ -62,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function(){
             window.alert('사용 시간이 초과되었습니다.');
             window.location.href = window.location.href;
         }
-    }, 1000); 
+    }, 1000);
 
     // tab buttons
     const tab_btns = document.querySelectorAll('.tab-list');
@@ -101,6 +102,24 @@ window.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.pay-result-check')[1].addEventListener('click', () => submitOrder(false));
 });
 
+// CSRF 토큰을 가져오는 함수
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// CSRF 토큰 가져오기
+const csrftoken = getCookie('csrftoken');
 
 const getClickData = (button_name) => {
     const date = new Date();
@@ -110,7 +129,28 @@ const getClickData = (button_name) => {
     });
 
     console.log("click data: ", clickData);
+
+    // MenuTemplateView로 click data 전송
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+         'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({ data: clickData }),
+    })
+
+//    .then(response => response.json())
+//    .then(data => {
+//      // 서버에서 반환한 응답 처리
+//      console.log(data);
+//    })
+//    .catch(error => {
+//      console.error('데이터 전송 오류:', error);
+//    });
+
 }
+
 
 const clickTab = (e) => {
     getClickData('탭 변경' + e.target.innerHTML);
@@ -212,7 +252,7 @@ const setMenu = (e) => {
     if ( currentOption.length !== 0 ) {
         currentOption.map((element) => {
             console.log('option', element)
-            menu_name += ` / ${element.optionName} ${ parseInt(element.quantity) >= 1 ? element.quantity + '회' : '' }` 
+            menu_name += ` / ${element.optionName}`;
             menu_price = (parseInt(menu_price.replaceAll(',', '').replaceAll('원', '')) + parseInt(parseInt(element.optionPrice.replaceAll(',', '')) * parseInt(element.quantity ? element.quantity : 1))) + "원";
         })
     } 
@@ -323,7 +363,7 @@ const submitOrder = (isHere) => {
     modal.setAttribute('style', 'opacity: 0; z-index: -10;');
 
     // 포장 여부 저장
-    sessionStorage.setItem('packaging', isHere ? '매장' : '포장');
+    sessionStorage.setItem('packaging', isHere===true ? '매장' : '포장');
 
     // 데이터 local storage에 저장 
     sessionStorage.setItem("clickData", JSON.stringify(clickData));

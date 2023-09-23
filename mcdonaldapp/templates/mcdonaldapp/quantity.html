@@ -28,41 +28,48 @@
         var stat3 = $('#increasePrice').text();
         var ProductPrice = parseInt(stat3,10);
 
-    $('#decreaseQuantity').click(function(e){
-        e.preventDefault();
-        getClickData('decreaseQuantity');
-        var stat = $('#numberUpDown').val();
-        var stat2 = $('#total_price').text();
+        $('#decreaseQuantity').click(function(e){
+            e.preventDefault();
+            getClickData('decreaseQuantity');
+            var stat = $('#numberUpDown').val();
+            var stat2 = $('#MenuPrice').text();
 
-        var num = parseInt(stat,10);
-        var price = parseInt(stat2,10);
-        if (num > 0) {
-            num--;
-            price = ProductPrice * num;
+            var num = parseInt(stat,10);
+            var price = parseInt(stat2,10);
+            if (num > 0) {
+                num--;
+                price = ProductPrice * num;
+
+                $('#numberUpDown').val(num);
+                $('#total_price').text(price);
+            }
+            updateURLAndHref(num);
+        });
+
+        $('#increaseQuantity').click(function(e){
+            e.preventDefault();
+            getClickData('increaseQuantity')
+            var stat = $('#numberUpDown').val();
+            var stat2 = $('#MenuPrice').text();
+
+            var num = parseInt(stat,10);
+            var price = parseInt(stat2,10);
+            var total_price = 0;
+
+            num++;
+            total_price = price * num;
 
             $('#numberUpDown').val(num);
-            $('#total_price').text(price);
-        }
-        updateURLAndHref(num);
+            $('#total_price').text(total_price);
+            updateURLAndHref(num);
         });
 
-    $('#increaseQuantity').click(function(e){
-        e.preventDefault();
-        getClickData('increaseQuantity')
-        var stat = $('#numberUpDown').val();
-        var stat2 = $('#total_price').text();
-
-        var num = parseInt(stat,10);
-
-        var price = parseInt(stat2,10);
-        var total_price = 0;
-        num++;
-        price = ProductPrice * num;
-        total_price = ProductPrice * num;
-        $('#numberUpDown').val(num);
-        $('#total_price').text(price + "원");
-        updateURLAndHref(num);
-        });
+         // timer
+         let time = parseInt(sessionStorage.getItem('time'));
+        setInterval(() => {
+            time += 1;
+            sessionStorage.setItem('time', time);
+        }, 1000);
 
       function updateURLAndHref(num) {
             var url = new URL(window.location.href);
@@ -99,33 +106,33 @@
                         <a class="menu_name" name="MenuName">
                             {{ name}}
                         </a>
-                        <div class="price" id="increasePrice" name="MenuPrice">
-                            {{ price }}원
+                        <div class="price" name="MenuPrice">
+                            ₩<span id="MenuPrice">{{ price }}</span>
                         </div>
                     </div>
                 </li>
             </div>
+            <div class="textCenter">
+                <div class="total_mc">Total: <span id="total_price">{{ price }}</span> 원</div>
+            </div>
             <li class="arrows">
-                <img class="triangle" src="{% static 'img/triangle-up.png' %}" id="increaseQuantity">
+                <span class="material-symbols-outlined" id="decreaseQuantity">
+                    remove
+                </span>
                 <input class="count" id="numberUpDown" name="MenuQty" value="1">
-                <img class="triangle" src="{% static 'img/triangle-down.png' %}" id="decreaseQuantity">
-            </li>
-            <li class="button_1">
-                <button type="submit" class="btn-yellow">
-                    <a id="addToBasketLink">장바구니 추가</a>
-                </button>
-                <button type="button">
-                    <a href="{% url 'mcdonaldapp:menu' %}?packing={{ packing }}">취소</a>
-                </button>
+                <span class="material-symbols-outlined" id="increaseQuantity">
+                    add
+                </span>
             </li>
         </div>
+        <li class="button_1">
+            <button type="button">
+                <a href="{% url 'mcdonaldapp:menu' %}?packing={{ packing }}">취소</a>
+            </button>
+            <button type="submit" class="add-basket">
+                <a id="addToBasketLink">장바구니 추가</a>
+            </button>
+        </li>
     </form>
-    <div class="select">
-            <div class="textCenter font-black">
-                <div class="total_mc">Total: <span id="total_price">{{ total_price }}</span> 원</div>
-
-            </div>
-
-    </div>
 </div>
 {% endblock %}

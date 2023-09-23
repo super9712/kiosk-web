@@ -1,0 +1,232 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메가커피</title>
+    <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+    />
+
+    <script type="module">
+        import axios from 'https://cdn.jsdelivr.net/npm/axios@1.4.0/+esm'
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer-section.css' %}?after" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu-section.css' %}?after" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_main.css' %}?after" />
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- google meterial icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<body>
+    {% include 'header.html' %}
+    <header class="header">
+        <div class="header-container">
+            <a class="btn-home trans ml-20" href="{% url 'megacoffeeapp:start_2' %}">
+                <i class="fas fa-home"></i>
+            </a>
+            <a class="home" href="{% url 'megacoffeeapp:start_2' %}"><span>Senisk</span> <span>Kiosk</span></a>
+        </div>
+    <nav class="main-nav">
+        <ul class="menu-tab list">
+            <li id="seasonmenu" class="tab-list trans btn-active"><span href="{% url 'megacoffeeapp:start_2' %}"></span>시즌 메뉴</li>
+            <li id="hotmenu" class="tab-list trans"><span href="{% url 'megacoffeeapp:hot_coffee' %}"></span>커피(HOT)</li>
+            <li id="icemenu" class="tab-list trans"><span href="{% url 'megacoffeeapp:ice_coffee' %}"></span>커피(ICE)</li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+    <div class="main__container">
+        <ul class="menu-list">
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230703153953_1688366393779_0LqnZOMdfo.jpg">
+                    <div>
+                        <figcaption class="menu-title">고흥 유자망고 스무디</figcaption>
+                        <span class="menu-price">3,900원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230703153518_1688366118933_nk6Ktkw65E.jpg">
+                    <div>
+                        <figcaption class="menu-title">고흥 유자 하이볼 에이드</figcaption>
+                        <span class="menu-price">3,800원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230703154306_1688366586891_VyVMhYR9r4.jpg">
+                    <div>
+                        <figcaption class="menu-title">나주 플럼코트 스무디</figcaption>
+                        <span class="menu-price">3,900원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230703154503_1688366703061_gsrDeyQqgC.jpg">
+                    <div>
+                        <figcaption class="menu-title">보성 녹차레몬 콤부차</figcaption>
+                        <span class="menu-price">3,900원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230503150121_1683093681433_ehOASTxDPQ.png">
+                    <div>
+                        <figcaption class="menu-title">코코넛 커피 스무디</figcaption>
+                        <span class="menu-price">5,300원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230503150528_1683093928177__ybm4ws67g.png">
+                    <div>
+                        <figcaption class="menu-title">수박화채 스무디</figcaption>
+                        <span class="menu-price">5,000원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230503152202_1683094922048_HwqepqZ3T1.png">
+                    <div>
+                        <figcaption class="menu-title">수박주스</figcaption>
+                        <span class="menu-price">4,500원</span>
+                    </div>
+                </figure>
+            </li>
+            <li class="menu-item">
+                <figure>
+                    <img class="menu-img"
+                        src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230302111940_1677723580990_DVocCFWWgr.jpg">
+                    <div>
+                        <figcaption class="menu-title">레드 오렌지 자몽주스</figcaption>
+                        <span class="menu-price">4,500원</span>
+                    </div>
+                </figure>
+            </li>
+        </ul>
+        <div class="btn-group"></div>
+        <div class="menu-modal-container">
+            <ul class="modal">
+                <li class="modal-item">
+                    <figure>
+                        <img class="modal-img"
+                            src="https://img.79plus.co.kr/megahp/manager/upload/menu/20230703153953_1688366393779_0LqnZOMdfo.jpg">
+                        <div>
+                            <figcaption class="modal-title">고흥 유자망고 스무디</figcaption>
+                            <span class="modal-price">3,900원</span>
+                        </div>
+                    </figure>
+                </li>
+                <li class="modal-item">
+                    <button class="btn btn-size-up">
+                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <span>사이즈 업</span> 
+                    </button>
+                    <span class="size-up-price">1,000원</span>
+                    <button class="btn btn-addshot">
+                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <span>샷 추가</span>
+                    </button>
+                    <span class="size-up-price">1,000원</span>
+                </li>
+                <li class="modal-item">
+                    <button class="btn btn-cream btn-add-cream">
+                        <i aria-hidden="true"></i>
+                        <span>휘핑크림 추가</span> 
+                    </button>
+                    <span class="size-up-price">1,000원</span>
+                    <button class="btn btn-cream btn-out-cream">
+                        <i aria-hidden="true"></i>
+                        <span>휘핑크림 빼기</span> 
+                    </button>
+                    <span class="size-up-price">0원</span>
+                </li>
+                <li class="modal-item">
+                    <button class="btn-order">주문 담기</button>
+                    <button class="btn btn-close">취소</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </main>
+    <!-- footer 주문 내역 영역 -->
+    <footer class="footer">
+    <div class="remaining-time-container">
+        남은시간 <span class="remaining-time">60</span>초
+    </div>
+    `<ul class="order-list">
+        <li id="${id}" class="order-item">
+            담은 메뉴가 없습니다.
+        </li>
+    </ul>
+    <div class="selected-item-container">
+        선택한 상품 <span class="selected-item-num"></span>
+    </div>
+    <button class="order-btn order-btn-invalid">
+        <span class="total-price"></span> 결제하기
+    </button>
+    <button class="delete-all-items">전체삭제</button>
+
+    <!-- 결제 내역 모달 영역 -->
+    <div class="pay-modal-container modal-invisible">
+        <div class="modal">
+        <h3 class="pay-modal-heading">주문리스트</h3>
+        <p class="pay-modal-text"><span>주문리스트</span>를 확인해 주세요.</p>
+        <div class="pay-list-container">
+            <div class="pay-list-head">
+            <span>메뉴</span>
+            <span>가격</span>
+            </div>
+            <ul class="pay-list">
+                <li id="${id}" class="pay-item">
+                    <span class="item-name"></span>
+                    <span class="item-price"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="pay-result">
+            <span>총 수량 <span class="total-item-num"></span></span>
+            <span>총 결제금액 <span class="total-item-price"></span></span>
+        </div>
+        <div>
+            <button class="pay-result-check" onclick="">결제 하기</button>
+            <button class="pay-result-cancel">취소 하기</button>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'js/megacoffee/menu.js' %}"></script> 
+</body>
+</html>

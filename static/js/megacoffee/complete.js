@@ -2,28 +2,25 @@ const setAccuracy = (orderMenu, mission) => {
     let correct = 0;
     let total = 2;
 
-    console.log('orderMenu', orderMenu)
-    console.log('mission', mission)
-
-    if ( mission[0].method === orderMenu[0].method ) {
+    if ( mission[0].payment === orderMenu[0].method ) {
         console.log('same method')
         correct++; // 결제 방식
     }
-    if ( mission[0].packaging === orderMenu[0].packaging ) {
+    if ( mission[0].packing === orderMenu[0].packaging) {
         console.log('same packaging')
         correct++; // 포장 여부
     }
 
     mission.map((m) => {
         total += 3; // 메뉴, 옵션, 개수
-        console.log(m)
         for ( let i=0 ; i < orderMenu.length ; i++ ) {
-            if ( orderMenu[i].menu_name.split('/')[0] === m.menu ) {
+            if ( orderMenu[i].menu_name.split(' / ')[0] === m.menu ) {
                 console.log('same menu')
                 correct += 1; // 메뉴
 
-                if ( orderMenu[i].menu_name.split('/')[1] ) {
-                    if ( orderMenu[i].menu_name.split('/')[1] === m.option ) {
+                if ( orderMenu[i].menu_name.split(' / ')[1] ) {
+                    console.log(orderMenu[i].menu_name.split(' / ')[1]);
+                    if ( orderMenu[i].menu_name.split(' / ')[1] === m.option ) {
                         console.log('same option',)
                         correct += 1; // 추가 옵션
                     } 
@@ -95,6 +92,6 @@ window.addEventListener('DOMContentLoaded', function() {
         
 
         // redirecting
-        //location.href = '/complete/?brand=megacoffee';
+        // location.href = '/complete/?brand=megacoffee';
     });
 });

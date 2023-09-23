@@ -1,133 +1,163 @@
-{% extends 'mac_kiosk_base.html' %}
-{% load static %}
-
-
-{% block extra-style %}
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-{% endblock %}
-
-{% block content %}
-  <body>
-    <div class="wrapper">
-      <div class="header">
-        <div class="banner">
-          <p>
-            <a href="{% url 'mcdonaldapp:menu' %}">
-              <img src="{% static 'img/MacLogo.png' %}" alt="">
-            </a>
-          </p>
-        </div>
+{% extends 'mac_kiosk_base.html' %} {% load static %} {% block extra-style %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock %} {% block content %}
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="banner">
+        <p>
+          <a href="{% url 'mcdonaldapp:menu' %}">
+            <img src="{% static 'img/MacLogo.png' %}" alt="" />
+          </a>
+        </p>
       </div>
-      <div class="tab">
-        <ul class="category">
-          <li data-tab="tab-1" class="tab-link current">세트메뉴</li>
-          <li data-tab="tab-2" class="tab-link">단품</li>
-          <li data-tab="tab-3" class="tab-link">사이드</li>
-          <li data-tab="tab-4" class="tab-link">디저트</li>
-          <li data-tab="tab-5" class="tab-link">음료</li>
+    </div>
+    <div class="mc_tab">
+      <ul class="category">
+        <li data-tab="tab-1" class="tab-link current">
+          <i class="material-symbols-outlined"> fastfood </i>
+          <span>세트메뉴</span>
+        </li>
+        <li data-tab="tab-2" class="tab-link">
+          <i class="material-symbols-outlined"> lunch_dining </i>
+          <span>단품</span>
+        </li>
+        <li data-tab="tab-3" class="tab-link">
+          <i class="material-symbols-outlined"> local_pizza </i>
+          <span>사이드</span>
+        </li>
+
+        <li data-tab="tab-4" class="tab-link">
+          <i class="material-symbols-outlined"> icecream </i><span>디저트</span>
+        </li>
+
+        <li data-tab="tab-5" class="tab-link">
+          <i class="material-symbols-outlined">water_medium</i><span>음료</span>
+        </li>
+      </ul>
+      <div class="menu current" id="tab-1">
+        <ul class="menu_list" id="menuList">
+          {% for set_name, set_info in sets.items %}
+          <li>
+            <div class="photo">
+              <a
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ set_name }}&image={{ set_info.0 }}&price={{ set_info.1 }}"
+              >
+                <img src="{% static 'img/'|add:set_info.0|add:'.png' %}" />
+                <div class="menu_name">{{ set_name }}</div>
+                <div class="price">₩{{ set_info.1 }}</div>
+              </a>
+            </div>
+          </li>
+          {% endfor %}
         </ul>
-        <div class="menu current" id="tab-1">
-          <ul class="menu_list" id="menuList">
-            {% for set_name, set_info in sets.items %}
-            <li>
-              <div class="photo">
-                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ set_name }}&image={{ set_info.0 }}&price={{ set_info.1 }}">
-                  <img src="{% static 'img/'|add:set_info.0|add:'.png' %}" />
-                  <div class="menu_name"> {{ set_name }} </div>
-                  <div class="price">{{ set_info.1 }}원</div>
-                </a>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="menu" id="tab-2">
-          <ul class="menu_list" id="menuList">
-            {% for single_name, single_info in singles.items %}
-            <li>
-              <div class="photo">
-                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ single_name }}&image={{ single_info.0 }}&price={{ single_info.1 }}">
-                  <img src="{% static 'img/'|add:single_info.0|add:'.png' %}" />
-                  <div class="menu_name"> {{ single_name }} </div>
-                  <div class="price">{{ single_info.1 }}원</div>
-                </a>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="menu" id="tab-3">
-          <ul class="menu_list" id="menuList">
-            {% for side_name, side_info in sides.items %}
-            <li>
-              <div class="photo">
-                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ side_name }}&image={{ side_info.0 }}&price={{ side_info.1 }}">
-                  <img src="{% static 'img/'|add:side_info.0|add:'.png' %}" />
-                </a>
-                <div class="menu_name"> {{ side_name }} </div>
-                <div class="price">{{ side_info.1 }}원</div>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="menu" id="tab-4">
-          <ul class="menu_list" id="menuList">
-            {% for dessert_name, dessert_info in desserts.items %}
-            <li>
-              <div class="photo">
-                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ dessert_name }}&image={{ dessert_info.0 }}&price={{ dessert_info.1 }}">
-                  <img src="{% static 'img/'|add:dessert_info.0|add:'.png' %}" />
-                </a>
-                <div class="menu_name"> {{ dessert_name }} </div>
-                <div class="price">{{ dessert_info.1 }}원</div>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="menu" id="tab-5">
-          <ul class="menu_list" id="menuList">
-            {% for drink_name, drink_info in drinks.items %}
-            <li>
-              <div class="photo">
-                <a href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ drink_name }}&image={{ dink_info.0 }}&price={{ drink_info.1 }}">
-                  <img src="{% static 'img/'|add:drink_info.0|add:'.png' %}" />
-                </a>
-                <div class="menu_name"> {{ drink_name }} </div>
-                <div class="price">{{ drink_info.1 }}원</div>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
       </div>
-      <div class="basket">
-        <p>총 결제 금액 : {{ total_price }}원</p>
-        <button class="cart">
-          <a href="{% url 'mcdonaldapp:basket' %}">장바구니</a>
-        </button>
+      <div class="menu" id="tab-2">
+        <ul class="menu_list" id="menuList">
+          {% for single_name, single_info in singles.items %}
+          <li>
+            <div class="photo">
+              <a
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ single_name }}&image={{ single_info.0 }}&price={{ single_info.1 }}"
+              >
+                <img src="{% static 'img/'|add:single_info.0|add:'.png' %}" />
+                <div class="menu_name">{{ single_name }}</div>
+                <div class="price">{{ single_info.1 }}원</div>
+              </a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="menu" id="tab-3">
+        <ul class="menu_list" id="menuList">
+          {% for side_name, side_info in sides.items %}
+          <li>
+            <div class="photo">
+              <a
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ side_name }}&image={{ side_info.0 }}&price={{ side_info.1 }}"
+              >
+                <img src="{% static 'img/'|add:side_info.0|add:'.png' %}" />
+              </a>
+              <div class="menu_name">{{ side_name }}</div>
+              <div class="price">{{ side_info.1 }}원</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="menu" id="tab-4">
+        <ul class="menu_list" id="menuList">
+          {% for dessert_name, dessert_info in desserts.items %}
+          <li>
+            <div class="photo">
+              <a
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ dessert_name }}&image={{ dessert_info.0 }}&price={{ dessert_info.1 }}"
+              >
+                <img src="{% static 'img/'|add:dessert_info.0|add:'.png' %}" />
+              </a>
+              <div class="menu_name">{{ dessert_name }}</div>
+              <div class="price">{{ dessert_info.1 }}원</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="menu" id="tab-5">
+        <ul class="menu_list" id="menuList">
+          {% for drink_name, drink_info in drinks.items %}
+          <li>
+            <div class="photo">
+              <a
+                href="{% url 'mcdonaldapp:quantity' %}?packing={{ packing }}&name={{ drink_name }}&image={{ dink_info.0 }}&price={{ drink_info.1 }}"
+              >
+                <img src="{% static 'img/'|add:drink_info.0|add:'.png' %}" />
+              </a>
+              <div class="menu_name">{{ drink_name }}</div>
+              <div class="price">{{ drink_info.1 }}원</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="basket">
+      <p>담은 메뉴 _개</p>
+      <p>₩{{ total_price }}</p>
+      <div>
         <button class="charge_btn">
-          <a href="{% url 'mcdonaldapp:basket' %}">결제하기</a>
+          <a href="{% url 'mcdonaldapp:basket' %}"
+            >주문 내역 확인 후 결제하기</a
+          >
         </button>
       </div>
     </div>
+  </div>
 
   <script>
-    $(document).ready(function(){
-      $('ul.category li').click(function(){
-        var tab_id = $(this).attr('data-tab');
-        $('ul.category li').removeClass('current');
-        $('.menu').removeClass('current');
-        $(this).addClass('current');
-        $("#"+tab_id).addClass('current');
-      })
-    })
+    $(document).ready(function () {
+      $("ul.category li").click(function () {
+        addEventListener('click', getClickData('category 변경'));
+        var tab_id = $(this).attr("data-tab");
+        $("ul.category li").removeClass("current");
+        $(".menu").removeClass("current");
+        $(this).addClass("current");
+        $("#" + tab_id).addClass("current");
+      });
+
+      $("#menuList li").click(function () {
+        addEventListener('click', getClickData('menu 선택 : ' + $("#menuList .menu_name").text()));
+      });
+
+      $('.charge_btn').click(function() {getClickData('주문 내역 확인 후 결제하기')})
+    });
   </script>
 
-  <script type="text/javascript" src="{% static 'js/mcdonald/menu.js' %}"></script> 
+  <script
+    type="text/javascript"
+    src="{% static 'js/mcdonald/menu.js' %}"
+  ></script>
 </body>
-
 
 {% endblock %}
